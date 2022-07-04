@@ -1,0 +1,74 @@
+@font-face {
+	font-family: cano;
+	src: url('/fonts/Cano.otf');
+}
+
+:root {
+	--primary: #5a9fbf;
+	/* --primary-gradient: linear-gradient(90deg, #5a9fbf 0%, #5cbbb4 100%); */
+	--primary-gradient: linear-gradient(90deg, #5091af 0%, #5a9fbf 100%);
+	--color: #464646;
+	--background: #e5e7e9;
+	--color-muted: #818181;
+	--border-color: #d3d3d3;
+	--box-shadow: 0 0 10px rgb(0 0 0 / 5%);
+	--background-variant: #e9ebee;
+}
+
+/* width */
+::-webkit-scrollbar {
+	width: 0.3rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--primary-gradient);
+	border-radius: 9999px;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: 'Poppins', sans-serif;
+	line-height: 1.5;
+	color: var(--color);
+	background: var(--background);
+	max-width: 100vw;
+	overflow: hidden;
+}
+
+li {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+p {
+	font-weight: 300;
+}
+
+img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.container {
+	padding: 1rem 8rem;
+}

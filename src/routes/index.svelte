@@ -1,37 +1,32 @@
 <script>
-    import '../css/global.css'
+    import '../css/style.css'
+    import Header from '../components/Header.svelte';
+    import Hero from '../components/Hero.svelte';
+    import Wave from '../components/Wave.svelte';
+    import { onMount } from 'svelte';
+import About from '../components/About.svelte';
+import Features from '../components/Features.svelte';
+import Pricelist from '../components/Pricelist.svelte';
+
+    onMount(() => {
+        document.body.style.overflowY = 'scroll'
+    })
 </script>
+
 <svelte:head>
-    <title>dinvite</title>
+    <title>Dinvite</title>
 </svelte:head>
-<header>
-    <div class="container">
-        <a href="/" class="logo">dinvite</a>
-        <div class="mobile-toggle"><i class="fa-solid fa-bars"></i></div>
-        <div class="close-toggle"><i class="fa-solid fa-xmark"></i></div>
-    </div>
-    <nav>
-        <ul>
-            <li>
-                <a href="/">Home</a>
-            </li>
-            <li>
-                <a href="/">About</a>
-            </li>
-            <li>
-                <a href="/">Theme</a>
-            </li>
-            <li>
-                <a href="/">Pricelist</a>
-            </li>
-            <li>
-                <a href="/">Blog</a>
-            </li>
-        </ul>
-    </nav>
-</header>
 
 
-<style>
-   
-</style>
+<main>
+    <Header/>
+    <Hero/>
+    <Wave position={'top'}/>
+    <About/>
+    <Wave position={'bottom'}/>
+    <Features/>
+    <Wave position={'top'}/>
+    <Pricelist/>
+</main>
+
+
