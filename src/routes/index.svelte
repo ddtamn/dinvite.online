@@ -1,2 +1,7 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<header>
+    <div class="container">
+        <a href="/" class="logo">dinvite</a>
+        <div class="mobile-toggle"><i class="fa-solid fa-bars"></i></div>
+        <div class="close-toggle"><i class="fa-solid fa-xmark"></i></div>
+    </div>
+</header>
