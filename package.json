@@ -20,5 +20,8 @@
 		"prettier-plugin-svelte": "^2.7.0",
 		"svelte": "^3.44.0"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@sveltejs/adapter-vercel": "^1.0.0-next.59"
+	}
 }
