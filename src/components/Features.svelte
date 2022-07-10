@@ -1,7 +1,7 @@
 <script>
     import Fa from 'svelte-fa/src/fa.svelte'
-    import { faImages, faMusic,faMapLocation, faComments, faStopwatch20, faFilm, faHeart, faAddressBook, faGift  } from '@fortawesome/free-solid-svg-icons'
-    import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
+    import { faImages, faMusic,faMapLocation, faComments, faStopwatch20, faFilm, faHeart, faAddressBook, faGift  } from '@fortawesome/free-solid-svg-icons/index.es'
+    import { faWhatsapp } from '@fortawesome/free-brands-svg-icons/index.es'
 </script>
 
 <section class="features">
