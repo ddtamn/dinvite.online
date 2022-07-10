@@ -46,10 +46,10 @@
     .buttons a {
         background: var(--primary-gradient);
         color: whitesmoke;
-        padding: 5px 8px;
+        padding: 8px 8px;
         border-radius: 0.5rem;
         cursor: pointer;
-        margin-right: 1rem;
+        margin-right: 0.5rem;
     }
 
     .image {
