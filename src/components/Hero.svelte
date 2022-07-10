@@ -68,7 +68,7 @@
     @media screen and (max-width: 768px) {
         .container {
            display: flex;
-           flex-direction: column-reverse;
+           flex-direction: column;
            min-height: auto;
            justify-content: center;
            align-items: center;
@@ -77,6 +77,7 @@
 
         .content {
             width: 100%;
+            margin-top: 1rem;
         }
 
         h1 {
@@ -91,7 +92,7 @@
             position: static;
             top: 0px;
             margin-left: -6rem;
-            margin-top: -4rem;
+            margin-top: 1rem;
         }
     }
 </style>
