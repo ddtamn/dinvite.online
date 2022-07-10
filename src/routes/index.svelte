@@ -35,7 +35,9 @@ import Footer from '../components/Footer.svelte';
 
 <style>
     main {
+        max-width: 100vw;
         overflow-x: hidden;
+        
     }
 </style>
 
