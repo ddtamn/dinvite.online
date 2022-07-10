@@ -97,12 +97,10 @@
 
 
     <style>
-        section {
-            min-height: 100vh;
-        }
 
         .container {
             padding: 1rem 8rem;
+            padding-bottom: 10rem;
         }
 
         h1 {
@@ -125,9 +123,9 @@
 
         li {
             display: grid;
-            grid-template-columns: 1fr auto;
+            grid-template-columns: 1fr 90%;
             margin-bottom: 1rem;
-            margin-right: 1rem;
+            margin-right: 2rem;
             align-items: center;
         }
 
@@ -142,6 +140,28 @@
             font-size: 1.1rem;
             margin-right: 1rem;
         }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 0.8rem;
+                padding-bottom: 8rem;
+            }
+
+            ul {
+                grid-template-columns: 1fr;
+            }
+
+            li {
+                align-items: flex-start;
+            }
+
+            .icon {
+                width: 3.8rem;
+                height: 2.8rem;
+
+            }
+        }
+
 
 
     </style>

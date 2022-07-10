@@ -7,6 +7,7 @@
     import About from '../components/About.svelte';
     import Features from '../components/Features.svelte';
     import Pricelist from '../components/Pricelist.svelte';
+import Footer from '../components/Footer.svelte';
 
     onMount(() => {
         document.body.style.overflowY = 'scroll'
@@ -28,6 +29,14 @@
     <Features/>
     <Wave position={'top'}/>
     <Pricelist/>
+    <Footer/>
 </main>
+
+
+<style>
+    main {
+        overflow-x: hidden;
+    }
+</style>
 
 

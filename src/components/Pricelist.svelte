@@ -4,7 +4,7 @@
             <p>Semua paket undangan website sudah mendapatkan halaman website, e-guestbook, fitur bahasa, navigasi
                 peta, quotes, & dukungan teknis</p>
             <div class="packages">
-                <div>
+                <div class="package">
                     <div class="head">
                         <h4>Paket Standard</h4>
                     </div>
@@ -28,7 +28,7 @@
                         <button class="button">Pesan Sekarang</button>
                     </div>
                 </div>
-                <div>
+                <div class="package">
                     <div class="head">
                         <h4>Paket Premium</h4>
                         <span>Hemat 101rb</span>
@@ -50,7 +50,7 @@
 
                     </div>
                 </div>
-                <div>
+                <div class="package">
                     <div class="head">
                         <h4>Paket Special</h4>
                         <span>Hemat 500rb</span>
@@ -79,3 +79,132 @@
             </div>
         </div>
     </section>
+
+
+    <style>
+        section {
+            background-color: var(--background-variant);
+            position: relative;
+            margin-top: -10px;
+        }
+
+
+        h1 {
+            text-align: center;
+        }
+        p {
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .packages {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+            padding-inline: 8rem;
+        }
+
+        .package {
+            padding: 1rem;
+            border-radius: 10px;
+            border: 1px solid #bebebe;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .head {
+            position: absolute;
+            background: var(--primary-gradient);
+            width: 100%;
+            height: 3rem;
+            left: 0;
+            top: 0;
+            display: grid;
+            place-items: center;
+            color: whitesmoke;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .head span {
+            color: #fcc437;
+            font-size: 0.8rem;
+            margin-top: -1rem;
+        }
+
+        ul {
+            margin-top: 3rem;
+        }
+
+        li {
+            text-align: left;
+            position: relative;
+            padding-left: 1.8rem;
+            margin-bottom: 1rem;
+            font-size: 0.8rem;
+            border-bottom: 1px solid #bebebe;
+            padding-bottom: 0.3rem;
+        }
+
+        li::before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #eff0f0;
+            font-size: 1rem;
+            color: var(--primary);
+        }
+
+        h3 {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 1.3rem;
+            color: var(--primary);
+        }
+
+        .footer {
+            text-align: center;
+        }
+
+        .footer span {
+            color: #858585;
+            margin-left: 0.8rem;
+            text-decoration: line-through;
+            text-decoration-thickness: 0.5px;
+        }
+
+        .footer p {
+            font-size: 0.7rem;
+            margin-top: 0.5rem;            
+        }
+
+        button {
+            all: unset;
+            background: var(--primary-gradient);
+            color: whitesmoke;
+            padding: 5px 8px;
+            border-radius: 0.5rem;
+            border: none;
+            cursor: pointer;
+            margin-right: 1rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                padding: 0.8rem;
+            }
+
+            .packages {
+                grid-template-columns: 1fr;
+                padding-inline: 1rem;
+            }
+
+            h1, p {
+                text-align: left;
+            }
+        }
+        
+        
+    </style>

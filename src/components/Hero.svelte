@@ -15,6 +15,7 @@
 <style>
     section {
         min-height: calc(100vh - 4rem);
+        margin-top: 4rem;
 
     }
 

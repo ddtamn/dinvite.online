@@ -40,7 +40,8 @@
 
 <style>
    header {
-    position: sticky;
+    position: fixed;
+    width: 100vw;
     top: 0;
     z-index: 999;
     height: 4rem;
@@ -79,6 +80,10 @@ li.active a, li.active a:hover {
 @media screen and (max-width: 768px) {
     header {
         border-bottom: 1px solid var(--border-color);
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
     }
     .container {
         padding-inline:1rem ;
