@@ -72,7 +72,6 @@
            min-height: auto;
            justify-content: center;
            align-items: center;
-           padding-bottom: 6.5rem;
         }
 
         .content {
@@ -91,7 +90,7 @@
         .image img {
             position: static;
             top: 0px;
-            margin-left: -6rem;
+            margin-left: -10rem;
             margin-top: 1rem;
         }
     }
