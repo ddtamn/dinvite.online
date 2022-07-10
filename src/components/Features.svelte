@@ -7,14 +7,14 @@
 <section class="features">
         <div class="container">
             <h1>Fitur Undangan Website</h1>
-            <p>Merencanakan pernikahan bisa menjadi pengalaman yang menyenangkan sekaligus menegangkan. Solusinya
+            <p class="subtitle">Merencanakan pernikahan bisa menjadi pengalaman yang menyenangkan sekaligus menegangkan. Solusinya
                 yaitu
                 menggunakan undangan pernikahan online berbentuk website yang memberikan berbagai fitur yang
                 menarik.
             </p>
             <ul>
                 <li>
-                    <div><Fa icon={faImages}/></div>
+                    <div class="icon"><Fa icon={faImages}/></div>
                     <div>
                         <h4>Gallery Foto</h4>
                         <p>Tampilkan foto prewedding kalian di undangan. Bagikan momen indahmu kepada keluarga dan
@@ -22,7 +22,7 @@
                     </div>
                 </li>
                 <li>
-                    <div><Fa icon={faMusic}/></div>
+                    <div class="icon"><Fa icon={faMusic}/></div>
                     <div>
                         <h4>Musik</h4>
                         <p>Pilih lagu terbaik untuk undangan kalian, agar pembaca akan sekaligus mendengarkan musik
@@ -30,7 +30,7 @@
                     </div>
                 </li>
                 <li>
-                    <div><Fa icon={faMapLocation}/></div>
+                    <div class="icon"><Fa icon={faMapLocation}/></div>
                     <div>
                         <h4>Navigasi Lokasi</h4>
                         <p>Tidak ada kata tersesat, memudahkan tamu kalian menemukan lokasi pernikkahanmu. Hanya
@@ -38,21 +38,21 @@
                     </div>
                 </li>
                 <li>
-                    <div><Fa icon={faComments}/></div>
+                    <div class="icon"><Fa icon={faComments}/></div>
                     <div>
                         <h4>Kolom Ucapan</h4>
                         <p>Kalian dapat membaca ucapan hangat dari saudara maupun kerabat kamu.</p>
                     </div>
                 </li>
                 <li>
-                    <div><Fa icon={faStopwatch20}/></div>
+                    <div class="icon"><Fa icon={faStopwatch20}/></div>
                     <div>
                         <h4>Hitung Mundur</h4>
                         <p>Countdown ditamplikan secara animasi menuju acara pernikahan kalian.</p>
                     </div>
                 </li>
                 <li>
-                    <div><Fa icon={faFilm}/></div>
+                    <div class="icon"><Fa icon={faFilm}/></div>
                     <div>
                         <h4>Video</h4>
                         <p>Sisipkan video prewedding kamu. Biarkan saudara dan kerabat melihat kebahagiaanmu
@@ -61,7 +61,7 @@
                     </div>
                 </li>
                 <li>
-                    <div><Fa icon={faWhatsapp}/></div>
+                    <div class="icon"><Fa icon={faWhatsapp}/></div>
                     <div>
                         <h4>Whatsapp Otomatis</h4>
                         <p>Kirim undangan sekali klik tanpa ribet. Hanya tuliskan nama tamu dan undangan langsung
@@ -69,7 +69,7 @@
                     </div>
                 </li>
                 <li>
-                    <div><Fa icon={faHeart}/></div>
+                    <div class="icon"><Fa icon={faHeart}/></div>
                     <div>
                         <h4>Cerita Cinta</h4>
                         <p>Ceritakan kepada tamu undangan tentang cerita cinta kalian dari awal bertemu sampai
@@ -77,14 +77,14 @@
                     </div>
                 </li>
                 <li>
-                    <div><Fa icon={faAddressBook}/></div>
+                    <div class="icon"><Fa icon={faAddressBook}/></div>
                     <div>
                         <h4>Buku Tamu Digital</h4>
                         <p>Catatan kehadiran dapat dipantau dengan mudah dan lengkap.</p>
                     </div>
                 </li>
                 <li>
-                    <div><Fa icon={faGift}/></div>
+                    <div class="icon"><Fa icon={faGift}/></div>
                     <div>
                         <h4>Amplop Digital</h4>
                         <p>Donasi dapat dikumpulkan baik melalui website maupun di tempat acara.</p>
@@ -94,3 +94,54 @@
             </ul>
         </div>
     </section>
+
+
+    <style>
+        section {
+            min-height: 100vh;
+        }
+
+        .container {
+            padding: 1rem 8rem;
+        }
+
+        h1 {
+            margin-bottom: 1rem;
+        }
+
+        .subtitle {
+            margin-bottom: 1rem;
+        }
+
+
+        ul {
+            
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+
+        }
+
+        li {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            margin-bottom: 1rem;
+            margin-right: 1rem;
+            align-items: center;
+        }
+
+        .icon {
+            height: 3.8rem;
+            width: 4.8rem;
+            background: var(--primary-gradient);
+            color: whitesmoke;
+            display: grid;
+            place-items: center;
+            border-radius: 0.5rem;
+            font-size: 1.1rem;
+            margin-right: 1rem;
+        }
+
+
+    </style>

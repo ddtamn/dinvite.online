@@ -12,7 +12,6 @@
     </div>
 </section>
 
-
 <style>
     section {
         min-height: calc(100vh - 4rem);
@@ -22,7 +21,6 @@
     .container {
         display: flex;
         align-items: center;
-        padding: 1rem 8rem;
         min-height: inherit;
     }
 
@@ -65,5 +63,35 @@
         width: 150%;
         height: auto;
         top: -400px;
+    }
+
+    @media screen and (max-width: 768px) {
+        .container {
+           display: flex;
+           flex-direction: column-reverse;
+           min-height: auto;
+           justify-content: center;
+           align-items: center;
+           padding-bottom: 6.5rem;
+        }
+
+        .content {
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2rem;
+        }
+
+        .image {
+            width: 100%;
+        }
+        
+        .image img {
+            position: static;
+            top: 0px;
+            margin-left: -6rem;
+            margin-top: -4rem;
+        }
     }
 </style>

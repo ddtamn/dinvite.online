@@ -25,4 +25,12 @@
         position: relative;
         z-index: 1;
     }
+
+
+    @media screen and (max-width: 768px) {
+        .top-wave, .bottom-wave {
+            width: 200%;
+            margin-left: -3rem;
+        }
+    }
 </style>
