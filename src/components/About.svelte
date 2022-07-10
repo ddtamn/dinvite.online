@@ -19,4 +19,20 @@
         margin-top: -10px;
         position: relative;
     }
+
+    h1 {
+        margin-bottom: 1rem;
+    }
+
+    button {
+    all: unset;
+    background: var(--primary-gradient);
+    color: whitesmoke;
+    padding: 5px 8px;
+    border-radius: 0.5rem;
+    border: none;
+    cursor: pointer;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    }
 </style>

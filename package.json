@@ -11,6 +11,8 @@
 		"format": "prettier --write --plugin-search-dir=. ."
 	},
 	"devDependencies": {
+		"@fortawesome/free-brands-svg-icons": "^6.1.1",
+		"@fortawesome/free-solid-svg-icons": "^6.1.1",
 		"@sveltejs/adapter-auto": "next",
 		"@sveltejs/kit": "next",
 		"eslint": "^8.16.0",
@@ -18,7 +20,8 @@
 		"eslint-plugin-svelte3": "^4.0.0",
 		"prettier": "^2.6.2",
 		"prettier-plugin-svelte": "^2.7.0",
-		"svelte": "^3.44.0"
+		"svelte": "^3.44.0",
+		"svelte-fa": "^3.0.2"
 	},
 	"type": "module",
 	"dependencies": {
