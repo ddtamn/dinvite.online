@@ -1,8 +1,24 @@
 <script>
+import { onMount } from "svelte";
+
+
+    
     let open = false
     function mobileToggle() {
         open ? open = false : open = true
     }
+
+    let activePath = 'home'
+
+    onMount(() => {
+        let pathName = window.location.pathname.split('/')[1];
+        if (pathName == '') {
+            activePath = 'home'
+        } else {
+            activePath = pathName
+        }
+    })
+    
 </script>
 
 <header>
@@ -16,16 +32,16 @@
         </div>
         <nav class="{open ? 'show' : ''}">
             <ul>
-                <li class="active">
+                <li class="{activePath == 'home' ? 'active' : ''}">
                     <a href="/">Home</a>
                 </li>
-                <li>
+                <li class="{activePath == 'tema' ? 'active' : ''}">
                     <a href="/tema">Tema</a>
                 </li>
-                <li>
+                <li class="{activePath == 'harga' ? 'active' : ''}">
                     <a href="/harga">Harga</a>
                 </li>
-                <li>
+                <li class="{activePath == 'blog' ? 'active' : ''}">
                     <a href="/blog">Blog</a>
                 </li>
             </ul>

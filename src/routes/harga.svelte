@@ -1,11 +1,7 @@
 <script>
     import { onMount } from 'svelte';
-    import '../css/style.css'
+    import '../css/style.css';
     import Header from '../components/Header.svelte';
-    import Hero from '../components/Hero.svelte';
-    import Wave from '../components/Wave.svelte';
-    import About from '../components/About.svelte';
-    import Features from '../components/Features.svelte';
     import Pricelist from '../components/Pricelist.svelte';
     import Footer from '../components/Footer.svelte';
     import WhatsappButton from '../components/WhatsappButton.svelte';
@@ -16,26 +12,24 @@
 </script>
 
 <svelte:head>
-    <title>Dinvite</title>
+    <title>Dinvite - Harga</title>
 </svelte:head>
-
-
 
 
 <main>
     <Header/>
-    <Hero/>
-    <Wave position={'top'}/>
-    <About/>
-    <Wave position={'bottom'}/>
-    <Features/>
-    <Wave position={'top'}/>
-    <Pricelist/>
+    <section>
+        <Pricelist/>
+    </section>
     <Footer/>
     <WhatsappButton/>
 </main>
 
 
-
-
+<style>
+    section {
+        min-height: 50vh;
+        margin-top: 5rem;
+    }
+</style>
 
