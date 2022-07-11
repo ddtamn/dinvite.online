@@ -5317,25 +5317,25 @@ var init_index_svelte = __esm({
   ".svelte-kit/output/server/entries/pages/index.svelte.js"() {
     init_index_c5e2452c();
     css$9 = {
-      code: 'header.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{position:fixed;width:100vw;top:0;z-index:999;height:4rem;background-color:var(--background)}.container.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{display:flex;justify-content:space-between;align-items:center;height:100%;padding-inline:3rem}.logo.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{font-family:"cano", sans-serif;color:var(--primary);font-size:1.8rem}ul.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{display:flex;justify-content:center;align-items:center;gap:1rem}.mobile-menu.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{display:none}li.active.svelte-we8lkf a.svelte-we8lkf.svelte-we8lkf,li.active.svelte-we8lkf a.svelte-we8lkf.svelte-we8lkf:hover{color:var(--primary)}.mobile-toggle.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{display:none}@media screen and (max-width: 768px){header.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{border-bottom:1px solid var(--border-color);position:fixed;top:0;left:0;width:100vw}.container.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{padding-inline:1rem }.mobile-toggle.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{display:block;width:21px;height:24px;position:relative;-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg);-webkit-transition:.5s ease-in-out;-moz-transition:.5s ease-in-out;-o-transition:.5s ease-in-out;transition:.5s ease-in-out;cursor:pointer}.mobile-toggle.svelte-we8lkf span.svelte-we8lkf.svelte-we8lkf{display:block;position:absolute;height:3px;width:100%;background:var(--primary);border-radius:9px;opacity:1;left:0;-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg);-webkit-transition:.25s ease-in-out;-moz-transition:.25s ease-in-out;-o-transition:.25s ease-in-out;transition:.25s ease-in-out}.mobile-toggle.svelte-we8lkf span.svelte-we8lkf.svelte-we8lkf:nth-child(1){top:0}.mobile-toggle.svelte-we8lkf span.svelte-we8lkf.svelte-we8lkf:nth-child(2),.mobile-toggle.svelte-we8lkf span.svelte-we8lkf.svelte-we8lkf:nth-child(3){top:8px}.mobile-toggle.svelte-we8lkf span.svelte-we8lkf.svelte-we8lkf:nth-child(4){top:16px}.mobile-toggle.open.svelte-we8lkf span.svelte-we8lkf.svelte-we8lkf:nth-child(1){top:8px;width:0%;left:50%}.mobile-toggle.open.svelte-we8lkf span.svelte-we8lkf.svelte-we8lkf:nth-child(2){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg)}.mobile-toggle.open.svelte-we8lkf span.svelte-we8lkf.svelte-we8lkf:nth-child(3){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg)}.mobile-toggle.open.svelte-we8lkf span.svelte-we8lkf.svelte-we8lkf:nth-child(4){top:8px;width:0%;left:50%}nav.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{position:fixed;width:100vw;top:4rem;left:0;padding-block:1rem;transform:translateX(100%);opacity:0;transition:0.3s ease-in-out;pointer-events:none;padding:1rem}nav.show.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{transform:translateX(0);opacity:1;background-color:var(--background);pointer-events:all}ul.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{flex-direction:column}.mobile-menu.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{display:flex;margin-top:1rem}.mobile-menu.svelte-we8lkf li.svelte-we8lkf:last-child a.svelte-we8lkf{background:var(--primary-gradient);color:whitesmoke;padding:8px 8px;border-radius:0.5rem;cursor:pointer}}',
+      code: 'header.svelte-17s4qha.svelte-17s4qha{position:fixed;width:100vw;top:0;z-index:999;height:4rem;background-color:var(--background)}.container.svelte-17s4qha.svelte-17s4qha{display:flex;justify-content:space-between;align-items:center;height:100%;padding-inline:3rem}.logo.svelte-17s4qha.svelte-17s4qha{font-family:"cano", sans-serif;color:var(--primary);font-size:1.8rem}ul.svelte-17s4qha.svelte-17s4qha{display:flex;justify-content:center;align-items:center;gap:1rem}.mobile-menu.svelte-17s4qha.svelte-17s4qha{display:none}li.active.svelte-17s4qha a.svelte-17s4qha,li.active.svelte-17s4qha a.svelte-17s4qha:hover{color:var(--primary)}.mobile-toggle.svelte-17s4qha.svelte-17s4qha{display:none}@media screen and (max-width: 768px){header.svelte-17s4qha.svelte-17s4qha{border-bottom:1px solid var(--border-color);position:fixed;top:0;left:0;width:100vw}.container.svelte-17s4qha.svelte-17s4qha{padding-inline:1rem }.mobile-toggle.svelte-17s4qha.svelte-17s4qha{display:block;width:21px;height:24px;position:relative;-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg);-webkit-transition:.5s ease-in-out;-moz-transition:.5s ease-in-out;-o-transition:.5s ease-in-out;transition:.5s ease-in-out;cursor:pointer}.mobile-toggle.svelte-17s4qha span.svelte-17s4qha{display:block;position:absolute;height:3px;width:100%;background:var(--primary);border-radius:9px;opacity:1;left:0;-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg);-webkit-transition:.25s ease-in-out;-moz-transition:.25s ease-in-out;-o-transition:.25s ease-in-out;transition:.25s ease-in-out}.mobile-toggle.svelte-17s4qha span.svelte-17s4qha:nth-child(1){top:0}.mobile-toggle.svelte-17s4qha span.svelte-17s4qha:nth-child(2),.mobile-toggle.svelte-17s4qha span.svelte-17s4qha:nth-child(3){top:8px}.mobile-toggle.svelte-17s4qha span.svelte-17s4qha:nth-child(4){top:16px}.mobile-toggle.open.svelte-17s4qha span.svelte-17s4qha:nth-child(1){top:8px;width:0%;left:50%}.mobile-toggle.open.svelte-17s4qha span.svelte-17s4qha:nth-child(2){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg)}.mobile-toggle.open.svelte-17s4qha span.svelte-17s4qha:nth-child(3){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg)}.mobile-toggle.open.svelte-17s4qha span.svelte-17s4qha:nth-child(4){top:8px;width:0%;left:50%}nav.svelte-17s4qha.svelte-17s4qha{position:fixed;width:100vw;top:4rem;left:0;padding-block:1rem;transform:translateX(100%);opacity:0;transition:0.3s ease-in-out;pointer-events:none;padding:1rem}nav.show.svelte-17s4qha.svelte-17s4qha{transform:translateX(0);opacity:1;background-color:var(--background);pointer-events:all}ul.svelte-17s4qha.svelte-17s4qha{flex-direction:column}.mobile-menu.svelte-17s4qha.svelte-17s4qha{display:flex;margin-top:1rem}.mobile-menu.svelte-17s4qha .order.svelte-17s4qha{background:var(--primary-gradient);color:whitesmoke;padding:8px 8px;border-radius:0.5rem;cursor:pointer}}',
       map: null
     };
     Header = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       $$result.css.add(css$9);
-      return `<header class="${"svelte-we8lkf"}"><div class="${"container svelte-we8lkf"}"><a href="${"/"}" class="${"logo svelte-we8lkf"}">dinvite</a>
-        <div class="${"mobile-toggle " + escape("") + " svelte-we8lkf"}"><span class="${"svelte-we8lkf"}"></span>
-            <span class="${"svelte-we8lkf"}"></span>
-            <span class="${"svelte-we8lkf"}"></span>
-            <span class="${"svelte-we8lkf"}"></span></div>
-        <nav class="${escape(null_to_empty("")) + " svelte-we8lkf"}"><ul class="${"svelte-we8lkf"}"><li class="${"active svelte-we8lkf"}"><a href="${"/"}" class="${"svelte-we8lkf"}">Home</a></li>
-                <li class="${"svelte-we8lkf"}"><a href="${"/tema"}" class="${"svelte-we8lkf"}">Tema</a></li>
-                <li class="${"svelte-we8lkf"}"><a href="${"/harga"}" class="${"svelte-we8lkf"}">Harga</a></li>
-                <li class="${"svelte-we8lkf"}"><a href="${"/blog"}" class="${"svelte-we8lkf"}">Blog</a></li></ul>
-            <ul class="${"mobile-menu svelte-we8lkf"}"><li><a href="${"/"}" class="${"svelte-we8lkf"}">Syarat &amp; Ketentuan</a></li>
-                <li><a href="${"/"}" class="${"svelte-we8lkf"}">Tentang Kami</a></li>
-                <li><a href="${"/"}" class="${"svelte-we8lkf"}">Kebijakan Privasi</a></li>
-                <li><a href="${"/"}" class="${"svelte-we8lkf"}">FAQ</a></li>
-                <li><a href="${"/"}" class="${"svelte-we8lkf"}">Pesan Sekarang</a></li></ul></nav></div>
+      return `<header class="${"svelte-17s4qha"}"><div class="${"container svelte-17s4qha"}"><a href="${"/"}" class="${"logo svelte-17s4qha"}">dinvite</a>
+        <div class="${"mobile-toggle " + escape("") + " svelte-17s4qha"}"><span class="${"svelte-17s4qha"}"></span>
+            <span class="${"svelte-17s4qha"}"></span>
+            <span class="${"svelte-17s4qha"}"></span>
+            <span class="${"svelte-17s4qha"}"></span></div>
+        <nav class="${escape(null_to_empty("")) + " svelte-17s4qha"}"><ul class="${"svelte-17s4qha"}"><li class="${"active svelte-17s4qha"}"><a href="${"/"}" class="${"svelte-17s4qha"}">Home</a></li>
+                <li><a href="${"/tema"}">Tema</a></li>
+                <li><a href="${"/harga"}">Harga</a></li>
+                <li><a href="${"/blog"}">Blog</a></li></ul>
+            <ul class="${"mobile-menu svelte-17s4qha"}"><li><a href="${"/"}">Syarat &amp; Ketentuan</a></li>
+                <li><a href="${"/"}">Tentang Kami</a></li>
+                <li><a href="${"/"}">Kebijakan Privasi</a></li>
+                <li><a href="${"/"}">FAQ</a></li>
+                <li><a class="${"order svelte-17s4qha"}" href="${"/"}">Pesan Sekarang</a></li></ul></nav></div>
     
 </header>`;
     });
@@ -5721,9 +5721,9 @@ var init__3 = __esm({
   ".svelte-kit/output/server/nodes/2.js"() {
     init_index_svelte();
     index3 = 2;
-    entry3 = "pages/index.svelte-e77ab39c.js";
-    js3 = ["pages/index.svelte-e77ab39c.js", "chunks/index-1114af13.js"];
-    css4 = ["assets/pages/index.svelte-3c468096.css"];
+    entry3 = "pages/index.svelte-70d60683.js";
+    js3 = ["pages/index.svelte-70d60683.js", "chunks/index-1114af13.js"];
+    css4 = ["assets/pages/index.svelte-649738f3.css"];
   }
 });
 
@@ -15106,7 +15106,7 @@ var manifest = {
   assets: /* @__PURE__ */ new Set(["bg-wa-box.jpg", "dinvite.png", "favicon.png", "fonts/Cano.otf", "images/Cara Dapat Jackpot di FaFaFa Higgs Domino Island Terbaru.jpg", "images/hero.png"]),
   mimeTypes: { ".jpg": "image/jpeg", ".png": "image/png", ".otf": "font/otf" },
   _: {
-    entry: { "file": "start-e221f2ac.js", "js": ["start-e221f2ac.js", "chunks/index-1114af13.js"], "css": [] },
+    entry: { "file": "start-4c84bead.js", "js": ["start-4c84bead.js", "chunks/index-1114af13.js"], "css": [] },
     nodes: [
       () => Promise.resolve().then(() => (init__(), __exports)),
       () => Promise.resolve().then(() => (init__2(), __exports2)),

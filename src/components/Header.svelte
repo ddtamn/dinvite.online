@@ -43,7 +43,7 @@
                     <a href="/">FAQ</a>
                 </li>
                 <li>
-                    <a href="/">Pesan Sekarang</a>
+                    <a class="order" href="/">Pesan Sekarang</a>
                 </li>
             </ul>
         </nav>
@@ -211,7 +211,7 @@ li.active a, li.active a:hover {
         margin-top: 1rem;
     }
 
-    .mobile-menu li:last-child a {
+    .mobile-menu .order {
         background: var(--primary-gradient);
         color: whitesmoke;
         padding: 8px 8px;
