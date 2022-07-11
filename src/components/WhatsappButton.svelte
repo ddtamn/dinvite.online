@@ -39,6 +39,7 @@
         bottom: 1rem;
         right: 1rem;
         z-index: 999;
+        width: 100vw;
     }
 
     .icon {
@@ -190,6 +191,13 @@
         display: inline-block;
     }
     
+
+    @media screen and (max-width: 768px) {
+        .container {
+            left: 1.5rem;
+
+        }
+    }
 
 
 
