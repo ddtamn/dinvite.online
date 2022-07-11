@@ -20,16 +20,30 @@
                     <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="/about">About</a>
+                    <a href="/tema">Tema</a>
                 </li>
                 <li>
-                    <a href="/theme">Theme</a>
-                </li>
-                <li>
-                    <a href="/pricelist">Pricelist</a>
+                    <a href="/harga">Harga</a>
                 </li>
                 <li>
                     <a href="/blog">Blog</a>
+                </li>
+            </ul>
+            <ul class="mobile-menu">
+                <li>
+                    <a href="/">Syarat & Ketentuan</a>
+                </li>
+                <li>
+                    <a href="/">Tentang Kami</a>
+                </li>
+                <li>
+                    <a href="/">Kebijakan Privasi</a>
+                </li>
+                <li>
+                    <a href="/">FAQ</a>
+                </li>
+                <li>
+                    <a href="/">Pesan Sekarang</a>
                 </li>
             </ul>
         </nav>
@@ -67,6 +81,10 @@ ul {
     justify-content: center;
     align-items: center;
     gap: 1rem;
+}
+
+.mobile-menu {
+    display: none;
 }
 
 li.active a, li.active a:hover {
@@ -173,6 +191,7 @@ li.active a, li.active a:hover {
         opacity: 0;
         transition: 0.3s ease-in-out;
         pointer-events: none;
+        padding: 1rem;
     }
 
     nav.show {
@@ -185,6 +204,12 @@ li.active a, li.active a:hover {
 
     ul {
         flex-direction: column;
+        font-size: 1.3rem;
+    }
+
+    .mobile-menu {
+        display: flex;
+        margin-top: 1rem;
     }
 
 }

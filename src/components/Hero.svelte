@@ -5,7 +5,7 @@
             <p>solusi undangan pernikahan website kamu jadi lebih menarik & berkesan</p>
             <div class="buttons">
                 <a class="order" href="/">Pesan Sekarang</a>
-                <a class="pricelist" href="/">Pricelist</a>                
+                <a class="pricelist" href="/">Harga</a>                
             </div>
         </div>
         <div class="image"><img src="/images/hero.png" alt=""></div>

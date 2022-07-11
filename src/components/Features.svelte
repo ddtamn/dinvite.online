@@ -118,6 +118,8 @@
             grid-template-columns: 1fr 1fr;
             flex-wrap: wrap;
             margin-top: 2rem;
+            padding: 00.8rem;
+            gap: 0.5rem;
 
         }
 
