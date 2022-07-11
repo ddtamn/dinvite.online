@@ -204,12 +204,19 @@ li.active a, li.active a:hover {
 
     ul {
         flex-direction: column;
-        font-size: 1.3rem;
     }
 
     .mobile-menu {
         display: flex;
         margin-top: 1rem;
+    }
+
+    .mobile-menu li:last-child a {
+        background: var(--primary-gradient);
+        color: whitesmoke;
+        padding: 8px 8px;
+        border-radius: 0.5rem;
+        cursor: pointer;
     }
 
 }

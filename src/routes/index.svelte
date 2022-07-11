@@ -7,7 +7,8 @@
     import About from '../components/About.svelte';
     import Features from '../components/Features.svelte';
     import Pricelist from '../components/Pricelist.svelte';
-import Footer from '../components/Footer.svelte';
+    import Footer from '../components/Footer.svelte';
+    import WhatsappButton from '../components/WhatsappButton.svelte';
 
     onMount(() => {
         document.body.style.overflowY = 'scroll'
@@ -30,6 +31,7 @@ import Footer from '../components/Footer.svelte';
     <Wave position={'top'}/>
     <Pricelist/>
     <Footer/>
+    <WhatsappButton/>
 </main>
 
 
