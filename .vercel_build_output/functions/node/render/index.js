@@ -5173,8 +5173,8 @@ var init__ = __esm({
   ".svelte-kit/output/server/nodes/0.js"() {
     init_layout_svelte();
     index = 0;
-    entry = "layout.svelte-cf9f8633.js";
-    js = ["layout.svelte-cf9f8633.js", "chunks/index-e77d20ec.js"];
+    entry = "layout.svelte-dcbce13f.js";
+    js = ["layout.svelte-dcbce13f.js", "chunks/index-1114af13.js"];
     css = [];
   }
 });
@@ -5225,8 +5225,8 @@ var init__2 = __esm({
   ".svelte-kit/output/server/nodes/1.js"() {
     init_error_svelte();
     index2 = 1;
-    entry2 = "error.svelte-281f7439.js";
-    js2 = ["error.svelte-281f7439.js", "chunks/index-e77d20ec.js"];
+    entry2 = "error.svelte-8e305d7f.js";
+    js2 = ["error.svelte-8e305d7f.js", "chunks/index-1114af13.js"];
     css2 = [];
   }
 });
@@ -5312,43 +5312,47 @@ function getTransform(scale, translateX, translateY, rotate, flip, translateTime
     rotate && `rotate(${rotate}${rotateUnit})`
   ], " ");
 }
-var css$5, Header, css$4, Hero, css$3, Wave, css$2, About, parseNumber, css$1, Fa, Fa$1, faAddressBook, faComments, faFilm, faGift, faHeart, faImages, faMapLocation, faMusic, faStopwatch20, faWhatsapp, css3, Features, Pricelist, Routes;
+var css$9, Header, css$8, Hero, css$7, Wave, css$6, About, parseNumber, css$5, Fa, Fa$1, faAddressBook, faComments, faEnvelope, faFilm, faGift, faHeart, faImages, faMapLocation, faMusic, faStopwatch20, faXmark, faFacebook, faInstagram, faWhatsapp, css$4, Features, css$3, Pricelist, css$2, Footer, css$1, WhatsappButton, css3, Routes;
 var init_index_svelte = __esm({
   ".svelte-kit/output/server/entries/pages/index.svelte.js"() {
     init_index_c5e2452c();
-    css$5 = {
-      code: 'header.svelte-v1yu1m.svelte-v1yu1m{position:sticky;top:0;z-index:999;height:4rem;background-color:var(--background)}.container.svelte-v1yu1m.svelte-v1yu1m{display:flex;justify-content:space-between;align-items:center;height:100%;padding-inline:3rem}.logo.svelte-v1yu1m.svelte-v1yu1m{font-family:"cano", sans-serif;color:var(--primary);font-size:1.8rem}ul.svelte-v1yu1m.svelte-v1yu1m{display:flex;justify-content:center;align-items:center;gap:1rem}li.active.svelte-v1yu1m a.svelte-v1yu1m,li.active.svelte-v1yu1m a.svelte-v1yu1m:hover{color:var(--primary)}.mobile-toggle.svelte-v1yu1m.svelte-v1yu1m{display:none}@media screen and (max-width: 768px){header.svelte-v1yu1m.svelte-v1yu1m{border-bottom:1px solid var(--border-color)}.container.svelte-v1yu1m.svelte-v1yu1m{padding-inline:1rem }.mobile-toggle.svelte-v1yu1m.svelte-v1yu1m{display:block;width:21px;height:24px;position:relative;-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg);-webkit-transition:.5s ease-in-out;-moz-transition:.5s ease-in-out;-o-transition:.5s ease-in-out;transition:.5s ease-in-out;cursor:pointer}.mobile-toggle.svelte-v1yu1m span.svelte-v1yu1m{display:block;position:absolute;height:3px;width:100%;background:var(--primary);border-radius:9px;opacity:1;left:0;-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg);-webkit-transition:.25s ease-in-out;-moz-transition:.25s ease-in-out;-o-transition:.25s ease-in-out;transition:.25s ease-in-out}.mobile-toggle.svelte-v1yu1m span.svelte-v1yu1m:nth-child(1){top:0}.mobile-toggle.svelte-v1yu1m span.svelte-v1yu1m:nth-child(2),.mobile-toggle.svelte-v1yu1m span.svelte-v1yu1m:nth-child(3){top:8px}.mobile-toggle.svelte-v1yu1m span.svelte-v1yu1m:nth-child(4){top:16px}.mobile-toggle.open.svelte-v1yu1m span.svelte-v1yu1m:nth-child(1){top:8px;width:0%;left:50%}.mobile-toggle.open.svelte-v1yu1m span.svelte-v1yu1m:nth-child(2){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg)}.mobile-toggle.open.svelte-v1yu1m span.svelte-v1yu1m:nth-child(3){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg)}.mobile-toggle.open.svelte-v1yu1m span.svelte-v1yu1m:nth-child(4){top:8px;width:0%;left:50%}nav.svelte-v1yu1m.svelte-v1yu1m{position:fixed;width:100vw;top:4rem;left:0;padding-block:1rem;transform:translateX(100%);opacity:0;transition:0.3s ease-in-out;pointer-events:none}nav.show.svelte-v1yu1m.svelte-v1yu1m{transform:translateX(0);opacity:1;background-color:var(--background);pointer-events:all}ul.svelte-v1yu1m.svelte-v1yu1m{flex-direction:column}}',
+    css$9 = {
+      code: 'header.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{position:fixed;width:100vw;top:0;z-index:999;height:4rem;background-color:var(--background)}.container.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{display:flex;justify-content:space-between;align-items:center;height:100%;padding-inline:3rem}.logo.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{font-family:"cano", sans-serif;color:var(--primary);font-size:1.8rem}ul.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{display:flex;justify-content:center;align-items:center;gap:1rem}.mobile-menu.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{display:none}li.active.svelte-we8lkf a.svelte-we8lkf.svelte-we8lkf,li.active.svelte-we8lkf a.svelte-we8lkf.svelte-we8lkf:hover{color:var(--primary)}.mobile-toggle.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{display:none}@media screen and (max-width: 768px){header.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{border-bottom:1px solid var(--border-color);position:fixed;top:0;left:0;width:100vw}.container.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{padding-inline:1rem }.mobile-toggle.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{display:block;width:21px;height:24px;position:relative;-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg);-webkit-transition:.5s ease-in-out;-moz-transition:.5s ease-in-out;-o-transition:.5s ease-in-out;transition:.5s ease-in-out;cursor:pointer}.mobile-toggle.svelte-we8lkf span.svelte-we8lkf.svelte-we8lkf{display:block;position:absolute;height:3px;width:100%;background:var(--primary);border-radius:9px;opacity:1;left:0;-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg);-webkit-transition:.25s ease-in-out;-moz-transition:.25s ease-in-out;-o-transition:.25s ease-in-out;transition:.25s ease-in-out}.mobile-toggle.svelte-we8lkf span.svelte-we8lkf.svelte-we8lkf:nth-child(1){top:0}.mobile-toggle.svelte-we8lkf span.svelte-we8lkf.svelte-we8lkf:nth-child(2),.mobile-toggle.svelte-we8lkf span.svelte-we8lkf.svelte-we8lkf:nth-child(3){top:8px}.mobile-toggle.svelte-we8lkf span.svelte-we8lkf.svelte-we8lkf:nth-child(4){top:16px}.mobile-toggle.open.svelte-we8lkf span.svelte-we8lkf.svelte-we8lkf:nth-child(1){top:8px;width:0%;left:50%}.mobile-toggle.open.svelte-we8lkf span.svelte-we8lkf.svelte-we8lkf:nth-child(2){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg)}.mobile-toggle.open.svelte-we8lkf span.svelte-we8lkf.svelte-we8lkf:nth-child(3){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg)}.mobile-toggle.open.svelte-we8lkf span.svelte-we8lkf.svelte-we8lkf:nth-child(4){top:8px;width:0%;left:50%}nav.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{position:fixed;width:100vw;top:4rem;left:0;padding-block:1rem;transform:translateX(100%);opacity:0;transition:0.3s ease-in-out;pointer-events:none;padding:1rem}nav.show.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{transform:translateX(0);opacity:1;background-color:var(--background);pointer-events:all}ul.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{flex-direction:column}.mobile-menu.svelte-we8lkf.svelte-we8lkf.svelte-we8lkf{display:flex;margin-top:1rem}.mobile-menu.svelte-we8lkf li.svelte-we8lkf:last-child a.svelte-we8lkf{background:var(--primary-gradient);color:whitesmoke;padding:8px 8px;border-radius:0.5rem;cursor:pointer}}',
       map: null
     };
     Header = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      $$result.css.add(css$5);
-      return `<header class="${"svelte-v1yu1m"}"><div class="${"container svelte-v1yu1m"}"><a href="${"/"}" class="${"logo svelte-v1yu1m"}">dinvite</a>
-        <div class="${"mobile-toggle " + escape("") + " svelte-v1yu1m"}"><span class="${"svelte-v1yu1m"}"></span>
-            <span class="${"svelte-v1yu1m"}"></span>
-            <span class="${"svelte-v1yu1m"}"></span>
-            <span class="${"svelte-v1yu1m"}"></span></div>
-        <nav class="${escape(null_to_empty("")) + " svelte-v1yu1m"}"><ul class="${"svelte-v1yu1m"}"><li class="${"active svelte-v1yu1m"}"><a href="${"/"}" class="${"svelte-v1yu1m"}">Home</a></li>
-                <li><a href="${"/about"}">About</a></li>
-                <li><a href="${"/theme"}">Theme</a></li>
-                <li><a href="${"/pricelist"}">Pricelist</a></li>
-                <li><a href="${"/blog"}">Blog</a></li></ul></nav></div>
+      $$result.css.add(css$9);
+      return `<header class="${"svelte-we8lkf"}"><div class="${"container svelte-we8lkf"}"><a href="${"/"}" class="${"logo svelte-we8lkf"}">dinvite</a>
+        <div class="${"mobile-toggle " + escape("") + " svelte-we8lkf"}"><span class="${"svelte-we8lkf"}"></span>
+            <span class="${"svelte-we8lkf"}"></span>
+            <span class="${"svelte-we8lkf"}"></span>
+            <span class="${"svelte-we8lkf"}"></span></div>
+        <nav class="${escape(null_to_empty("")) + " svelte-we8lkf"}"><ul class="${"svelte-we8lkf"}"><li class="${"active svelte-we8lkf"}"><a href="${"/"}" class="${"svelte-we8lkf"}">Home</a></li>
+                <li class="${"svelte-we8lkf"}"><a href="${"/tema"}" class="${"svelte-we8lkf"}">Tema</a></li>
+                <li class="${"svelte-we8lkf"}"><a href="${"/harga"}" class="${"svelte-we8lkf"}">Harga</a></li>
+                <li class="${"svelte-we8lkf"}"><a href="${"/blog"}" class="${"svelte-we8lkf"}">Blog</a></li></ul>
+            <ul class="${"mobile-menu svelte-we8lkf"}"><li><a href="${"/"}" class="${"svelte-we8lkf"}">Syarat &amp; Ketentuan</a></li>
+                <li><a href="${"/"}" class="${"svelte-we8lkf"}">Tentang Kami</a></li>
+                <li><a href="${"/"}" class="${"svelte-we8lkf"}">Kebijakan Privasi</a></li>
+                <li><a href="${"/"}" class="${"svelte-we8lkf"}">FAQ</a></li>
+                <li><a href="${"/"}" class="${"svelte-we8lkf"}">Pesan Sekarang</a></li></ul></nav></div>
     
 </header>`;
     });
-    css$4 = {
-      code: "section.svelte-vzx1fc.svelte-vzx1fc{min-height:calc(100vh - 4rem)}.container.svelte-vzx1fc.svelte-vzx1fc{display:flex;align-items:center;min-height:inherit}.content.svelte-vzx1fc.svelte-vzx1fc{width:55%}h1.svelte-vzx1fc.svelte-vzx1fc{font-size:3rem}p.svelte-vzx1fc.svelte-vzx1fc{color:var(--primary);font-size:1.3rem;font-weight:300}.buttons.svelte-vzx1fc.svelte-vzx1fc{margin-top:1rem}.buttons.svelte-vzx1fc a.svelte-vzx1fc{background:var(--primary-gradient);color:whitesmoke;padding:5px 8px;border-radius:0.5rem;cursor:pointer;margin-right:1rem}.image.svelte-vzx1fc.svelte-vzx1fc{width:45%;height:100%;position:relative}.image.svelte-vzx1fc img.svelte-vzx1fc{position:absolute;width:150%;height:auto;top:-400px}@media screen and (max-width: 768px){.container.svelte-vzx1fc.svelte-vzx1fc{display:flex;flex-direction:column-reverse;min-height:auto;justify-content:center;align-items:center;padding-bottom:6.5rem}.content.svelte-vzx1fc.svelte-vzx1fc{width:100%}h1.svelte-vzx1fc.svelte-vzx1fc{font-size:2rem}.image.svelte-vzx1fc.svelte-vzx1fc{width:100%}.image.svelte-vzx1fc img.svelte-vzx1fc{position:static;top:0px;margin-left:-6rem;margin-top:-4rem}}",
+    css$8 = {
+      code: "section.svelte-1k43s9b.svelte-1k43s9b{min-height:calc(100vh - 4rem);margin-top:4rem}.container.svelte-1k43s9b.svelte-1k43s9b{display:flex;align-items:center;min-height:inherit}.content.svelte-1k43s9b.svelte-1k43s9b{width:55%}h1.svelte-1k43s9b.svelte-1k43s9b{font-size:3rem}p.svelte-1k43s9b.svelte-1k43s9b{color:var(--primary);font-size:1.3rem;font-weight:300}.buttons.svelte-1k43s9b.svelte-1k43s9b{margin-top:1rem}.buttons.svelte-1k43s9b a.svelte-1k43s9b{background:var(--primary-gradient);color:whitesmoke;padding:8px 8px;border-radius:0.5rem;cursor:pointer;margin-right:0.5rem}.image.svelte-1k43s9b.svelte-1k43s9b{width:45%;height:100%;position:relative}.image.svelte-1k43s9b img.svelte-1k43s9b{position:absolute;width:150%;height:auto;top:-400px}@media screen and (max-width: 768px){.container.svelte-1k43s9b.svelte-1k43s9b{display:flex;flex-direction:column;min-height:auto;justify-content:center;align-items:center}.content.svelte-1k43s9b.svelte-1k43s9b{width:100%;margin-top:1rem}h1.svelte-1k43s9b.svelte-1k43s9b{font-size:2rem}.image.svelte-1k43s9b.svelte-1k43s9b{width:100%}.image.svelte-1k43s9b img.svelte-1k43s9b{position:static;top:0px;margin-left:-10rem;margin-top:1rem}}",
       map: null
     };
     Hero = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      $$result.css.add(css$4);
-      return `<section class="${"svelte-vzx1fc"}"><div class="${"container svelte-vzx1fc"}"><div class="${"content svelte-vzx1fc"}"><h1 class="${"svelte-vzx1fc"}">Undangan Pernikahan Digital Website</h1>
-            <p class="${"svelte-vzx1fc"}">solusi undangan pernikahan website kamu jadi lebih menarik &amp; berkesan</p>
-            <div class="${"buttons svelte-vzx1fc"}"><a class="${"order svelte-vzx1fc"}" href="${"/"}">Pesan Sekarang</a>
-                <a class="${"pricelist svelte-vzx1fc"}" href="${"/"}">Pricelist</a></div></div>
-        <div class="${"image svelte-vzx1fc"}"><img src="${"/images/hero.png"}" alt="${""}" class="${"svelte-vzx1fc"}"></div></div>
+      $$result.css.add(css$8);
+      return `<section class="${"svelte-1k43s9b"}"><div class="${"container svelte-1k43s9b"}"><div class="${"content svelte-1k43s9b"}"><h1 class="${"svelte-1k43s9b"}">Undangan Pernikahan Digital Website</h1>
+            <p class="${"svelte-1k43s9b"}">solusi undangan pernikahan website kamu jadi lebih menarik &amp; berkesan</p>
+            <div class="${"buttons svelte-1k43s9b"}"><a class="${"order svelte-1k43s9b"}" href="${"/"}">Pesan Sekarang</a>
+                <a class="${"pricelist svelte-1k43s9b"}" href="${"/"}">Harga</a></div></div>
+        <div class="${"image svelte-1k43s9b"}"><img src="${"/images/hero.png"}" alt="${""}" class="${"svelte-1k43s9b"}"></div></div>
 </section>`;
     });
-    css$3 = {
+    css$7 = {
       code: ".top-wave.svelte-1u3j808{margin-top:-100px;position:relative;z-index:1}.bottom-wave.svelte-1u3j808{transform:rotate(180deg);margin-top:-10px;position:relative;z-index:1}@media screen and (max-width: 768px){.top-wave.svelte-1u3j808,.bottom-wave.svelte-1u3j808{width:200%;margin-left:-3rem}}",
       map: null
     };
@@ -5356,16 +5360,16 @@ var init_index_svelte = __esm({
       let { position } = $$props;
       if ($$props.position === void 0 && $$bindings.position && position !== void 0)
         $$bindings.position(position);
-      $$result.css.add(css$3);
+      $$result.css.add(css$7);
       return `<div class="${escape(null_to_empty(position == "top" ? "top-wave" : "bottom-wave")) + " svelte-1u3j808"}"><svg width="${"100%"}" preserveAspectRatio="${"none"}" height="${"100px"}" viewBox="${"0 0 1300 100"}" version="${"1.1"}" xmlns="${"http://www.w3.org/2000/svg"}" xmlns:xlink="${"http://www.w3.org/1999/xlink"}"><path d="${"M1300,0 L1300,99.9998042 L0,99.9998042 L0,60.1910374 C549.576968,-84.3633414 541.584175,191.147059 1300,0 Z"}" fill="${"#e9ebee"}"></path></svg>
 </div>`;
     });
-    css$2 = {
+    css$6 = {
       code: "section.svelte-1fhthwy{background-color:var(--background-variant);margin-top:-10px;position:relative}h1.svelte-1fhthwy{margin-bottom:1rem}button.svelte-1fhthwy{all:unset;background:var(--primary-gradient);color:whitesmoke;padding:5px 8px;border-radius:0.5rem;border:none;cursor:pointer;margin-right:1rem;margin-top:1rem}",
       map: null
     };
     About = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      $$result.css.add(css$2);
+      $$result.css.add(css$6);
       return `<section class="${"svelte-1fhthwy"}"><div class="${"container"}"><h1 class="${"svelte-1fhthwy"}">Mengapa dinvite ??</h1>
             <p><strong style="${"color: var(--primary)"}">dinvite</strong> adalah penyedia layanan pembuatan undangan
                 digital berbasis website. Kami
@@ -5378,7 +5382,7 @@ var init_index_svelte = __esm({
 </section>`;
     });
     parseNumber = parseFloat;
-    css$1 = {
+    css$5 = {
       code: ".spin.svelte-1cj2gr0{animation:svelte-1cj2gr0-spin 2s 0s infinite linear}.pulse.svelte-1cj2gr0{animation:svelte-1cj2gr0-spin 1s infinite steps(8)}@keyframes svelte-1cj2gr0-spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}",
       map: null
     };
@@ -5446,7 +5450,7 @@ var init_index_svelte = __esm({
         $$bindings.secondaryOpacity(secondaryOpacity);
       if ($$props.swapOpacity === void 0 && $$bindings.swapOpacity && swapOpacity !== void 0)
         $$bindings.swapOpacity(swapOpacity);
-      $$result.css.add(css$1);
+      $$result.css.add(css$5);
       i2 = icon && icon.icon || [0, 0, "", [], ""];
       s3 = getStyles(style2, size, pull, fw);
       transform = getTransform(scale, translateX, translateY, rotate, flip, 512);
@@ -5467,6 +5471,11 @@ var init_index_svelte = __esm({
       prefix: "fas",
       iconName: "comments",
       icon: [640, 512, [61670, 128490], "f086", "M416 176C416 78.8 322.9 0 208 0S0 78.8 0 176c0 39.57 15.62 75.96 41.67 105.4c-16.39 32.76-39.23 57.32-39.59 57.68c-2.1 2.205-2.67 5.475-1.441 8.354C1.9 350.3 4.602 352 7.66 352c38.35 0 70.76-11.12 95.74-24.04C134.2 343.1 169.8 352 208 352C322.9 352 416 273.2 416 176zM599.6 443.7C624.8 413.9 640 376.6 640 336C640 238.8 554 160 448 160c-.3145 0-.6191 .041-.9336 .043C447.5 165.3 448 170.6 448 176c0 98.62-79.68 181.2-186.1 202.5C282.7 455.1 357.1 512 448 512c33.69 0 65.32-8.008 92.85-21.98C565.2 502 596.1 512 632.3 512c3.059 0 5.76-1.725 7.02-4.605c1.229-2.879 .6582-6.148-1.441-8.354C637.6 498.7 615.9 475.3 599.6 443.7z"]
+    };
+    faEnvelope = {
+      prefix: "fas",
+      iconName: "envelope",
+      icon: [512, 512, [128386, 61443, 9993], "f0e0", "M464 64C490.5 64 512 85.49 512 112C512 127.1 504.9 141.3 492.8 150.4L275.2 313.6C263.8 322.1 248.2 322.1 236.8 313.6L19.2 150.4C7.113 141.3 0 127.1 0 112C0 85.49 21.49 64 48 64H464zM217.6 339.2C240.4 356.3 271.6 356.3 294.4 339.2L512 176V384C512 419.3 483.3 448 448 448H64C28.65 448 0 419.3 0 384V176L217.6 339.2z"]
     };
     faFilm = {
       prefix: "fas",
@@ -5503,126 +5512,197 @@ var init_index_svelte = __esm({
       iconName: "stopwatch-20",
       icon: [448, 512, [], "e06f", "M276 256C276 249.4 281.4 244 288 244C294.6 244 300 249.4 300 256V352C300 358.6 294.6 364 288 364C281.4 364 276 358.6 276 352V256zM272 0C289.7 0 304 14.33 304 32C304 49.67 289.7 64 272 64H256V98.45C293.5 104.2 327.7 120 355.7 143L377.4 121.4C389.9 108.9 410.1 108.9 422.6 121.4C435.1 133.9 435.1 154.1 422.6 166.6L398.5 190.8C419.7 223.3 432 262.2 432 304C432 418.9 338.9 512 224 512C109.1 512 16 418.9 16 304C16 200 92.32 113.8 192 98.45V64H176C158.3 64 144 49.67 144 32C144 14.33 158.3 0 176 0L272 0zM288 204C259.3 204 236 227.3 236 256V352C236 380.7 259.3 404 288 404C316.7 404 340 380.7 340 352V256C340 227.3 316.7 204 288 204zM172 256.5V258.8C172 262.4 170.7 265.9 168.3 268.6L129.2 312.5C115.5 327.9 108 347.8 108 368.3V384C108 395 116.1 404 128 404H192C203 404 212 395 212 384C212 372.1 203 364 192 364H148.2C149.1 354.8 152.9 346.1 159.1 339.1L198.2 295.2C207.1 285.1 211.1 272.2 211.1 258.8V256.5C211.1 227.5 188.5 204 159.5 204C136.8 204 116.8 218.5 109.6 239.9L109 241.7C105.5 252.2 111.2 263.5 121.7 266.1C132.2 270.5 143.5 264.8 146.1 254.3L147.6 252.6C149.3 247.5 154.1 244 159.5 244C166.4 244 171.1 249.6 171.1 256.5L172 256.5z"]
     };
+    faXmark = {
+      prefix: "fas",
+      iconName: "xmark",
+      icon: [320, 512, [128473, 10005, 10006, 10060, 215, "close", "multiply", "remove", "times"], "f00d", "M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"]
+    };
+    faFacebook = {
+      prefix: "fab",
+      iconName: "facebook",
+      icon: [512, 512, [62e3], "f09a", "M504 256C504 119 393 8 256 8S8 119 8 256c0 123.8 90.69 226.4 209.3 245V327.7h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.3 482.4 504 379.8 504 256z"]
+    };
+    faInstagram = {
+      prefix: "fab",
+      iconName: "instagram",
+      icon: [448, 512, [], "f16d", "M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"]
+    };
     faWhatsapp = {
       prefix: "fab",
       iconName: "whatsapp",
       icon: [448, 512, [], "f232", "M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"]
     };
-    css3 = {
-      code: "section.svelte-v286xg{min-height:100vh}.container.svelte-v286xg{padding:1rem 8rem}h1.svelte-v286xg{margin-bottom:1rem}.subtitle.svelte-v286xg{margin-bottom:1rem}ul.svelte-v286xg{display:grid;grid-template-columns:1fr 1fr;flex-wrap:wrap;margin-top:2rem}li.svelte-v286xg{display:grid;grid-template-columns:1fr auto;margin-bottom:1rem;margin-right:1rem;align-items:center}.icon.svelte-v286xg{height:3.8rem;width:4.8rem;background:var(--primary-gradient);color:whitesmoke;display:grid;place-items:center;border-radius:0.5rem;font-size:1.1rem;margin-right:1rem}",
+    css$4 = {
+      code: ".container.svelte-7c29n4{padding:1rem 8rem;padding-bottom:10rem}h1.svelte-7c29n4{margin-bottom:1rem}.subtitle.svelte-7c29n4{margin-bottom:1rem}ul.svelte-7c29n4{display:grid;grid-template-columns:1fr 1fr;flex-wrap:wrap;margin-top:2rem;padding:00.8rem;gap:0.5rem}li.svelte-7c29n4{display:grid;grid-template-columns:1fr 90%;margin-bottom:1rem;margin-right:2rem;align-items:center}.icon.svelte-7c29n4{height:3.8rem;width:4.8rem;background:var(--primary-gradient);color:whitesmoke;display:grid;place-items:center;border-radius:0.5rem;font-size:1.1rem;margin-right:1rem}@media screen and (max-width: 768px){.container.svelte-7c29n4{padding:0.8rem;padding-bottom:8rem}ul.svelte-7c29n4{grid-template-columns:1fr}li.svelte-7c29n4{align-items:flex-start}.icon.svelte-7c29n4{width:3.8rem;height:2.8rem}}",
       map: null
     };
     Features = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      $$result.css.add(css3);
-      return `<section class="${"features svelte-v286xg"}"><div class="${"container svelte-v286xg"}"><h1 class="${"svelte-v286xg"}">Fitur Undangan Website</h1>
-            <p class="${"subtitle svelte-v286xg"}">Merencanakan pernikahan bisa menjadi pengalaman yang menyenangkan sekaligus menegangkan. Solusinya
+      $$result.css.add(css$4);
+      return `<section class="${"features"}"><div class="${"container svelte-7c29n4"}"><h1 class="${"svelte-7c29n4"}">Fitur Undangan Website</h1>
+            <p class="${"subtitle svelte-7c29n4"}">Merencanakan pernikahan bisa menjadi pengalaman yang menyenangkan sekaligus menegangkan. Solusinya
                 yaitu
                 menggunakan undangan pernikahan online berbentuk website yang memberikan berbagai fitur yang
                 menarik.
             </p>
-            <ul class="${"svelte-v286xg"}"><li class="${"svelte-v286xg"}"><div class="${"icon svelte-v286xg"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faImages }, {}, {})}</div>
+            <ul class="${"svelte-7c29n4"}"><li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faImages }, {}, {})}</div>
                     <div><h4>Gallery Foto</h4>
                         <p>Tampilkan foto prewedding kalian di undangan. Bagikan momen indahmu kepada keluarga dan
                             kerabat.</p></div></li>
-                <li class="${"svelte-v286xg"}"><div class="${"icon svelte-v286xg"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faMusic }, {}, {})}</div>
+                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faMusic }, {}, {})}</div>
                     <div><h4>Musik</h4>
                         <p>Pilih lagu terbaik untuk undangan kalian, agar pembaca akan sekaligus mendengarkan musik
                             yang kalian tentukan</p></div></li>
-                <li class="${"svelte-v286xg"}"><div class="${"icon svelte-v286xg"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faMapLocation }, {}, {})}</div>
+                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faMapLocation }, {}, {})}</div>
                     <div><h4>Navigasi Lokasi</h4>
                         <p>Tidak ada kata tersesat, memudahkan tamu kalian menemukan lokasi pernikkahanmu. Hanya
                             dengan satu tombol.</p></div></li>
-                <li class="${"svelte-v286xg"}"><div class="${"icon svelte-v286xg"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faComments }, {}, {})}</div>
+                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faComments }, {}, {})}</div>
                     <div><h4>Kolom Ucapan</h4>
                         <p>Kalian dapat membaca ucapan hangat dari saudara maupun kerabat kamu.</p></div></li>
-                <li class="${"svelte-v286xg"}"><div class="${"icon svelte-v286xg"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faStopwatch20 }, {}, {})}</div>
+                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faStopwatch20 }, {}, {})}</div>
                     <div><h4>Hitung Mundur</h4>
                         <p>Countdown ditamplikan secara animasi menuju acara pernikahan kalian.</p></div></li>
-                <li class="${"svelte-v286xg"}"><div class="${"icon svelte-v286xg"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faFilm }, {}, {})}</div>
+                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faFilm }, {}, {})}</div>
                     <div><h4>Video</h4>
                         <p>Sisipkan video prewedding kamu. Biarkan saudara dan kerabat melihat kebahagiaanmu
                             menunggu
                             hari pernikahanmu.</p></div></li>
-                <li class="${"svelte-v286xg"}"><div class="${"icon svelte-v286xg"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faWhatsapp }, {}, {})}</div>
+                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faWhatsapp }, {}, {})}</div>
                     <div><h4>Whatsapp Otomatis</h4>
                         <p>Kirim undangan sekali klik tanpa ribet. Hanya tuliskan nama tamu dan undangan langsung
                             tertuju.</p></div></li>
-                <li class="${"svelte-v286xg"}"><div class="${"icon svelte-v286xg"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faHeart }, {}, {})}</div>
+                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faHeart }, {}, {})}</div>
                     <div><h4>Cerita Cinta</h4>
                         <p>Ceritakan kepada tamu undangan tentang cerita cinta kalian dari awal bertemu sampai
                             akhirnya memutuskan untuk menikah</p></div></li>
-                <li class="${"svelte-v286xg"}"><div class="${"icon svelte-v286xg"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faAddressBook }, {}, {})}</div>
+                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faAddressBook }, {}, {})}</div>
                     <div><h4>Buku Tamu Digital</h4>
                         <p>Catatan kehadiran dapat dipantau dengan mudah dan lengkap.</p></div></li>
-                <li class="${"svelte-v286xg"}"><div class="${"icon svelte-v286xg"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faGift }, {}, {})}</div>
+                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faGift }, {}, {})}</div>
                     <div><h4>Amplop Digital</h4>
                         <p>Donasi dapat dikumpulkan baik melalui website maupun di tempat acara.</p></div></li></ul></div>
     </section>`;
     });
+    css$3 = {
+      code: 'section.svelte-usggce.svelte-usggce{background-color:var(--background-variant);position:relative;margin-top:-10px}h1.svelte-usggce.svelte-usggce{text-align:center}p.svelte-usggce.svelte-usggce{margin-bottom:1rem;text-align:center}.packages.svelte-usggce.svelte-usggce{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:2rem;padding-inline:8rem}.package.svelte-usggce.svelte-usggce{padding:1rem;border-radius:10px;border:1px solid #bebebe;position:relative;overflow:hidden}.head.svelte-usggce.svelte-usggce{position:absolute;background:var(--primary-gradient);width:100%;height:3rem;left:0;top:0;display:grid;place-items:center;color:whitesmoke;font-weight:bold;text-transform:uppercase}.head.svelte-usggce span.svelte-usggce{color:#fcc437;font-size:0.8rem;margin-top:-1rem}ul.svelte-usggce.svelte-usggce{margin-top:3rem}li.svelte-usggce.svelte-usggce{text-align:left;position:relative;padding-left:1.8rem;margin-bottom:1rem;font-size:0.8rem;border-bottom:1px solid #bebebe;padding-bottom:0.3rem}li.svelte-usggce.svelte-usggce::before{content:"\\2713";position:absolute;left:0;top:0;color:#eff0f0;font-size:1rem;color:var(--primary)}h3.svelte-usggce.svelte-usggce{font-weight:bold;text-transform:uppercase;font-size:1.3rem;color:var(--primary)}.footer.svelte-usggce.svelte-usggce{text-align:center}.footer.svelte-usggce span.svelte-usggce{color:#858585;margin-left:0.8rem;text-decoration:line-through;text-decoration-thickness:0.5px}.footer.svelte-usggce p.svelte-usggce{font-size:0.7rem;margin-top:0.5rem}button.svelte-usggce.svelte-usggce{all:unset;background:var(--primary-gradient);color:whitesmoke;padding:5px 8px;border-radius:0.5rem;border:none;cursor:pointer;margin-right:1rem}@media screen and (max-width: 768px){.container.svelte-usggce.svelte-usggce{padding:0.8rem}.packages.svelte-usggce.svelte-usggce{grid-template-columns:1fr;padding-inline:1rem}h1.svelte-usggce.svelte-usggce,p.svelte-usggce.svelte-usggce{text-align:left}}',
+      map: null
+    };
     Pricelist = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      return `<section class="${"price-lists"}"><div class="${"container"}"><h1>Harga Bersahabat Sesuai Dengan Kebutuhan</h1>
-            <p>Semua paket undangan website sudah mendapatkan halaman website, e-guestbook, fitur bahasa, navigasi
+      $$result.css.add(css$3);
+      return `<section class="${"price-lists svelte-usggce"}"><div class="${"container svelte-usggce"}"><h1 class="${"svelte-usggce"}">Harga Bersahabat Sesuai Dengan Kebutuhan</h1>
+            <p class="${"svelte-usggce"}">Semua paket undangan website sudah mendapatkan halaman website, e-guestbook, fitur bahasa, navigasi
                 peta, quotes, &amp; dukungan teknis</p>
-            <div class="${"packages"}"><div><div class="${"head"}"><h4>Paket Standard</h4></div>
-                    <ul><li>Pilihan Tema Standard</li>
-                        <li>Detail Info Acara</li>
-                        <li>Profil Pasangan</li>
-                        <li>Protokol Kesehatan</li>
-                        <li>Background Music (sesuai list)</li>
-                        <li>Navigasi Lokasi</li>
-                        <li>Ingatkan di Google Calendar</li>
-                        <li>2 Jadwal Acara</li>
-                        <li>Ucapan &amp; Kehadiran</li>
-                        <li>Love Stories</li>
-                        <li>Gallery foto (max 10)</li>
-                        <li>Generator Tamu Undangan</li>
-                        <li>Masa aktif 3 Bulan</li></ul>
-                    <div class="${"footer"}"><h3>idr 149.000</h3>
-                        <button class="${"button"}">Pesan Sekarang</button></div></div>
-                <div><div class="${"head"}"><h4>Paket Premium</h4>
-                        <span>Hemat 101rb</span></div>
-                    <ul><li>Pilihan Tema Standard &amp; Premium</li>
-                        <li>Semua Fitur paket basic</li>
-                        <li>Gallery foto (max 20)</li>
-                        <li>Tampilkan tombol Live Streaming</li>
-                        <li>Amplop Digital</li>
-                        <li>QR Scanner untuk Buku Tamu di Lokasi</li>
-                        <li>Kisah Cinta Berupa Timeline</li>
-                        <li>5 Kali Revisi</li>
-                        <li>Masa Aktif 6 Bulan</li></ul>
-                    <div class="${"footer"}"><h3>idr 199.000 <span>300rb</span></h3>
-                        <button class="${"button"}">Pesan Sekarang</button></div></div>
-                <div><div class="${"head"}"><h4>Paket Special</h4>
-                        <span>Hemat 500rb</span></div>
-                    <ul><li>Custom Domain (.com, .id, dll)</li>
-                        <li>Semua Fitur paket Premium</li>
-                        <li>Smart Dashboard</li>
-                        <li>Bebas Pilih Tema</li>
-                        <li>Bisa Custom Tema yang ada</li>
-                        <li>Bisa Custom tema sesuai permintaan</li>
-                        <li>Gallery Foto (unlimited)</li>
-                        <li>Gallery Video</li>
-                        <li>Background Music (Bisa Request)</li>
-                        <li>Gratis undangan JPEG</li>
-                        <li>Dukungan teknis 24/7</li>
-                        <li>Revisi Sampai Puas</li>
-                        <li>Masa Aktif 1 Tahun</li></ul>
-                    <div class="${"footer"}"><h3>idr 1.500.000 <span>2JT</span></h3>
-                        <button class="${"button"}">Pesan Sekarang</button>
-                        <p>*Pemesanan Minimal 1 Bulan sebelum Hari H</p></div></div></div></div></section>`;
+            <div class="${"packages svelte-usggce"}"><div class="${"package svelte-usggce"}"><div class="${"head svelte-usggce"}"><h4>Paket Standard</h4></div>
+                    <ul class="${"svelte-usggce"}"><li class="${"svelte-usggce"}">Pilihan Tema Standard</li>
+                        <li class="${"svelte-usggce"}">Detail Info Acara</li>
+                        <li class="${"svelte-usggce"}">Profil Pasangan</li>
+                        <li class="${"svelte-usggce"}">Protokol Kesehatan</li>
+                        <li class="${"svelte-usggce"}">Background Music (sesuai list)</li>
+                        <li class="${"svelte-usggce"}">Navigasi Lokasi</li>
+                        <li class="${"svelte-usggce"}">Ingatkan di Google Calendar</li>
+                        <li class="${"svelte-usggce"}">2 Jadwal Acara</li>
+                        <li class="${"svelte-usggce"}">Ucapan &amp; Kehadiran</li>
+                        <li class="${"svelte-usggce"}">Love Stories</li>
+                        <li class="${"svelte-usggce"}">Gallery foto (max 10)</li>
+                        <li class="${"svelte-usggce"}">Generator Tamu Undangan</li>
+                        <li class="${"svelte-usggce"}">Masa aktif 3 Bulan</li></ul>
+                    <div class="${"footer svelte-usggce"}"><h3 class="${"svelte-usggce"}">idr 149.000</h3>
+                        <button class="${"button svelte-usggce"}">Pesan Sekarang</button></div></div>
+                <div class="${"package svelte-usggce"}"><div class="${"head svelte-usggce"}"><h4>Paket Premium</h4>
+                        <span class="${"svelte-usggce"}">Hemat 101rb</span></div>
+                    <ul class="${"svelte-usggce"}"><li class="${"svelte-usggce"}">Pilihan Tema Standard &amp; Premium</li>
+                        <li class="${"svelte-usggce"}">Semua Fitur paket basic</li>
+                        <li class="${"svelte-usggce"}">Gallery foto (max 20)</li>
+                        <li class="${"svelte-usggce"}">Tampilkan tombol Live Streaming</li>
+                        <li class="${"svelte-usggce"}">Amplop Digital</li>
+                        <li class="${"svelte-usggce"}">QR Scanner untuk Buku Tamu di Lokasi</li>
+                        <li class="${"svelte-usggce"}">Kisah Cinta Berupa Timeline</li>
+                        <li class="${"svelte-usggce"}">5 Kali Revisi</li>
+                        <li class="${"svelte-usggce"}">Masa Aktif 6 Bulan</li></ul>
+                    <div class="${"footer svelte-usggce"}"><h3 class="${"svelte-usggce"}">idr 199.000 <span class="${"svelte-usggce"}">300rb</span></h3>
+                        <button class="${"button svelte-usggce"}">Pesan Sekarang</button></div></div>
+                <div class="${"package svelte-usggce"}"><div class="${"head svelte-usggce"}"><h4>Paket Special</h4>
+                        <span class="${"svelte-usggce"}">Hemat 500rb</span></div>
+                    <ul class="${"svelte-usggce"}"><li class="${"svelte-usggce"}">Custom Domain (.com, .id, dll)</li>
+                        <li class="${"svelte-usggce"}">Semua Fitur paket Premium</li>
+                        <li class="${"svelte-usggce"}">Smart Dashboard</li>
+                        <li class="${"svelte-usggce"}">Bebas Pilih Tema</li>
+                        <li class="${"svelte-usggce"}">Bisa Custom Tema yang ada</li>
+                        <li class="${"svelte-usggce"}">Bisa Custom tema sesuai permintaan</li>
+                        <li class="${"svelte-usggce"}">Gallery Foto (unlimited)</li>
+                        <li class="${"svelte-usggce"}">Gallery Video</li>
+                        <li class="${"svelte-usggce"}">Background Music (Bisa Request)</li>
+                        <li class="${"svelte-usggce"}">Gratis undangan JPEG</li>
+                        <li class="${"svelte-usggce"}">Dukungan teknis 24/7</li>
+                        <li class="${"svelte-usggce"}">Revisi Sampai Puas</li>
+                        <li class="${"svelte-usggce"}">Masa Aktif 1 Tahun</li></ul>
+                    <div class="${"footer svelte-usggce"}"><h3 class="${"svelte-usggce"}">idr 1.500.000 <span class="${"svelte-usggce"}">2JT</span></h3>
+                        <button class="${"button svelte-usggce"}">Pesan Sekarang</button>
+                        <p class="${"svelte-usggce"}">*Pemesanan Minimal 1 Bulan sebelum Hari H</p></div></div></div></div>
+    </section>`;
     });
+    css$2 = {
+      code: `.top.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{background:var(--primary-gradient);text-align:center;padding-block:1rem}.top.svelte-6q47zx p.svelte-6q47zx.svelte-6q47zx{color:whitesmoke;font-weight:400}.top.svelte-6q47zx button.svelte-6q47zx.svelte-6q47zx{all:unset;color:whitesmoke;padding:5px 8px;border-radius:0.5rem;border:none;cursor:pointer;margin-right:1rem;margin-top:1rem;background:#ecb62e;color:inherit}.bottom.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{text-align:center}.bottom.svelte-6q47zx p.svelte-6q47zx.svelte-6q47zx{font-size:14px}.socials.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{display:flex;justify-content:center;align-items:center;gap:1rem;margin-block:1rem}.socials.svelte-6q47zx a.svelte-6q47zx.svelte-6q47zx{background:var(--primary-gradient);width:2rem;height:2rem;display:grid;place-items:center;color:whitesmoke;border-radius:50%}.menu.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{display:flex;justify-content:center;align-items:center;gap:1rem;margin-bottom:1rem}.menu.svelte-6q47zx a.svelte-6q47zx.svelte-6q47zx:hover{color:var(--primary)}.menu.svelte-6q47zx a.svelte-6q47zx.svelte-6q47zx::after{content:"|";margin:0 1rem;color:#464646}.menu.svelte-6q47zx li.svelte-6q47zx:last-child a.svelte-6q47zx::after{content:''}@media screen and (max-width: 768px){.container.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{text-align:left}.menu.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{align-items:flex-start;flex-direction:column}.menu.svelte-6q47zx a.svelte-6q47zx.svelte-6q47zx::after{content:''}.socials.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{justify-content:flex-start}.bottom.svelte-6q47zx p.svelte-6q47zx.svelte-6q47zx:last-child{text-align:center}}`,
+      map: null
+    };
+    Footer = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      $$result.css.add(css$2);
+      return `<footer><div class="${"top svelte-6q47zx"}"><div class="${"container svelte-6q47zx"}"><p class="${"svelte-6q47zx"}">Terima kasih untuk kamu yang sudah membaca isi dari website ini. Semoga kita dapat berbincang lebih lanjut.</p>
+            <button class="${"svelte-6q47zx"}">Hubungi Kami</button></div></div>
+    <div class="${"bottom svelte-6q47zx"}"><div class="${"container svelte-6q47zx"}"><p class="${"svelte-6q47zx"}">Lebih dekat dengan kami :</p>
+            <ul class="${"socials svelte-6q47zx"}"><li class="${"svelte-6q47zx"}"><a href="${"/"}" class="${"svelte-6q47zx"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faFacebook }, {}, {})}</a></li>
+                <li class="${"svelte-6q47zx"}"><a href="${"/"}" class="${"svelte-6q47zx"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faInstagram }, {}, {})}</a></li>
+                <li class="${"svelte-6q47zx"}"><a href="${"/"}" class="${"svelte-6q47zx"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faWhatsapp }, {}, {})}</a></li>
+                <li class="${"svelte-6q47zx"}"><a href="${"/"}" class="${"svelte-6q47zx"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faEnvelope }, {}, {})}</a></li></ul>
+            <ul class="${"menu svelte-6q47zx"}"><li><a href="${"/"}" class="${"svelte-6q47zx"}">Syarat &amp; Ketentuan</a></li>
+                <li><a href="${"/"}" class="${"svelte-6q47zx"}">Tentang Kami</a></li>
+                <li><a href="${"/"}" class="${"svelte-6q47zx"}">Kebijakan Privasi</a></li>
+                <li><a href="${"/"}" class="${"svelte-6q47zx"}">FAQ</a></li></ul>
+            <p class="${"svelte-6q47zx"}">Copyright 2021 - ${escape(new Date().getFullYear())} | <a href="${"/"}"><strong style="${"color: var(--primary)"}">dinvite.id</strong></a> Jasa pembuatan
+            undangan
+            digital website - All rights reserved. <br> self-developed by
+            <strong style="${"color: #666666"}">diditamin.m </strong>from Luwuk Banggai.
+        </p></div></div>
+</footer>`;
+    });
+    css$1 = {
+      code: '.whatsapp-button.svelte-qxs19q.svelte-qxs19q{position:fixed;bottom:1rem;right:1rem;z-index:999}.icon.svelte-qxs19q.svelte-qxs19q{width:3rem;height:3rem;background-color:#4dc247;position:absolute;right:0;bottom:0;display:grid;place-items:center;font-size:1.8rem;color:whitesmoke;border-radius:50%;cursor:pointer}.container.svelte-qxs19q.svelte-qxs19q{position:absolute;bottom:3.5rem;right:0;width:100vw;max-width:360px;box-shadow:-2px 2px 10px rgb(0 0 0 / 25%);border-radius:12px;overflow-x:hidden;transform:translateY(150%);opacity:0;transition:all 0.35s ease-in-out;z-index:1;padding:0}.container.show.svelte-qxs19q.svelte-qxs19q{transform:translateY(0);opacity:1}.head.svelte-qxs19q.svelte-qxs19q{background:#0a5f54;padding:25px 20px;display:flex;align-items:center;position:relative}.close-icon.svelte-qxs19q.svelte-qxs19q{position:absolute;top:10px;right:1rem;color:whitesmoke;cursor:pointer}.avatar.svelte-qxs19q.svelte-qxs19q{width:50px;height:50px;margin-right:20px;border-radius:25px;background-color:var(--background-variant);display:grid;place-items:center;position:relative}.avatar.svelte-qxs19q.svelte-qxs19q::before{content:"";width:0.8rem;height:0.8rem;background-color:#4dc247;position:absolute;top:0;right:0;border-radius:50%}.avatar.svelte-qxs19q img.svelte-qxs19q{width:65%;height:65%;object-fit:cover}.head.svelte-qxs19q .text.svelte-qxs19q{color:whitesmoke}.head.svelte-qxs19q h4.svelte-qxs19q{font-weight:bold;font-size:1.1rem}.head.svelte-qxs19q p.svelte-qxs19q{font-size:0.8rem}.body.svelte-qxs19q.svelte-qxs19q{background-image:url(https://katsudoto.id/media/kat/bg-wa-box-fix.jpg);background-position:center;background-size:cover;padding:10px 20px}.chat.svelte-qxs19q.svelte-qxs19q{background-color:whitesmoke;margin:10px 0;padding:10px 15px;border-radius:12px;display:inline-block;text-align:left}.nickname.svelte-qxs19q.svelte-qxs19q{color:#00000075;font-size:14px;margin-bottom:5px;font-weight:700}.chat.svelte-qxs19q .text.svelte-qxs19q{color:#111;font-size:15px;line-height:1.5}.footer.svelte-qxs19q.svelte-qxs19q{background:#fff;padding:20px;text-align:center}.footer.svelte-qxs19q .send.svelte-qxs19q{background:#4dc247;padding:10px;display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center;color:#fff;border-radius:50px;margin-bottom:10px;gap:0.5rem}.footer.svelte-qxs19q p.svelte-qxs19q{font-size:13px;color:#636363;font-style:italic;display:inline-block}',
+      map: null
+    };
+    WhatsappButton = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      $$result.css.add(css$1);
+      return `<div class="${"whatsapp-button svelte-qxs19q"}"><div class="${"icon svelte-qxs19q"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faWhatsapp }, {}, {})}</div>
+    <div class="${"container " + escape("") + " svelte-qxs19q"}"><div class="${"head svelte-qxs19q"}"><div class="${"close-icon svelte-qxs19q"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faXmark }, {}, {})}</div>
+            <div class="${"avatar svelte-qxs19q"}"><img src="${"/dinvite.png"}" alt="${""}" class="${"svelte-qxs19q"}"></div>
+            <div class="${"text svelte-qxs19q"}"><h4 class="${"svelte-qxs19q"}">dinvite</h4>
+                <p class="${"svelte-qxs19q"}">online</p></div></div>
+        <div class="${"body svelte-qxs19q"}"><div class="${"chat svelte-qxs19q"}"><div class="${"nickname svelte-qxs19q"}">dinvite</div>
+                <div class="${"text svelte-qxs19q"}">Hai kak, <br> Ada yang bisa kami bantu.?</div></div></div>
+        <div class="${"footer svelte-qxs19q"}"><a class="${"send svelte-qxs19q"}" href="${"https://wa.me/6281354911647"}" target="${"_blank"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faWhatsapp }, {}, {})} Start Chat</a>
+            <p class="${"svelte-qxs19q"}">\u26A1 by
+                <a href="${"/"}" target="${"_blank"}">dinvite.id</a></p></div></div>
+</div>`;
+    });
+    css3 = {
+      code: "main.svelte-1667zqe{max-width:100vw;overflow-x:hidden}",
+      map: null
+    };
     Routes = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      $$result.css.add(css3);
       return `${$$result.head += `<meta name="${"theme-color"}" content="${"#5a9fbf"}" data-svelte="svelte-r7jw34">${$$result.title = `<title>Dinvite</title>`, ""}`, ""}
 
 
-<main>${validate_component(Header, "Header").$$render($$result, {}, {}, {})}
+<main class="${"svelte-1667zqe"}">${validate_component(Header, "Header").$$render($$result, {}, {}, {})}
     ${validate_component(Hero, "Hero").$$render($$result, {}, {}, {})}
     ${validate_component(Wave, "Wave").$$render($$result, { position: "top" }, {}, {})}
     ${validate_component(About, "About").$$render($$result, {}, {}, {})}
     ${validate_component(Wave, "Wave").$$render($$result, { position: "bottom" }, {}, {})}
     ${validate_component(Features, "Features").$$render($$result, {}, {}, {})}
     ${validate_component(Wave, "Wave").$$render($$result, { position: "top" }, {}, {})}
-    ${validate_component(Pricelist, "Pricelist").$$render($$result, {}, {}, {})}</main>`;
+    ${validate_component(Pricelist, "Pricelist").$$render($$result, {}, {}, {})}
+    ${validate_component(Footer, "Footer").$$render($$result, {}, {}, {})}
+    ${validate_component(WhatsappButton, "WhatsappButton").$$render($$result, {}, {}, {})}
+</main>`;
     });
   }
 });
@@ -5641,9 +5721,9 @@ var init__3 = __esm({
   ".svelte-kit/output/server/nodes/2.js"() {
     init_index_svelte();
     index3 = 2;
-    entry3 = "pages/index.svelte-b8f75653.js";
-    js3 = ["pages/index.svelte-b8f75653.js", "chunks/index-e77d20ec.js"];
-    css4 = ["assets/pages/index.svelte-0693116f.css"];
+    entry3 = "pages/index.svelte-e77ab39c.js";
+    js3 = ["pages/index.svelte-e77ab39c.js", "chunks/index-1114af13.js"];
+    css4 = ["assets/pages/index.svelte-3c468096.css"];
   }
 });
 
@@ -15023,10 +15103,10 @@ var Server = class {
 // .svelte-kit/vercel-tmp/manifest.js
 var manifest = {
   appDir: "_app",
-  assets: /* @__PURE__ */ new Set(["favicon.png", "fonts/Cano.otf", "images/Cara Dapat Jackpot di FaFaFa Higgs Domino Island Terbaru.jpg", "images/hero.png"]),
-  mimeTypes: { ".png": "image/png", ".otf": "font/otf", ".jpg": "image/jpeg" },
+  assets: /* @__PURE__ */ new Set(["bg-wa-box.jpg", "dinvite.png", "favicon.png", "fonts/Cano.otf", "images/Cara Dapat Jackpot di FaFaFa Higgs Domino Island Terbaru.jpg", "images/hero.png"]),
+  mimeTypes: { ".jpg": "image/jpeg", ".png": "image/png", ".otf": "font/otf" },
   _: {
-    entry: { "file": "start-f0394dcc.js", "js": ["start-f0394dcc.js", "chunks/index-e77d20ec.js"], "css": [] },
+    entry: { "file": "start-e221f2ac.js", "js": ["start-e221f2ac.js", "chunks/index-1114af13.js"], "css": [] },
     nodes: [
       () => Promise.resolve().then(() => (init__(), __exports)),
       () => Promise.resolve().then(() => (init__2(), __exports2)),
