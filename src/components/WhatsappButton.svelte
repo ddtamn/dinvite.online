@@ -11,7 +11,7 @@
     <div class="container {show  ? 'show' : ''}">
         <div class="head">
             <div on:click="{() => show = false}" class="close-icon"><Fa icon={faXmark}/></div>
-            <div class="avatar"><img src="/dinvite.png" alt=""></div>
+            <div class="avatar"><img src="/images/dinvite.png" alt=""></div>
             <div class="text">
                 <h4>dinvite</h4>
                 <p>online</p>
