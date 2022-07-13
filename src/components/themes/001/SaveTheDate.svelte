@@ -1,7 +1,7 @@
 <section>
     <div class="container">
         <div class="overlay"></div>
-        <div class="content">
+        <div class="content" data-aos="zoom-in">
             <h1>save the date</h1>
             <div class="counter">
                 <div class="count"><h6>00</h6><p>Days</p></div>

@@ -1,10 +1,10 @@
 <section>
-    <div class="head">
-        <h3>Our Wedding Day</h3>
-        <p style="font-weight: 200;">True love stands by each other’s side on good days and stands closer on bad days</p>
+    <div class="head" >
+        <h3 data-aos="zoom-in">Our Wedding Day</h3>
+        <p data-aos="zoom-out" style="font-weight: 200;">True love stands by each other’s side on good days and stands closer on bad days</p>
     </div>
     <div class="container">
-        <div class="activity">
+        <div class="activity" data-aos="fade-right">
             <h3>Akad Nikah</h3>
             <p>Minggu, 12 April 2023</p>
             <p style="font-style: italic;">09:00 - 10:00</p>
@@ -14,7 +14,7 @@
             <div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d381.75811685649677!2d122.78865638325985!3d-0.9481183995158275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d86a3e7ac7d28d5%3A0x9a2ef0fc7f1a2da9!2zMMKwNTYnNTMuMyJTIDEyMsKwNDcnMTguNyJF!5e0!3m2!1sid!2sid!4v1657702285355!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
             <button>Open Map</button>
         </div>
-        <div class="activity">
+        <div class="activity" data-aos="fade-left">
             <h3>Resepsi</h3>
             <p>Minggu, 12 April 2023</p>
             <p style="font-style: italic;">19:30 - 22:30</p>

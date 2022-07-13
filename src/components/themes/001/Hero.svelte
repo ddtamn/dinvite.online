@@ -1,7 +1,7 @@
 <section>
     <div class="container" style="background-image: url('https://cdn.imweb.me/upload/S201904265cc294845b98d/3aeac83be14ce.jpg');">
         <div class="overlay"></div>
-        <div class="content">
+        <div class="content" data-aos="zoom-in">
             <!-- svelte-ignore a11y-missing-attribute -->
             <div class="image"><img src="https://cdn.imweb.me/upload/S201904265cc294845b98d/3aeac83be14ce.jpg" loading="lazy"></div>
             <p style="margin-top: 1rem;">Wedding Invitation</p>

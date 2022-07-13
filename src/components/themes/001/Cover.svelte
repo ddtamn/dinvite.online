@@ -1,11 +1,11 @@
 <script>
-    let hide = false
+    export let hide = false
 </script>
 
 <section class="{hide ? 'hide' : ''}">
     <div class="container" style="background-image: url('https://cdn.imweb.me/upload/S201904265cc294845b98d/3aeac83be14ce.jpg');">
         <div class="overlay"></div>
-        <div class="content">
+        <div class="content" data-aos="zoom-in">
             <p>Hai..</p>
             <p>You are invited to our wedding day</p>
             <h1>Andy & Indah</h1>

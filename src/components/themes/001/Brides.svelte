@@ -1,17 +1,20 @@
 <script>
     import Fa from 'svelte-fa'
     import {faInstagram} from '@fortawesome/free-brands-svg-icons/index.es'
+    import Flower001 from '../../decoration/flower001.svelte';
+    
 </script>
 
 <section>
     <div class="container">
-        <div class="head">
+        <div class="head" data-aos="fade-up">
             <h3>Bride & Groom</h3>
             <p>Maha suci Allah SWT yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah, perkenankanlah kami merangkai kasih sayang yang Kau ciptakan di antara putra-putri kami:</p>
         </div>
-        <div class="brides">
+        <div class="brides" data-aos="zoom-in">
             <div class="image">
                 <img src="https://cdn.imweb.me/upload/S201904265cc294845b98d/6648600291075.jpg" alt="">
+                <div class="flower" style="left: 10rem;"><Flower001 color={'var(--primary-color)'} width={'200px'} height={'200px'}/></div>
             </div>
             <h3>Andi Putra Pratama, SE</h3>
             <p style="font-style: italic;">Putra dari pasangan</p>
@@ -29,9 +32,10 @@
         font-family: 'Arima', cursive;
         font-weight: 900;"
         >&</div>
-        <div class="brides">
+        <div class="brides" data-aos="zoom-in">
             <div class="image">
                 <img src="https://cdn.imweb.me/upload/S201904265cc294845b98d/70c569ab32e12.jpg" alt="">
+                <div class="flower" style="transform: scale(-1);"><Flower001 color={'var(--primary-color)'} width={'200px'} height={'200px'}/></div>
             </div>
             <h3>Indah Permata Sari, SH., MM</h3>
             <p style="font-style: italic;">Putri dari pasangan</p>
@@ -43,6 +47,17 @@
 
 
 <style>
+
+    @keyframes -global-from-left {
+    0% {
+        transform: rotateX(50deg) translateX(-200vw) skewX(-50deg);
+        opacity: 1;
+    }
+    100% {
+        transform: rotateX(0deg) translateX(0) skewX(0deg);
+        opacity: 1;
+    }
+    }
     .container {
         padding: 1rem;
         display: flex;
@@ -52,6 +67,7 @@
         text-align: center;
         padding-block: 2rem;
         gap: 2rem;
+        overflow: hidden;
     }
 
     .head {
@@ -93,12 +109,31 @@
         width: 200px;
         height: 200px;
         border-radius: 50%;
-        overflow: hidden;
+        /* overflow: hidden; */
+        position: relative;
     }
 
     img {
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
+        border-radius: inherit;
+        position: absolute;
         object-fit: cover;
+        z-index: 2;
+    }
+
+    .flower {
+        width: 50%;
+        height: 50%;
+        position: absolute;
+        z-index: 1;
+        left: -5rem;
+        top: -2rem;
+        transform: rotate(-10deg);
+        opacity: 0.5;
+        
+
     }
 </style>
