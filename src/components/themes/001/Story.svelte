@@ -97,7 +97,7 @@
     }
 
     .content::before {
-        content: '❤';
+        content: '\2665';
         position: absolute;
         left: -45px;
         top: 12px;
