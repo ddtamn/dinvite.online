@@ -1,5 +1,4 @@
 <script>
-    // import Lightbox from "../../utils/Lightbox.svelte";
     import LightGallery from 'lightgallery'
     import 'lightgallery/css/lightgallery.css'
     import { onMount } from 'svelte';
@@ -7,18 +6,15 @@
     onMount(() => {
         LightGallery(document.getElementById('lightgallery'), {
             speed : 500,
-            download : false
+            download : false,
         })
     })
 </script>
-
-
-
 <section>
     <div class="container">
         <div class="head">
             <h3>Our Moment's</h3>
-            <p>True love stands by each other’s side on good days and stands closer on bad days</p>
+            <p style="font-weight: 200 ;">True love stands by each other’s side on good days and stands closer on bad days</p>
         </div>
         <div class="flexbin flexbin-margin" id="lightgallery">
             <a href="https://cdn.imweb.me/upload/S201904265cc294845b98d/b2d3bc663702a.jpg">
@@ -57,3 +53,31 @@
         </div>
     </div>
 </section>
+
+
+<style>
+    section {
+        background-color: var(--primary-color);
+    }
+
+    .container {
+        padding: 0.5rem;
+        padding-block: 2rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        color: whitesmoke;
+    }
+
+    .head {
+        margin-bottom: 2rem;
+        /* line-height: 1.5; */
+    }
+
+    h3 {
+        font-family: 'Arima', cursive;
+        font-weight: 900;
+    }
+</style>

@@ -16,6 +16,7 @@
 </script>
 
 <svelte:head>
+    <meta name="theme-color" content="#5a9fbf"/>
     <title>Dinvite</title>
 </svelte:head>
 
