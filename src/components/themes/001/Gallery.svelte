@@ -1,0 +1,59 @@
+<script>
+    // import Lightbox from "../../utils/Lightbox.svelte";
+    import LightGallery from 'lightgallery'
+    import 'lightgallery/css/lightgallery.css'
+    import { onMount } from 'svelte';
+
+    onMount(() => {
+        LightGallery(document.getElementById('lightgallery'), {
+            speed : 500,
+            download : false
+        })
+    })
+</script>
+
+
+
+<section>
+    <div class="container">
+        <div class="head">
+            <h3>Our Moment's</h3>
+            <p>True love stands by each other’s side on good days and stands closer on bad days</p>
+        </div>
+        <div class="flexbin flexbin-margin" id="lightgallery">
+            <a href="https://cdn.imweb.me/upload/S201904265cc294845b98d/b2d3bc663702a.jpg">
+                <img src="https://cdn.imweb.me/upload/S201904265cc294845b98d/b2d3bc663702a.jpg" alt="">
+            </a>
+            <a href="https://cdn.imweb.me/upload/S201904265cc294845b98d/e6e512e4e7668.jpg">
+                <img src="https://cdn.imweb.me/upload/S201904265cc294845b98d/e6e512e4e7668.jpg" alt="">
+            </a>
+            <a href="https://cdn.imweb.me/upload/S201904265cc294845b98d/238d27e87b918.jpg">
+                <img src="https://cdn.imweb.me/upload/S201904265cc294845b98d/238d27e87b918.jpg" alt="">
+            </a>
+            <a href="https://cdn.imweb.me/upload/S201904265cc294845b98d/74e3f2d06773d.jpg">
+                <img src="https://cdn.imweb.me/upload/S201904265cc294845b98d/74e3f2d06773d.jpg" alt="">
+            </a>
+            <a href="https://cdn.imweb.me/upload/S201904265cc294845b98d/2aae3d50e20f6.jpg">
+                <img src="https://cdn.imweb.me/upload/S201904265cc294845b98d/2aae3d50e20f6.jpg" alt="">
+            </a>
+            <a href="https://cdn.imweb.me/upload/S201904265cc294845b98d/27c1b036ae3bc.jpg">
+                <img src="https://cdn.imweb.me/upload/S201904265cc294845b98d/27c1b036ae3bc.jpg" alt="">
+            </a>
+            <a href="https://cdn.imweb.me/upload/S201904265cc294845b98d/b2fdc287b3da6.jpg">
+                <img src="https://cdn.imweb.me/upload/S201904265cc294845b98d/b2fdc287b3da6.jpg" alt="">
+            </a>
+            <a href="https://cdn.imweb.me/upload/S201904265cc294845b98d/32d4161951e3d.jpg">
+                <img src="https://cdn.imweb.me/upload/S201904265cc294845b98d/32d4161951e3d.jpg" alt="">
+            </a>
+            <a href="https://cdn.imweb.me/upload/S201904265cc294845b98d/9955a968d7bae.jpg">
+                <img src="https://cdn.imweb.me/upload/S201904265cc294845b98d/9955a968d7bae.jpg" alt="">
+            </a>
+            <a href="https://cdn.imweb.me/upload/S201904265cc294845b98d/232fb3b70c156.jpg">
+                <img src="https://cdn.imweb.me/upload/S201904265cc294845b98d/232fb3b70c156.jpg" alt="">
+            </a>
+            <a href="https://cdn.imweb.me/upload/S201904265cc294845b98d/5d43ef2b2f57e.jpg">
+                <img src="https://cdn.imweb.me/upload/S201904265cc294845b98d/5d43ef2b2f57e.jpg" alt="">
+            </a>
+        </div>
+    </div>
+</section>

@@ -8,6 +8,9 @@ var __defNormalProp = (obj, key2, value) => key2 in obj ? __defProp(obj, key2, {
 var __esm = (fn, res) => function __init() {
   return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
 };
+var __commonJS = (cb, mod) => function __require() {
+  return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+};
 var __export = (target, all) => {
   for (var name in all)
     __defProp(target, name, { get: all[name], enumerable: true });
@@ -186,7 +189,7 @@ var init_multipart_parser = __esm({
         let i2 = 0;
         const length_ = data.length;
         let previousIndex = this.index;
-        let { lookbehind, boundary, boundaryChars, index: index4, state, flags } = this;
+        let { lookbehind, boundary, boundaryChars, index: index8, state, flags } = this;
         const boundaryLength = this.boundary.length;
         const boundaryEnd = boundaryLength - 1;
         const bufferLength = data.length;
@@ -220,20 +223,20 @@ var init_multipart_parser = __esm({
           c = data[i2];
           switch (state) {
             case S.START_BOUNDARY:
-              if (index4 === boundary.length - 2) {
+              if (index8 === boundary.length - 2) {
                 if (c === HYPHEN) {
                   flags |= F.LAST_BOUNDARY;
                 } else if (c !== CR) {
                   return;
                 }
-                index4++;
+                index8++;
                 break;
-              } else if (index4 - 1 === boundary.length - 2) {
+              } else if (index8 - 1 === boundary.length - 2) {
                 if (flags & F.LAST_BOUNDARY && c === HYPHEN) {
                   state = S.END;
                   flags = 0;
                 } else if (!(flags & F.LAST_BOUNDARY) && c === LF) {
-                  index4 = 0;
+                  index8 = 0;
                   callback("onPartBegin");
                   state = S.HEADER_FIELD_START;
                 } else {
@@ -241,29 +244,29 @@ var init_multipart_parser = __esm({
                 }
                 break;
               }
-              if (c !== boundary[index4 + 2]) {
-                index4 = -2;
+              if (c !== boundary[index8 + 2]) {
+                index8 = -2;
               }
-              if (c === boundary[index4 + 2]) {
-                index4++;
+              if (c === boundary[index8 + 2]) {
+                index8++;
               }
               break;
             case S.HEADER_FIELD_START:
               state = S.HEADER_FIELD;
               mark("onHeaderField");
-              index4 = 0;
+              index8 = 0;
             case S.HEADER_FIELD:
               if (c === CR) {
                 clear("onHeaderField");
                 state = S.HEADERS_ALMOST_DONE;
                 break;
               }
-              index4++;
+              index8++;
               if (c === HYPHEN) {
                 break;
               }
               if (c === COLON) {
-                if (index4 === 1) {
+                if (index8 === 1) {
                   return;
                 }
                 dataCallback("onHeaderField", true);
@@ -305,8 +308,8 @@ var init_multipart_parser = __esm({
               state = S.PART_DATA;
               mark("onPartData");
             case S.PART_DATA:
-              previousIndex = index4;
-              if (index4 === 0) {
+              previousIndex = index8;
+              if (index8 === 0) {
                 i2 += boundaryEnd;
                 while (i2 < bufferLength && !(data[i2] in boundaryChars)) {
                   i2 += boundaryLength;
@@ -314,27 +317,27 @@ var init_multipart_parser = __esm({
                 i2 -= boundaryEnd;
                 c = data[i2];
               }
-              if (index4 < boundary.length) {
-                if (boundary[index4] === c) {
-                  if (index4 === 0) {
+              if (index8 < boundary.length) {
+                if (boundary[index8] === c) {
+                  if (index8 === 0) {
                     dataCallback("onPartData", true);
                   }
-                  index4++;
+                  index8++;
                 } else {
-                  index4 = 0;
+                  index8 = 0;
                 }
-              } else if (index4 === boundary.length) {
-                index4++;
+              } else if (index8 === boundary.length) {
+                index8++;
                 if (c === CR) {
                   flags |= F.PART_BOUNDARY;
                 } else if (c === HYPHEN) {
                   flags |= F.LAST_BOUNDARY;
                 } else {
-                  index4 = 0;
+                  index8 = 0;
                 }
-              } else if (index4 - 1 === boundary.length) {
+              } else if (index8 - 1 === boundary.length) {
                 if (flags & F.PART_BOUNDARY) {
-                  index4 = 0;
+                  index8 = 0;
                   if (c === LF) {
                     flags &= ~F.PART_BOUNDARY;
                     callback("onPartEnd");
@@ -348,14 +351,14 @@ var init_multipart_parser = __esm({
                     state = S.END;
                     flags = 0;
                   } else {
-                    index4 = 0;
+                    index8 = 0;
                   }
                 } else {
-                  index4 = 0;
+                  index8 = 0;
                 }
               }
-              if (index4 > 0) {
-                lookbehind[index4 - 1] = c;
+              if (index8 > 0) {
+                lookbehind[index8 - 1] = c;
               } else if (previousIndex > 0) {
                 const _lookbehind = new Uint8Array(lookbehind.buffer, lookbehind.byteOffset, lookbehind.byteLength);
                 callback("onPartData", 0, previousIndex, _lookbehind);
@@ -373,7 +376,7 @@ var init_multipart_parser = __esm({
         dataCallback("onHeaderField");
         dataCallback("onHeaderValue");
         dataCallback("onPartData");
-        this.index = index4;
+        this.index = index8;
         this.state = state;
         this.flags = flags;
       }
@@ -1415,10 +1418,10 @@ var init_node = __esm({
           [PullSteps](readRequest) {
             const stream2 = this._controlledReadableByteStream;
             if (this._queueTotalSize > 0) {
-              const entry4 = this._queue.shift();
-              this._queueTotalSize -= entry4.byteLength;
+              const entry8 = this._queue.shift();
+              this._queueTotalSize -= entry8.byteLength;
               ReadableByteStreamControllerHandleQueueDrain(this);
-              const view = new Uint8Array(entry4.buffer, entry4.byteOffset, entry4.byteLength);
+              const view = new Uint8Array(entry8.buffer, entry8.byteOffset, entry8.byteLength);
               readRequest._chunkSteps(view);
               return;
             }
@@ -5105,7 +5108,7 @@ function create_ssr_component(fn) {
       return {
         html,
         css: {
-          code: Array.from(result.css).map((css5) => css5.code).join("\n"),
+          code: Array.from(result.css).map((css15) => css15.code).join("\n"),
           map: null
         },
         head: result.title + result.head
@@ -5173,8 +5176,8 @@ var init__ = __esm({
   ".svelte-kit/output/server/nodes/0.js"() {
     init_layout_svelte();
     index = 0;
-    entry = "layout.svelte-dcbce13f.js";
-    js = ["layout.svelte-dcbce13f.js", "chunks/index-1114af13.js"];
+    entry = "layout.svelte-d08cc9cd.js";
+    js = ["layout.svelte-d08cc9cd.js", "chunks/index-b83f0d2a.js"];
     css = [];
   }
 });
@@ -5225,17 +5228,13 @@ var init__2 = __esm({
   ".svelte-kit/output/server/nodes/1.js"() {
     init_error_svelte();
     index2 = 1;
-    entry2 = "error.svelte-8e305d7f.js";
-    js2 = ["error.svelte-8e305d7f.js", "chunks/index-1114af13.js"];
+    entry2 = "error.svelte-9e17dc01.js";
+    js2 = ["error.svelte-9e17dc01.js", "chunks/index-b83f0d2a.js"];
     css2 = [];
   }
 });
 
-// .svelte-kit/output/server/entries/pages/index.svelte.js
-var index_svelte_exports = {};
-__export(index_svelte_exports, {
-  default: () => Routes
-});
+// .svelte-kit/output/server/chunks/index.es-638ce7e7.js
 function joinCss(obj, separator = ";") {
   let texts;
   if (Array.isArray(obj)) {
@@ -5250,7 +5249,7 @@ function joinCss(obj, separator = ";") {
   }
   return texts.join(separator);
 }
-function getStyles(style2, size, pull, fw) {
+function getStyles(style, size, pull, fw) {
   let float;
   let width;
   const height = "1em";
@@ -5291,7 +5290,7 @@ function getStyles(style2, size, pull, fw) {
       "transform-origin": "center",
       overflow
     }),
-    style2
+    style
   ]);
 }
 function getTransform(scale, translateX, translateY, rotate, flip, translateTimes = 1, translateUnit = "", rotateUnit = "") {
@@ -5312,77 +5311,58 @@ function getTransform(scale, translateX, translateY, rotate, flip, translateTime
     rotate && `rotate(${rotate}${rotateUnit})`
   ], " ");
 }
-var css$9, Header, css$8, Hero, css$7, Wave, css$6, About, parseNumber, css$5, Fa, Fa$1, faAddressBook, faComments, faEnvelope, faFilm, faGift, faHeart, faImages, faMapLocation, faMusic, faStopwatch20, faXmark, faFacebook, faInstagram, faWhatsapp, css$4, Features, css$3, Pricelist, css$2, Footer, css$1, WhatsappButton, css3, Routes;
-var init_index_svelte = __esm({
-  ".svelte-kit/output/server/entries/pages/index.svelte.js"() {
+var parseNumber, faFacebook, faInstagram, faWhatsapp;
+var init_index_es_638ce7e7 = __esm({
+  ".svelte-kit/output/server/chunks/index.es-638ce7e7.js"() {
+    parseNumber = parseFloat;
+    faFacebook = {
+      prefix: "fab",
+      iconName: "facebook",
+      icon: [512, 512, [62e3], "f09a", "M504 256C504 119 393 8 256 8S8 119 8 256c0 123.8 90.69 226.4 209.3 245V327.7h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.3 482.4 504 379.8 504 256z"]
+    };
+    faInstagram = {
+      prefix: "fab",
+      iconName: "instagram",
+      icon: [448, 512, [], "f16d", "M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"]
+    };
+    faWhatsapp = {
+      prefix: "fab",
+      iconName: "whatsapp",
+      icon: [448, 512, [], "f232", "M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"]
+    };
+  }
+});
+
+// .svelte-kit/output/server/chunks/WhatsappButton-9d53bed0.js
+var css$3, Header, css$2, Fa, Fa$1, faAddressBook, faComments, faEnvelope, faFilm, faGift, faHeart, faImages, faMapLocation, faMusic, faStopwatch20, faXmark, css$1, Footer, css3, WhatsappButton;
+var init_WhatsappButton_9d53bed0 = __esm({
+  ".svelte-kit/output/server/chunks/WhatsappButton-9d53bed0.js"() {
     init_index_c5e2452c();
-    css$9 = {
-      code: 'header.svelte-17s4qha.svelte-17s4qha{position:fixed;width:100vw;top:0;z-index:999;height:4rem;background-color:var(--background)}.container.svelte-17s4qha.svelte-17s4qha{display:flex;justify-content:space-between;align-items:center;height:100%;padding-inline:3rem}.logo.svelte-17s4qha.svelte-17s4qha{font-family:"cano", sans-serif;color:var(--primary);font-size:1.8rem}ul.svelte-17s4qha.svelte-17s4qha{display:flex;justify-content:center;align-items:center;gap:1rem}.mobile-menu.svelte-17s4qha.svelte-17s4qha{display:none}li.active.svelte-17s4qha a.svelte-17s4qha,li.active.svelte-17s4qha a.svelte-17s4qha:hover{color:var(--primary)}.mobile-toggle.svelte-17s4qha.svelte-17s4qha{display:none}@media screen and (max-width: 768px){header.svelte-17s4qha.svelte-17s4qha{border-bottom:1px solid var(--border-color);position:fixed;top:0;left:0;width:100vw}.container.svelte-17s4qha.svelte-17s4qha{padding-inline:1rem }.mobile-toggle.svelte-17s4qha.svelte-17s4qha{display:block;width:21px;height:24px;position:relative;-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg);-webkit-transition:.5s ease-in-out;-moz-transition:.5s ease-in-out;-o-transition:.5s ease-in-out;transition:.5s ease-in-out;cursor:pointer}.mobile-toggle.svelte-17s4qha span.svelte-17s4qha{display:block;position:absolute;height:3px;width:100%;background:var(--primary);border-radius:9px;opacity:1;left:0;-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg);-webkit-transition:.25s ease-in-out;-moz-transition:.25s ease-in-out;-o-transition:.25s ease-in-out;transition:.25s ease-in-out}.mobile-toggle.svelte-17s4qha span.svelte-17s4qha:nth-child(1){top:0}.mobile-toggle.svelte-17s4qha span.svelte-17s4qha:nth-child(2),.mobile-toggle.svelte-17s4qha span.svelte-17s4qha:nth-child(3){top:8px}.mobile-toggle.svelte-17s4qha span.svelte-17s4qha:nth-child(4){top:16px}.mobile-toggle.open.svelte-17s4qha span.svelte-17s4qha:nth-child(1){top:8px;width:0%;left:50%}.mobile-toggle.open.svelte-17s4qha span.svelte-17s4qha:nth-child(2){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg)}.mobile-toggle.open.svelte-17s4qha span.svelte-17s4qha:nth-child(3){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg)}.mobile-toggle.open.svelte-17s4qha span.svelte-17s4qha:nth-child(4){top:8px;width:0%;left:50%}nav.svelte-17s4qha.svelte-17s4qha{position:fixed;width:100vw;top:4rem;left:0;padding-block:1rem;transform:translateX(100%);opacity:0;transition:0.3s ease-in-out;pointer-events:none;padding:1rem}nav.show.svelte-17s4qha.svelte-17s4qha{transform:translateX(0);opacity:1;background-color:var(--background);pointer-events:all}ul.svelte-17s4qha.svelte-17s4qha{flex-direction:column}.mobile-menu.svelte-17s4qha.svelte-17s4qha{display:flex;margin-top:1rem}.mobile-menu.svelte-17s4qha .order.svelte-17s4qha{background:var(--primary-gradient);color:whitesmoke;padding:8px 8px;border-radius:0.5rem;cursor:pointer}}',
+    init_index_es_638ce7e7();
+    css$3 = {
+      code: 'header.svelte-uuigre.svelte-uuigre{position:fixed;width:100vw;top:0;z-index:999;height:4rem;background-color:var(--background)}.container.svelte-uuigre.svelte-uuigre{display:flex;justify-content:space-between;align-items:center;height:100%;padding-inline:3rem}.logo.svelte-uuigre.svelte-uuigre{font-family:"cano", sans-serif;color:var(--primary);font-size:1.8rem}ul.svelte-uuigre.svelte-uuigre{display:flex;justify-content:center;align-items:center;gap:1rem}.mobile-menu.svelte-uuigre.svelte-uuigre{display:none}li.active.svelte-uuigre a.svelte-uuigre,li.active.svelte-uuigre a.svelte-uuigre:hover{color:var(--primary)}.mobile-toggle.svelte-uuigre.svelte-uuigre{display:none}@media screen and (max-width: 768px){header.svelte-uuigre.svelte-uuigre{border-bottom:1px solid var(--border-color);position:fixed;top:0;left:0;width:100vw}.container.svelte-uuigre.svelte-uuigre{padding-inline:1rem }.mobile-toggle.svelte-uuigre.svelte-uuigre{display:block;width:21px;height:24px;position:relative;-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg);-webkit-transition:.5s ease-in-out;-moz-transition:.5s ease-in-out;-o-transition:.5s ease-in-out;transition:.5s ease-in-out;cursor:pointer}.mobile-toggle.svelte-uuigre span.svelte-uuigre{display:block;position:absolute;height:3px;width:100%;background:var(--primary);border-radius:9px;opacity:1;left:0;-webkit-transform:rotate(0deg);-moz-transform:rotate(0deg);-o-transform:rotate(0deg);transform:rotate(0deg);-webkit-transition:.25s ease-in-out;-moz-transition:.25s ease-in-out;-o-transition:.25s ease-in-out;transition:.25s ease-in-out}.mobile-toggle.svelte-uuigre span.svelte-uuigre:nth-child(1){top:0}.mobile-toggle.svelte-uuigre span.svelte-uuigre:nth-child(2),.mobile-toggle.svelte-uuigre span.svelte-uuigre:nth-child(3){top:8px}.mobile-toggle.svelte-uuigre span.svelte-uuigre:nth-child(4){top:16px}.mobile-toggle.open.svelte-uuigre span.svelte-uuigre:nth-child(1){top:8px;width:0%;left:50%}.mobile-toggle.open.svelte-uuigre span.svelte-uuigre:nth-child(2){-webkit-transform:rotate(45deg);-moz-transform:rotate(45deg);-o-transform:rotate(45deg);transform:rotate(45deg)}.mobile-toggle.open.svelte-uuigre span.svelte-uuigre:nth-child(3){-webkit-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-o-transform:rotate(-45deg);transform:rotate(-45deg)}.mobile-toggle.open.svelte-uuigre span.svelte-uuigre:nth-child(4){top:8px;width:0%;left:50%}nav.svelte-uuigre.svelte-uuigre{position:fixed;width:100vw;top:4rem;left:0;padding-block:1rem;transform:translateX(100%);opacity:0;transition:0.3s ease-in-out;pointer-events:none;padding:1rem}nav.show.svelte-uuigre.svelte-uuigre{transform:translateX(0);opacity:1;background-color:var(--background);pointer-events:all}ul.svelte-uuigre.svelte-uuigre{flex-direction:column}.mobile-menu.svelte-uuigre.svelte-uuigre{display:flex;margin-top:1rem}.mobile-menu.svelte-uuigre .order.svelte-uuigre{background:var(--primary-gradient);color:whitesmoke;padding:8px 8px;border-radius:0.5rem;cursor:pointer}}',
       map: null
     };
     Header = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      $$result.css.add(css$9);
-      return `<header class="${"svelte-17s4qha"}"><div class="${"container svelte-17s4qha"}"><a href="${"/"}" class="${"logo svelte-17s4qha"}">dinvite</a>
-        <div class="${"mobile-toggle " + escape("") + " svelte-17s4qha"}"><span class="${"svelte-17s4qha"}"></span>
-            <span class="${"svelte-17s4qha"}"></span>
-            <span class="${"svelte-17s4qha"}"></span>
-            <span class="${"svelte-17s4qha"}"></span></div>
-        <nav class="${escape(null_to_empty("")) + " svelte-17s4qha"}"><ul class="${"svelte-17s4qha"}"><li class="${"active svelte-17s4qha"}"><a href="${"/"}" class="${"svelte-17s4qha"}">Home</a></li>
-                <li><a href="${"/tema"}">Tema</a></li>
-                <li><a href="${"/harga"}">Harga</a></li>
-                <li><a href="${"/blog"}">Blog</a></li></ul>
-            <ul class="${"mobile-menu svelte-17s4qha"}"><li><a href="${"/"}">Syarat &amp; Ketentuan</a></li>
+      $$result.css.add(css$3);
+      return `<header class="${"svelte-uuigre"}"><div class="${"container svelte-uuigre"}"><a href="${"/"}" class="${"logo svelte-uuigre"}">dinvite</a>
+        <div class="${"mobile-toggle " + escape("") + " svelte-uuigre"}"><span class="${"svelte-uuigre"}"></span>
+            <span class="${"svelte-uuigre"}"></span>
+            <span class="${"svelte-uuigre"}"></span>
+            <span class="${"svelte-uuigre"}"></span></div>
+        <nav class="${escape(null_to_empty("")) + " svelte-uuigre"}"><ul class="${"svelte-uuigre"}"><li class="${escape(null_to_empty("active")) + " svelte-uuigre"}"><a href="${"/"}" class="${"svelte-uuigre"}">Home</a></li>
+                <li class="${escape(null_to_empty("")) + " svelte-uuigre"}"><a href="${"/tema"}" class="${"svelte-uuigre"}">Tema</a></li>
+                <li class="${escape(null_to_empty("")) + " svelte-uuigre"}"><a href="${"/harga"}" class="${"svelte-uuigre"}">Harga</a></li>
+                <li class="${escape(null_to_empty("")) + " svelte-uuigre"}"><a href="${"/blog"}" class="${"svelte-uuigre"}">Blog</a></li></ul>
+            <ul class="${"mobile-menu svelte-uuigre"}"><li><a href="${"/"}">Syarat &amp; Ketentuan</a></li>
                 <li><a href="${"/"}">Tentang Kami</a></li>
                 <li><a href="${"/"}">Kebijakan Privasi</a></li>
                 <li><a href="${"/"}">FAQ</a></li>
-                <li><a class="${"order svelte-17s4qha"}" href="${"/"}">Pesan Sekarang</a></li></ul></nav></div>
+                <li><a class="${"order svelte-uuigre"}" href="${"/"}">Pesan Sekarang</a></li></ul></nav></div>
     
 </header>`;
     });
-    css$8 = {
-      code: "section.svelte-1k43s9b.svelte-1k43s9b{min-height:calc(100vh - 4rem);margin-top:4rem}.container.svelte-1k43s9b.svelte-1k43s9b{display:flex;align-items:center;min-height:inherit}.content.svelte-1k43s9b.svelte-1k43s9b{width:55%}h1.svelte-1k43s9b.svelte-1k43s9b{font-size:3rem}p.svelte-1k43s9b.svelte-1k43s9b{color:var(--primary);font-size:1.3rem;font-weight:300}.buttons.svelte-1k43s9b.svelte-1k43s9b{margin-top:1rem}.buttons.svelte-1k43s9b a.svelte-1k43s9b{background:var(--primary-gradient);color:whitesmoke;padding:8px 8px;border-radius:0.5rem;cursor:pointer;margin-right:0.5rem}.image.svelte-1k43s9b.svelte-1k43s9b{width:45%;height:100%;position:relative}.image.svelte-1k43s9b img.svelte-1k43s9b{position:absolute;width:150%;height:auto;top:-400px}@media screen and (max-width: 768px){.container.svelte-1k43s9b.svelte-1k43s9b{display:flex;flex-direction:column;min-height:auto;justify-content:center;align-items:center}.content.svelte-1k43s9b.svelte-1k43s9b{width:100%;margin-top:1rem}h1.svelte-1k43s9b.svelte-1k43s9b{font-size:2rem}.image.svelte-1k43s9b.svelte-1k43s9b{width:100%}.image.svelte-1k43s9b img.svelte-1k43s9b{position:static;top:0px;margin-left:-10rem;margin-top:1rem}}",
-      map: null
-    };
-    Hero = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      $$result.css.add(css$8);
-      return `<section class="${"svelte-1k43s9b"}"><div class="${"container svelte-1k43s9b"}"><div class="${"content svelte-1k43s9b"}"><h1 class="${"svelte-1k43s9b"}">Undangan Pernikahan Digital Website</h1>
-            <p class="${"svelte-1k43s9b"}">solusi undangan pernikahan website kamu jadi lebih menarik &amp; berkesan</p>
-            <div class="${"buttons svelte-1k43s9b"}"><a class="${"order svelte-1k43s9b"}" href="${"/"}">Pesan Sekarang</a>
-                <a class="${"pricelist svelte-1k43s9b"}" href="${"/"}">Harga</a></div></div>
-        <div class="${"image svelte-1k43s9b"}"><img src="${"/images/hero.png"}" alt="${""}" class="${"svelte-1k43s9b"}"></div></div>
-</section>`;
-    });
-    css$7 = {
-      code: ".top-wave.svelte-1u3j808{margin-top:-100px;position:relative;z-index:1}.bottom-wave.svelte-1u3j808{transform:rotate(180deg);margin-top:-10px;position:relative;z-index:1}@media screen and (max-width: 768px){.top-wave.svelte-1u3j808,.bottom-wave.svelte-1u3j808{width:200%;margin-left:-3rem}}",
-      map: null
-    };
-    Wave = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      let { position } = $$props;
-      if ($$props.position === void 0 && $$bindings.position && position !== void 0)
-        $$bindings.position(position);
-      $$result.css.add(css$7);
-      return `<div class="${escape(null_to_empty(position == "top" ? "top-wave" : "bottom-wave")) + " svelte-1u3j808"}"><svg width="${"100%"}" preserveAspectRatio="${"none"}" height="${"100px"}" viewBox="${"0 0 1300 100"}" version="${"1.1"}" xmlns="${"http://www.w3.org/2000/svg"}" xmlns:xlink="${"http://www.w3.org/1999/xlink"}"><path d="${"M1300,0 L1300,99.9998042 L0,99.9998042 L0,60.1910374 C549.576968,-84.3633414 541.584175,191.147059 1300,0 Z"}" fill="${"#e9ebee"}"></path></svg>
-</div>`;
-    });
-    css$6 = {
-      code: "section.svelte-1fhthwy{background-color:var(--background-variant);margin-top:-10px;position:relative}h1.svelte-1fhthwy{margin-bottom:1rem}button.svelte-1fhthwy{all:unset;background:var(--primary-gradient);color:whitesmoke;padding:5px 8px;border-radius:0.5rem;border:none;cursor:pointer;margin-right:1rem;margin-top:1rem}",
-      map: null
-    };
-    About = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      $$result.css.add(css$6);
-      return `<section class="${"svelte-1fhthwy"}"><div class="${"container"}"><h1 class="${"svelte-1fhthwy"}">Mengapa dinvite ??</h1>
-            <p><strong style="${"color: var(--primary)"}">dinvite</strong> adalah penyedia layanan pembuatan undangan
-                digital berbasis website. Kami
-                memberikan sebuah
-                layanan mudah, hemat, dan praktis kepada calon pengantin dalam mengirimkan informasi
-                pernikahan/undangan berupa link. Undangan online dari <strong style="${"color: var(--primary)"}">dinvite</strong>
-                juga menawarkan berbagai fitur
-                menarik.</p>
-            <button class="${"button svelte-1fhthwy"}">Hubungi Kami</button></div>
-</section>`;
-    });
-    parseNumber = parseFloat;
-    css$5 = {
+    css$2 = {
       code: ".spin.svelte-1cj2gr0{animation:svelte-1cj2gr0-spin 2s 0s infinite linear}.pulse.svelte-1cj2gr0{animation:svelte-1cj2gr0-spin 1s infinite steps(8)}@keyframes svelte-1cj2gr0-spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}",
       map: null
     };
@@ -5450,7 +5430,7 @@ var init_index_svelte = __esm({
         $$bindings.secondaryOpacity(secondaryOpacity);
       if ($$props.swapOpacity === void 0 && $$bindings.swapOpacity && swapOpacity !== void 0)
         $$bindings.swapOpacity(swapOpacity);
-      $$result.css.add(css$5);
+      $$result.css.add(css$2);
       i2 = icon && icon.icon || [0, 0, "", [], ""];
       s3 = getStyles(style2, size, pull, fw);
       transform = getTransform(scale, translateX, translateY, rotate, flip, 512);
@@ -5517,78 +5497,62 @@ var init_index_svelte = __esm({
       iconName: "xmark",
       icon: [320, 512, [128473, 10005, 10006, 10060, 215, "close", "multiply", "remove", "times"], "f00d", "M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"]
     };
-    faFacebook = {
-      prefix: "fab",
-      iconName: "facebook",
-      icon: [512, 512, [62e3], "f09a", "M504 256C504 119 393 8 256 8S8 119 8 256c0 123.8 90.69 226.4 209.3 245V327.7h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.3 482.4 504 379.8 504 256z"]
-    };
-    faInstagram = {
-      prefix: "fab",
-      iconName: "instagram",
-      icon: [448, 512, [], "f16d", "M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"]
-    };
-    faWhatsapp = {
-      prefix: "fab",
-      iconName: "whatsapp",
-      icon: [448, 512, [], "f232", "M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"]
-    };
-    css$4 = {
-      code: ".container.svelte-7c29n4{padding:1rem 8rem;padding-bottom:10rem}h1.svelte-7c29n4{margin-bottom:1rem}.subtitle.svelte-7c29n4{margin-bottom:1rem}ul.svelte-7c29n4{display:grid;grid-template-columns:1fr 1fr;flex-wrap:wrap;margin-top:2rem;padding:00.8rem;gap:0.5rem}li.svelte-7c29n4{display:grid;grid-template-columns:1fr 90%;margin-bottom:1rem;margin-right:2rem;align-items:center}.icon.svelte-7c29n4{height:3.8rem;width:4.8rem;background:var(--primary-gradient);color:whitesmoke;display:grid;place-items:center;border-radius:0.5rem;font-size:1.1rem;margin-right:1rem}@media screen and (max-width: 768px){.container.svelte-7c29n4{padding:0.8rem;padding-bottom:8rem}ul.svelte-7c29n4{grid-template-columns:1fr}li.svelte-7c29n4{align-items:flex-start}.icon.svelte-7c29n4{width:3.8rem;height:2.8rem}}",
+    css$1 = {
+      code: `.top.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{background:var(--primary-gradient);text-align:center;padding-block:1rem}.top.svelte-6q47zx p.svelte-6q47zx.svelte-6q47zx{color:whitesmoke;font-weight:400}.top.svelte-6q47zx button.svelte-6q47zx.svelte-6q47zx{all:unset;color:whitesmoke;padding:5px 8px;border-radius:0.5rem;border:none;cursor:pointer;margin-right:1rem;margin-top:1rem;background:#ecb62e;color:inherit}.bottom.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{text-align:center}.bottom.svelte-6q47zx p.svelte-6q47zx.svelte-6q47zx{font-size:14px}.socials.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{display:flex;justify-content:center;align-items:center;gap:1rem;margin-block:1rem}.socials.svelte-6q47zx a.svelte-6q47zx.svelte-6q47zx{background:var(--primary-gradient);width:2rem;height:2rem;display:grid;place-items:center;color:whitesmoke;border-radius:50%}.menu.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{display:flex;justify-content:center;align-items:center;gap:1rem;margin-bottom:1rem}.menu.svelte-6q47zx a.svelte-6q47zx.svelte-6q47zx:hover{color:var(--primary)}.menu.svelte-6q47zx a.svelte-6q47zx.svelte-6q47zx::after{content:"|";margin:0 1rem;color:#464646}.menu.svelte-6q47zx li.svelte-6q47zx:last-child a.svelte-6q47zx::after{content:''}@media screen and (max-width: 768px){.container.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{text-align:left}.menu.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{align-items:flex-start;flex-direction:column}.menu.svelte-6q47zx a.svelte-6q47zx.svelte-6q47zx::after{content:''}.socials.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{justify-content:flex-start}.bottom.svelte-6q47zx p.svelte-6q47zx.svelte-6q47zx:last-child{text-align:center}}`,
       map: null
     };
-    Features = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      $$result.css.add(css$4);
-      return `<section class="${"features"}"><div class="${"container svelte-7c29n4"}"><h1 class="${"svelte-7c29n4"}">Fitur Undangan Website</h1>
-            <p class="${"subtitle svelte-7c29n4"}">Merencanakan pernikahan bisa menjadi pengalaman yang menyenangkan sekaligus menegangkan. Solusinya
-                yaitu
-                menggunakan undangan pernikahan online berbentuk website yang memberikan berbagai fitur yang
-                menarik.
-            </p>
-            <ul class="${"svelte-7c29n4"}"><li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faImages }, {}, {})}</div>
-                    <div><h4>Gallery Foto</h4>
-                        <p>Tampilkan foto prewedding kalian di undangan. Bagikan momen indahmu kepada keluarga dan
-                            kerabat.</p></div></li>
-                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faMusic }, {}, {})}</div>
-                    <div><h4>Musik</h4>
-                        <p>Pilih lagu terbaik untuk undangan kalian, agar pembaca akan sekaligus mendengarkan musik
-                            yang kalian tentukan</p></div></li>
-                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faMapLocation }, {}, {})}</div>
-                    <div><h4>Navigasi Lokasi</h4>
-                        <p>Tidak ada kata tersesat, memudahkan tamu kalian menemukan lokasi pernikkahanmu. Hanya
-                            dengan satu tombol.</p></div></li>
-                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faComments }, {}, {})}</div>
-                    <div><h4>Kolom Ucapan</h4>
-                        <p>Kalian dapat membaca ucapan hangat dari saudara maupun kerabat kamu.</p></div></li>
-                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faStopwatch20 }, {}, {})}</div>
-                    <div><h4>Hitung Mundur</h4>
-                        <p>Countdown ditamplikan secara animasi menuju acara pernikahan kalian.</p></div></li>
-                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faFilm }, {}, {})}</div>
-                    <div><h4>Video</h4>
-                        <p>Sisipkan video prewedding kamu. Biarkan saudara dan kerabat melihat kebahagiaanmu
-                            menunggu
-                            hari pernikahanmu.</p></div></li>
-                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faWhatsapp }, {}, {})}</div>
-                    <div><h4>Whatsapp Otomatis</h4>
-                        <p>Kirim undangan sekali klik tanpa ribet. Hanya tuliskan nama tamu dan undangan langsung
-                            tertuju.</p></div></li>
-                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faHeart }, {}, {})}</div>
-                    <div><h4>Cerita Cinta</h4>
-                        <p>Ceritakan kepada tamu undangan tentang cerita cinta kalian dari awal bertemu sampai
-                            akhirnya memutuskan untuk menikah</p></div></li>
-                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faAddressBook }, {}, {})}</div>
-                    <div><h4>Buku Tamu Digital</h4>
-                        <p>Catatan kehadiran dapat dipantau dengan mudah dan lengkap.</p></div></li>
-                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faGift }, {}, {})}</div>
-                    <div><h4>Amplop Digital</h4>
-                        <p>Donasi dapat dikumpulkan baik melalui website maupun di tempat acara.</p></div></li></ul></div>
-    </section>`;
+    Footer = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      $$result.css.add(css$1);
+      return `<footer><div class="${"top svelte-6q47zx"}"><div class="${"container svelte-6q47zx"}"><p class="${"svelte-6q47zx"}">Terima kasih untuk kamu yang sudah membaca isi dari website ini. Semoga kita dapat berbincang lebih lanjut.</p>
+            <button class="${"svelte-6q47zx"}">Hubungi Kami</button></div></div>
+    <div class="${"bottom svelte-6q47zx"}"><div class="${"container svelte-6q47zx"}"><p class="${"svelte-6q47zx"}">Lebih dekat dengan kami :</p>
+            <ul class="${"socials svelte-6q47zx"}"><li class="${"svelte-6q47zx"}"><a href="${"/"}" class="${"svelte-6q47zx"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faFacebook }, {}, {})}</a></li>
+                <li class="${"svelte-6q47zx"}"><a href="${"/"}" class="${"svelte-6q47zx"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faInstagram }, {}, {})}</a></li>
+                <li class="${"svelte-6q47zx"}"><a href="${"/"}" class="${"svelte-6q47zx"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faWhatsapp }, {}, {})}</a></li>
+                <li class="${"svelte-6q47zx"}"><a href="${"/"}" class="${"svelte-6q47zx"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faEnvelope }, {}, {})}</a></li></ul>
+            <ul class="${"menu svelte-6q47zx"}"><li><a href="${"/"}" class="${"svelte-6q47zx"}">Syarat &amp; Ketentuan</a></li>
+                <li><a href="${"/"}" class="${"svelte-6q47zx"}">Tentang Kami</a></li>
+                <li><a href="${"/"}" class="${"svelte-6q47zx"}">Kebijakan Privasi</a></li>
+                <li><a href="${"/"}" class="${"svelte-6q47zx"}">FAQ</a></li></ul>
+            <p class="${"svelte-6q47zx"}">Copyright 2021 - ${escape(new Date().getFullYear())} | <a href="${"/"}"><strong style="${"color: var(--primary)"}">dinvite.id</strong></a> Jasa pembuatan
+            undangan
+            digital website - All rights reserved. <br> self-developed by
+            <strong style="${"color: #666666"}">diditamin.m </strong>from Luwuk Banggai.
+        </p></div></div>
+</footer>`;
     });
-    css$3 = {
+    css3 = {
+      code: '.whatsapp-button.svelte-l0ie32.svelte-l0ie32{position:fixed;bottom:1rem;right:1rem;z-index:999;width:100vw}.icon.svelte-l0ie32.svelte-l0ie32{width:3rem;height:3rem;background-color:#4dc247;position:absolute;right:0;bottom:0;display:grid;place-items:center;font-size:1.8rem;color:whitesmoke;border-radius:50%;cursor:pointer}.container.svelte-l0ie32.svelte-l0ie32{position:absolute;bottom:3.5rem;right:0;width:100vw;max-width:360px;box-shadow:-2px 2px 10px rgb(0 0 0 / 25%);border-radius:12px;overflow-x:hidden;transform:translateY(150%);opacity:0;transition:all 0.35s ease-in-out;z-index:1;padding:0}.container.show.svelte-l0ie32.svelte-l0ie32{transform:translateY(0);opacity:1}.head.svelte-l0ie32.svelte-l0ie32{background:#0a5f54;padding:25px 20px;display:flex;align-items:center;position:relative}.close-icon.svelte-l0ie32.svelte-l0ie32{position:absolute;top:10px;right:1rem;color:whitesmoke;cursor:pointer}.avatar.svelte-l0ie32.svelte-l0ie32{width:50px;height:50px;margin-right:20px;border-radius:25px;background-color:var(--background-variant);display:grid;place-items:center;position:relative}.avatar.svelte-l0ie32.svelte-l0ie32::before{content:"";width:0.8rem;height:0.8rem;background-color:#4dc247;position:absolute;top:0;right:0;border-radius:50%}.avatar.svelte-l0ie32 img.svelte-l0ie32{width:65%;height:65%;object-fit:cover}.head.svelte-l0ie32 .text.svelte-l0ie32{color:whitesmoke}.head.svelte-l0ie32 h4.svelte-l0ie32{font-weight:bold;font-size:1.1rem}.head.svelte-l0ie32 p.svelte-l0ie32{font-size:0.8rem}.body.svelte-l0ie32.svelte-l0ie32{background-image:url(https://katsudoto.id/media/kat/bg-wa-box-fix.jpg);background-position:center;background-size:cover;padding:10px 20px}.chat.svelte-l0ie32.svelte-l0ie32{background-color:whitesmoke;margin:10px 0;padding:10px 15px;border-radius:12px;display:inline-block;text-align:left}.nickname.svelte-l0ie32.svelte-l0ie32{color:#00000075;font-size:14px;margin-bottom:5px;font-weight:700}.chat.svelte-l0ie32 .text.svelte-l0ie32{color:#111;font-size:15px;line-height:1.5}.footer.svelte-l0ie32.svelte-l0ie32{background:#fff;padding:20px;text-align:center}.footer.svelte-l0ie32 .send.svelte-l0ie32{background:#4dc247;padding:10px;display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center;color:#fff;border-radius:50px;margin-bottom:10px;gap:0.5rem}.footer.svelte-l0ie32 p.svelte-l0ie32{font-size:13px;color:#636363;font-style:italic;display:inline-block}@media screen and (max-width: 768px){.container.svelte-l0ie32.svelte-l0ie32{left:1.5rem}}',
+      map: null
+    };
+    WhatsappButton = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      $$result.css.add(css3);
+      return `<div class="${"whatsapp-button svelte-l0ie32"}"><div class="${"icon svelte-l0ie32"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faWhatsapp }, {}, {})}</div>
+    <div class="${"container " + escape("") + " svelte-l0ie32"}"><div class="${"head svelte-l0ie32"}"><div class="${"close-icon svelte-l0ie32"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faXmark }, {}, {})}</div>
+            <div class="${"avatar svelte-l0ie32"}"><img src="${"/images/dinvite.png"}" alt="${""}" class="${"svelte-l0ie32"}"></div>
+            <div class="${"text svelte-l0ie32"}"><h4 class="${"svelte-l0ie32"}">dinvite</h4>
+                <p class="${"svelte-l0ie32"}">online</p></div></div>
+        <div class="${"body svelte-l0ie32"}"><div class="${"chat svelte-l0ie32"}"><div class="${"nickname svelte-l0ie32"}">dinvite</div>
+                <div class="${"text svelte-l0ie32"}">Hai kak, <br> Ada yang bisa kami bantu.?</div></div></div>
+        <div class="${"footer svelte-l0ie32"}"><a class="${"send svelte-l0ie32"}" href="${"https://wa.me/6281354911647"}" target="${"_blank"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faWhatsapp }, {}, {})} Start Chat</a>
+            <p class="${"svelte-l0ie32"}">\u26A1 by
+                <a href="${"/"}" target="${"_blank"}">dinvite.id</a></p></div></div>
+</div>`;
+    });
+  }
+});
+
+// .svelte-kit/output/server/chunks/Pricelist-f607e4bc.js
+var css4, Pricelist;
+var init_Pricelist_f607e4bc = __esm({
+  ".svelte-kit/output/server/chunks/Pricelist-f607e4bc.js"() {
+    init_index_c5e2452c();
+    css4 = {
       code: 'section.svelte-usggce.svelte-usggce{background-color:var(--background-variant);position:relative;margin-top:-10px}h1.svelte-usggce.svelte-usggce{text-align:center}p.svelte-usggce.svelte-usggce{margin-bottom:1rem;text-align:center}.packages.svelte-usggce.svelte-usggce{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-top:2rem;padding-inline:8rem}.package.svelte-usggce.svelte-usggce{padding:1rem;border-radius:10px;border:1px solid #bebebe;position:relative;overflow:hidden}.head.svelte-usggce.svelte-usggce{position:absolute;background:var(--primary-gradient);width:100%;height:3rem;left:0;top:0;display:grid;place-items:center;color:whitesmoke;font-weight:bold;text-transform:uppercase}.head.svelte-usggce span.svelte-usggce{color:#fcc437;font-size:0.8rem;margin-top:-1rem}ul.svelte-usggce.svelte-usggce{margin-top:3rem}li.svelte-usggce.svelte-usggce{text-align:left;position:relative;padding-left:1.8rem;margin-bottom:1rem;font-size:0.8rem;border-bottom:1px solid #bebebe;padding-bottom:0.3rem}li.svelte-usggce.svelte-usggce::before{content:"\\2713";position:absolute;left:0;top:0;color:#eff0f0;font-size:1rem;color:var(--primary)}h3.svelte-usggce.svelte-usggce{font-weight:bold;text-transform:uppercase;font-size:1.3rem;color:var(--primary)}.footer.svelte-usggce.svelte-usggce{text-align:center}.footer.svelte-usggce span.svelte-usggce{color:#858585;margin-left:0.8rem;text-decoration:line-through;text-decoration-thickness:0.5px}.footer.svelte-usggce p.svelte-usggce{font-size:0.7rem;margin-top:0.5rem}button.svelte-usggce.svelte-usggce{all:unset;background:var(--primary-gradient);color:whitesmoke;padding:5px 8px;border-radius:0.5rem;border:none;cursor:pointer;margin-right:1rem}@media screen and (max-width: 768px){.container.svelte-usggce.svelte-usggce{padding:0.8rem}.packages.svelte-usggce.svelte-usggce{grid-template-columns:1fr;padding-inline:1rem}h1.svelte-usggce.svelte-usggce,p.svelte-usggce.svelte-usggce{text-align:left}}',
       map: null
     };
     Pricelist = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      $$result.css.add(css$3);
+      $$result.css.add(css4);
       return `<section class="${"price-lists svelte-usggce"}"><div class="${"container svelte-usggce"}"><h1 class="${"svelte-usggce"}">Harga Bersahabat Sesuai Dengan Kebutuhan</h1>
             <p class="${"svelte-usggce"}">Semua paket undangan website sudah mendapatkan halaman website, e-guestbook, fitur bahasa, navigasi
                 peta, quotes, &amp; dukungan teknis</p>
@@ -5641,58 +5605,118 @@ var init_index_svelte = __esm({
                         <p class="${"svelte-usggce"}">*Pemesanan Minimal 1 Bulan sebelum Hari H</p></div></div></div></div>
     </section>`;
     });
-    css$2 = {
-      code: `.top.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{background:var(--primary-gradient);text-align:center;padding-block:1rem}.top.svelte-6q47zx p.svelte-6q47zx.svelte-6q47zx{color:whitesmoke;font-weight:400}.top.svelte-6q47zx button.svelte-6q47zx.svelte-6q47zx{all:unset;color:whitesmoke;padding:5px 8px;border-radius:0.5rem;border:none;cursor:pointer;margin-right:1rem;margin-top:1rem;background:#ecb62e;color:inherit}.bottom.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{text-align:center}.bottom.svelte-6q47zx p.svelte-6q47zx.svelte-6q47zx{font-size:14px}.socials.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{display:flex;justify-content:center;align-items:center;gap:1rem;margin-block:1rem}.socials.svelte-6q47zx a.svelte-6q47zx.svelte-6q47zx{background:var(--primary-gradient);width:2rem;height:2rem;display:grid;place-items:center;color:whitesmoke;border-radius:50%}.menu.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{display:flex;justify-content:center;align-items:center;gap:1rem;margin-bottom:1rem}.menu.svelte-6q47zx a.svelte-6q47zx.svelte-6q47zx:hover{color:var(--primary)}.menu.svelte-6q47zx a.svelte-6q47zx.svelte-6q47zx::after{content:"|";margin:0 1rem;color:#464646}.menu.svelte-6q47zx li.svelte-6q47zx:last-child a.svelte-6q47zx::after{content:''}@media screen and (max-width: 768px){.container.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{text-align:left}.menu.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{align-items:flex-start;flex-direction:column}.menu.svelte-6q47zx a.svelte-6q47zx.svelte-6q47zx::after{content:''}.socials.svelte-6q47zx.svelte-6q47zx.svelte-6q47zx{justify-content:flex-start}.bottom.svelte-6q47zx p.svelte-6q47zx.svelte-6q47zx:last-child{text-align:center}}`,
+  }
+});
+
+// .svelte-kit/output/server/entries/pages/index.svelte.js
+var index_svelte_exports = {};
+__export(index_svelte_exports, {
+  default: () => Routes
+});
+var css$32, Hero, css$22, Wave, css$12, About, css5, Features, Routes;
+var init_index_svelte = __esm({
+  ".svelte-kit/output/server/entries/pages/index.svelte.js"() {
+    init_index_c5e2452c();
+    init_WhatsappButton_9d53bed0();
+    init_index_es_638ce7e7();
+    init_Pricelist_f607e4bc();
+    css$32 = {
+      code: "section.svelte-1k43s9b.svelte-1k43s9b{min-height:calc(100vh - 4rem);margin-top:4rem}.container.svelte-1k43s9b.svelte-1k43s9b{display:flex;align-items:center;min-height:inherit}.content.svelte-1k43s9b.svelte-1k43s9b{width:55%}h1.svelte-1k43s9b.svelte-1k43s9b{font-size:3rem}p.svelte-1k43s9b.svelte-1k43s9b{color:var(--primary);font-size:1.3rem;font-weight:300}.buttons.svelte-1k43s9b.svelte-1k43s9b{margin-top:1rem}.buttons.svelte-1k43s9b a.svelte-1k43s9b{background:var(--primary-gradient);color:whitesmoke;padding:8px 8px;border-radius:0.5rem;cursor:pointer;margin-right:0.5rem}.image.svelte-1k43s9b.svelte-1k43s9b{width:45%;height:100%;position:relative}.image.svelte-1k43s9b img.svelte-1k43s9b{position:absolute;width:150%;height:auto;top:-400px}@media screen and (max-width: 768px){.container.svelte-1k43s9b.svelte-1k43s9b{display:flex;flex-direction:column;min-height:auto;justify-content:center;align-items:center}.content.svelte-1k43s9b.svelte-1k43s9b{width:100%;margin-top:1rem}h1.svelte-1k43s9b.svelte-1k43s9b{font-size:2rem}.image.svelte-1k43s9b.svelte-1k43s9b{width:100%}.image.svelte-1k43s9b img.svelte-1k43s9b{position:static;top:0px;margin-left:-10rem;margin-top:1rem}}",
       map: null
     };
-    Footer = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      $$result.css.add(css$2);
-      return `<footer><div class="${"top svelte-6q47zx"}"><div class="${"container svelte-6q47zx"}"><p class="${"svelte-6q47zx"}">Terima kasih untuk kamu yang sudah membaca isi dari website ini. Semoga kita dapat berbincang lebih lanjut.</p>
-            <button class="${"svelte-6q47zx"}">Hubungi Kami</button></div></div>
-    <div class="${"bottom svelte-6q47zx"}"><div class="${"container svelte-6q47zx"}"><p class="${"svelte-6q47zx"}">Lebih dekat dengan kami :</p>
-            <ul class="${"socials svelte-6q47zx"}"><li class="${"svelte-6q47zx"}"><a href="${"/"}" class="${"svelte-6q47zx"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faFacebook }, {}, {})}</a></li>
-                <li class="${"svelte-6q47zx"}"><a href="${"/"}" class="${"svelte-6q47zx"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faInstagram }, {}, {})}</a></li>
-                <li class="${"svelte-6q47zx"}"><a href="${"/"}" class="${"svelte-6q47zx"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faWhatsapp }, {}, {})}</a></li>
-                <li class="${"svelte-6q47zx"}"><a href="${"/"}" class="${"svelte-6q47zx"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faEnvelope }, {}, {})}</a></li></ul>
-            <ul class="${"menu svelte-6q47zx"}"><li><a href="${"/"}" class="${"svelte-6q47zx"}">Syarat &amp; Ketentuan</a></li>
-                <li><a href="${"/"}" class="${"svelte-6q47zx"}">Tentang Kami</a></li>
-                <li><a href="${"/"}" class="${"svelte-6q47zx"}">Kebijakan Privasi</a></li>
-                <li><a href="${"/"}" class="${"svelte-6q47zx"}">FAQ</a></li></ul>
-            <p class="${"svelte-6q47zx"}">Copyright 2021 - ${escape(new Date().getFullYear())} | <a href="${"/"}"><strong style="${"color: var(--primary)"}">dinvite.id</strong></a> Jasa pembuatan
-            undangan
-            digital website - All rights reserved. <br> self-developed by
-            <strong style="${"color: #666666"}">diditamin.m </strong>from Luwuk Banggai.
-        </p></div></div>
-</footer>`;
+    Hero = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      $$result.css.add(css$32);
+      return `<section class="${"svelte-1k43s9b"}"><div class="${"container svelte-1k43s9b"}"><div class="${"content svelte-1k43s9b"}"><h1 class="${"svelte-1k43s9b"}">Undangan Pernikahan Digital Website</h1>
+            <p class="${"svelte-1k43s9b"}">solusi undangan pernikahan website kamu jadi lebih menarik &amp; berkesan</p>
+            <div class="${"buttons svelte-1k43s9b"}"><a class="${"order svelte-1k43s9b"}" href="${"/"}">Pesan Sekarang</a>
+                <a class="${"pricelist svelte-1k43s9b"}" href="${"/"}">Harga</a></div></div>
+        <div class="${"image svelte-1k43s9b"}"><img src="${"/images/hero.png"}" alt="${""}" class="${"svelte-1k43s9b"}"></div></div>
+</section>`;
     });
-    css$1 = {
-      code: '.whatsapp-button.svelte-qxs19q.svelte-qxs19q{position:fixed;bottom:1rem;right:1rem;z-index:999}.icon.svelte-qxs19q.svelte-qxs19q{width:3rem;height:3rem;background-color:#4dc247;position:absolute;right:0;bottom:0;display:grid;place-items:center;font-size:1.8rem;color:whitesmoke;border-radius:50%;cursor:pointer}.container.svelte-qxs19q.svelte-qxs19q{position:absolute;bottom:3.5rem;right:0;width:100vw;max-width:360px;box-shadow:-2px 2px 10px rgb(0 0 0 / 25%);border-radius:12px;overflow-x:hidden;transform:translateY(150%);opacity:0;transition:all 0.35s ease-in-out;z-index:1;padding:0}.container.show.svelte-qxs19q.svelte-qxs19q{transform:translateY(0);opacity:1}.head.svelte-qxs19q.svelte-qxs19q{background:#0a5f54;padding:25px 20px;display:flex;align-items:center;position:relative}.close-icon.svelte-qxs19q.svelte-qxs19q{position:absolute;top:10px;right:1rem;color:whitesmoke;cursor:pointer}.avatar.svelte-qxs19q.svelte-qxs19q{width:50px;height:50px;margin-right:20px;border-radius:25px;background-color:var(--background-variant);display:grid;place-items:center;position:relative}.avatar.svelte-qxs19q.svelte-qxs19q::before{content:"";width:0.8rem;height:0.8rem;background-color:#4dc247;position:absolute;top:0;right:0;border-radius:50%}.avatar.svelte-qxs19q img.svelte-qxs19q{width:65%;height:65%;object-fit:cover}.head.svelte-qxs19q .text.svelte-qxs19q{color:whitesmoke}.head.svelte-qxs19q h4.svelte-qxs19q{font-weight:bold;font-size:1.1rem}.head.svelte-qxs19q p.svelte-qxs19q{font-size:0.8rem}.body.svelte-qxs19q.svelte-qxs19q{background-image:url(https://katsudoto.id/media/kat/bg-wa-box-fix.jpg);background-position:center;background-size:cover;padding:10px 20px}.chat.svelte-qxs19q.svelte-qxs19q{background-color:whitesmoke;margin:10px 0;padding:10px 15px;border-radius:12px;display:inline-block;text-align:left}.nickname.svelte-qxs19q.svelte-qxs19q{color:#00000075;font-size:14px;margin-bottom:5px;font-weight:700}.chat.svelte-qxs19q .text.svelte-qxs19q{color:#111;font-size:15px;line-height:1.5}.footer.svelte-qxs19q.svelte-qxs19q{background:#fff;padding:20px;text-align:center}.footer.svelte-qxs19q .send.svelte-qxs19q{background:#4dc247;padding:10px;display:flex;align-items:center;justify-content:center;text-decoration:none;text-align:center;color:#fff;border-radius:50px;margin-bottom:10px;gap:0.5rem}.footer.svelte-qxs19q p.svelte-qxs19q{font-size:13px;color:#636363;font-style:italic;display:inline-block}',
+    css$22 = {
+      code: ".top-wave.svelte-1u3j808{margin-top:-100px;position:relative;z-index:1}.bottom-wave.svelte-1u3j808{transform:rotate(180deg);margin-top:-10px;position:relative;z-index:1}@media screen and (max-width: 768px){.top-wave.svelte-1u3j808,.bottom-wave.svelte-1u3j808{width:200%;margin-left:-3rem}}",
       map: null
     };
-    WhatsappButton = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      $$result.css.add(css$1);
-      return `<div class="${"whatsapp-button svelte-qxs19q"}"><div class="${"icon svelte-qxs19q"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faWhatsapp }, {}, {})}</div>
-    <div class="${"container " + escape("") + " svelte-qxs19q"}"><div class="${"head svelte-qxs19q"}"><div class="${"close-icon svelte-qxs19q"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faXmark }, {}, {})}</div>
-            <div class="${"avatar svelte-qxs19q"}"><img src="${"/dinvite.png"}" alt="${""}" class="${"svelte-qxs19q"}"></div>
-            <div class="${"text svelte-qxs19q"}"><h4 class="${"svelte-qxs19q"}">dinvite</h4>
-                <p class="${"svelte-qxs19q"}">online</p></div></div>
-        <div class="${"body svelte-qxs19q"}"><div class="${"chat svelte-qxs19q"}"><div class="${"nickname svelte-qxs19q"}">dinvite</div>
-                <div class="${"text svelte-qxs19q"}">Hai kak, <br> Ada yang bisa kami bantu.?</div></div></div>
-        <div class="${"footer svelte-qxs19q"}"><a class="${"send svelte-qxs19q"}" href="${"https://wa.me/6281354911647"}" target="${"_blank"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faWhatsapp }, {}, {})} Start Chat</a>
-            <p class="${"svelte-qxs19q"}">\u26A1 by
-                <a href="${"/"}" target="${"_blank"}">dinvite.id</a></p></div></div>
+    Wave = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      let { position } = $$props;
+      if ($$props.position === void 0 && $$bindings.position && position !== void 0)
+        $$bindings.position(position);
+      $$result.css.add(css$22);
+      return `<div class="${escape(null_to_empty(position == "top" ? "top-wave" : "bottom-wave")) + " svelte-1u3j808"}"><svg width="${"100%"}" preserveAspectRatio="${"none"}" height="${"100px"}" viewBox="${"0 0 1300 100"}" version="${"1.1"}" xmlns="${"http://www.w3.org/2000/svg"}" xmlns:xlink="${"http://www.w3.org/1999/xlink"}"><path d="${"M1300,0 L1300,99.9998042 L0,99.9998042 L0,60.1910374 C549.576968,-84.3633414 541.584175,191.147059 1300,0 Z"}" fill="${"#e9ebee"}"></path></svg>
 </div>`;
     });
-    css3 = {
-      code: "main.svelte-1667zqe{max-width:100vw;overflow-x:hidden}",
+    css$12 = {
+      code: "section.svelte-1fhthwy{background-color:var(--background-variant);margin-top:-10px;position:relative}h1.svelte-1fhthwy{margin-bottom:1rem}button.svelte-1fhthwy{all:unset;background:var(--primary-gradient);color:whitesmoke;padding:5px 8px;border-radius:0.5rem;border:none;cursor:pointer;margin-right:1rem;margin-top:1rem}",
       map: null
     };
+    About = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      $$result.css.add(css$12);
+      return `<section class="${"svelte-1fhthwy"}"><div class="${"container"}"><h1 class="${"svelte-1fhthwy"}">Mengapa dinvite ??</h1>
+            <p><strong style="${"color: var(--primary)"}">dinvite</strong> adalah penyedia layanan pembuatan undangan
+                digital berbasis website. Kami
+                memberikan sebuah
+                layanan mudah, hemat, dan praktis kepada calon pengantin dalam mengirimkan informasi
+                pernikahan/undangan berupa link. Undangan online dari <strong style="${"color: var(--primary)"}">dinvite</strong>
+                juga menawarkan berbagai fitur
+                menarik.</p>
+            <button class="${"button svelte-1fhthwy"}">Hubungi Kami</button></div>
+</section>`;
+    });
+    css5 = {
+      code: ".container.svelte-7c29n4{padding:1rem 8rem;padding-bottom:10rem}h1.svelte-7c29n4{margin-bottom:1rem}.subtitle.svelte-7c29n4{margin-bottom:1rem}ul.svelte-7c29n4{display:grid;grid-template-columns:1fr 1fr;flex-wrap:wrap;margin-top:2rem;padding:00.8rem;gap:0.5rem}li.svelte-7c29n4{display:grid;grid-template-columns:1fr 90%;margin-bottom:1rem;margin-right:2rem;align-items:center}.icon.svelte-7c29n4{height:3.8rem;width:4.8rem;background:var(--primary-gradient);color:whitesmoke;display:grid;place-items:center;border-radius:0.5rem;font-size:1.1rem;margin-right:1rem}@media screen and (max-width: 768px){.container.svelte-7c29n4{padding:0.8rem;padding-bottom:8rem}ul.svelte-7c29n4{grid-template-columns:1fr}li.svelte-7c29n4{align-items:flex-start}.icon.svelte-7c29n4{width:3.8rem;height:2.8rem}}",
+      map: null
+    };
+    Features = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      $$result.css.add(css5);
+      return `<section class="${"features"}"><div class="${"container svelte-7c29n4"}"><h1 class="${"svelte-7c29n4"}">Fitur Undangan Website</h1>
+            <p class="${"subtitle svelte-7c29n4"}">Merencanakan pernikahan bisa menjadi pengalaman yang menyenangkan sekaligus menegangkan. Solusinya
+                yaitu
+                menggunakan undangan pernikahan online berbentuk website yang memberikan berbagai fitur yang
+                menarik.
+            </p>
+            <ul class="${"svelte-7c29n4"}"><li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faImages }, {}, {})}</div>
+                    <div><h4>Gallery Foto</h4>
+                        <p>Tampilkan foto prewedding kalian di undangan. Bagikan momen indahmu kepada keluarga dan
+                            kerabat.</p></div></li>
+                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faMusic }, {}, {})}</div>
+                    <div><h4>Musik</h4>
+                        <p>Pilih lagu terbaik untuk undangan kalian, agar pembaca akan sekaligus mendengarkan musik
+                            yang kalian tentukan</p></div></li>
+                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faMapLocation }, {}, {})}</div>
+                    <div><h4>Navigasi Lokasi</h4>
+                        <p>Tidak ada kata tersesat, memudahkan tamu kalian menemukan lokasi pernikkahanmu. Hanya
+                            dengan satu tombol.</p></div></li>
+                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faComments }, {}, {})}</div>
+                    <div><h4>Kolom Ucapan</h4>
+                        <p>Kalian dapat membaca ucapan hangat dari saudara maupun kerabat kamu.</p></div></li>
+                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faStopwatch20 }, {}, {})}</div>
+                    <div><h4>Hitung Mundur</h4>
+                        <p>Countdown ditamplikan secara animasi menuju acara pernikahan kalian.</p></div></li>
+                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faFilm }, {}, {})}</div>
+                    <div><h4>Video</h4>
+                        <p>Sisipkan video prewedding kamu. Biarkan saudara dan kerabat melihat kebahagiaanmu
+                            menunggu
+                            hari pernikahanmu.</p></div></li>
+                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faWhatsapp }, {}, {})}</div>
+                    <div><h4>Whatsapp Otomatis</h4>
+                        <p>Kirim undangan sekali klik tanpa ribet. Hanya tuliskan nama tamu dan undangan langsung
+                            tertuju.</p></div></li>
+                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faHeart }, {}, {})}</div>
+                    <div><h4>Cerita Cinta</h4>
+                        <p>Ceritakan kepada tamu undangan tentang cerita cinta kalian dari awal bertemu sampai
+                            akhirnya memutuskan untuk menikah</p></div></li>
+                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faAddressBook }, {}, {})}</div>
+                    <div><h4>Buku Tamu Digital</h4>
+                        <p>Catatan kehadiran dapat dipantau dengan mudah dan lengkap.</p></div></li>
+                <li class="${"svelte-7c29n4"}"><div class="${"icon svelte-7c29n4"}">${validate_component(Fa$1, "Fa").$$render($$result, { icon: faGift }, {}, {})}</div>
+                    <div><h4>Amplop Digital</h4>
+                        <p>Donasi dapat dikumpulkan baik melalui website maupun di tempat acara.</p></div></li></ul></div>
+    </section>`;
+    });
     Routes = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-      $$result.css.add(css3);
-      return `${$$result.head += `<meta name="${"theme-color"}" content="${"#5a9fbf"}" data-svelte="svelte-r7jw34">${$$result.title = `<title>Dinvite</title>`, ""}`, ""}
+      return `${$$result.head += `${$$result.title = `<title>Dinvite</title>`, ""}`, ""}
 
-
-<main class="${"svelte-1667zqe"}">${validate_component(Header, "Header").$$render($$result, {}, {}, {})}
+<main>${validate_component(Header, "Header").$$render($$result, {}, {}, {})}
     ${validate_component(Hero, "Hero").$$render($$result, {}, {}, {})}
     ${validate_component(Wave, "Wave").$$render($$result, { position: "top" }, {}, {})}
     ${validate_component(About, "About").$$render($$result, {}, {}, {})}
@@ -5701,6 +5725,54 @@ var init_index_svelte = __esm({
     ${validate_component(Wave, "Wave").$$render($$result, { position: "top" }, {}, {})}
     ${validate_component(Pricelist, "Pricelist").$$render($$result, {}, {}, {})}
     ${validate_component(Footer, "Footer").$$render($$result, {}, {}, {})}
+    ${validate_component(WhatsappButton, "WhatsappButton").$$render($$result, {}, {}, {})}</main>`;
+    });
+  }
+});
+
+// .svelte-kit/output/server/nodes/4.js
+var __exports3 = {};
+__export(__exports3, {
+  css: () => css6,
+  entry: () => entry3,
+  index: () => index3,
+  js: () => js3,
+  module: () => index_svelte_exports
+});
+var index3, entry3, js3, css6;
+var init__3 = __esm({
+  ".svelte-kit/output/server/nodes/4.js"() {
+    init_index_svelte();
+    index3 = 4;
+    entry3 = "pages/index.svelte-9542a6fc.js";
+    js3 = ["pages/index.svelte-9542a6fc.js", "chunks/index-b83f0d2a.js", "chunks/WhatsappButton-b1573f4c.js", "chunks/index.es-638ce7e7.js", "chunks/Pricelist-eddc6c5a.js"];
+    css6 = ["assets/pages/index.svelte-6cbe309c.css", "assets/WhatsappButton-00b0970a.css", "assets/Pricelist-7bce2c6a.css"];
+  }
+});
+
+// .svelte-kit/output/server/entries/pages/blog.svelte.js
+var blog_svelte_exports = {};
+__export(blog_svelte_exports, {
+  default: () => Blog
+});
+var css7, Blog;
+var init_blog_svelte = __esm({
+  ".svelte-kit/output/server/entries/pages/blog.svelte.js"() {
+    init_index_c5e2452c();
+    init_WhatsappButton_9d53bed0();
+    init_index_es_638ce7e7();
+    css7 = {
+      code: "section.svelte-ki485w{min-height:50vh}",
+      map: null
+    };
+    Blog = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      $$result.css.add(css7);
+      return `${$$result.head += `${$$result.title = `<title>Dinvite - Blog</title>`, ""}`, ""}
+
+
+<main>${validate_component(Header, "Header").$$render($$result, {}, {}, {})}
+    <section class="${"svelte-ki485w"}"></section>
+    ${validate_component(Footer, "Footer").$$render($$result, {}, {}, {})}
     ${validate_component(WhatsappButton, "WhatsappButton").$$render($$result, {}, {}, {})}
 </main>`;
     });
@@ -5708,22 +5780,2489 @@ var init_index_svelte = __esm({
 });
 
 // .svelte-kit/output/server/nodes/2.js
-var __exports3 = {};
-__export(__exports3, {
-  css: () => css4,
-  entry: () => entry3,
-  index: () => index3,
-  js: () => js3,
-  module: () => index_svelte_exports
+var __exports4 = {};
+__export(__exports4, {
+  css: () => css8,
+  entry: () => entry4,
+  index: () => index4,
+  js: () => js4,
+  module: () => blog_svelte_exports
 });
-var index3, entry3, js3, css4;
-var init__3 = __esm({
+var index4, entry4, js4, css8;
+var init__4 = __esm({
   ".svelte-kit/output/server/nodes/2.js"() {
-    init_index_svelte();
-    index3 = 2;
-    entry3 = "pages/index.svelte-70d60683.js";
-    js3 = ["pages/index.svelte-70d60683.js", "chunks/index-1114af13.js"];
-    css4 = ["assets/pages/index.svelte-649738f3.css"];
+    init_blog_svelte();
+    index4 = 2;
+    entry4 = "pages/blog.svelte-55df9e3d.js";
+    js4 = ["pages/blog.svelte-55df9e3d.js", "chunks/index-b83f0d2a.js", "chunks/WhatsappButton-b1573f4c.js", "chunks/index.es-638ce7e7.js"];
+    css8 = ["assets/pages/blog.svelte-f00ed4d7.css", "assets/WhatsappButton-00b0970a.css"];
+  }
+});
+
+// .svelte-kit/output/server/entries/pages/harga.svelte.js
+var harga_svelte_exports = {};
+__export(harga_svelte_exports, {
+  default: () => Harga
+});
+var css9, Harga;
+var init_harga_svelte = __esm({
+  ".svelte-kit/output/server/entries/pages/harga.svelte.js"() {
+    init_index_c5e2452c();
+    init_WhatsappButton_9d53bed0();
+    init_Pricelist_f607e4bc();
+    init_index_es_638ce7e7();
+    css9 = {
+      code: "section.svelte-mqfb8m{min-height:50vh;margin-top:5rem}",
+      map: null
+    };
+    Harga = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      $$result.css.add(css9);
+      return `${$$result.head += `${$$result.title = `<title>Dinvite - Harga</title>`, ""}`, ""}
+
+
+<main>${validate_component(Header, "Header").$$render($$result, {}, {}, {})}
+    <section class="${"svelte-mqfb8m"}">${validate_component(Pricelist, "Pricelist").$$render($$result, {}, {}, {})}</section>
+    ${validate_component(Footer, "Footer").$$render($$result, {}, {}, {})}
+    ${validate_component(WhatsappButton, "WhatsappButton").$$render($$result, {}, {}, {})}
+</main>`;
+    });
+  }
+});
+
+// .svelte-kit/output/server/nodes/3.js
+var __exports5 = {};
+__export(__exports5, {
+  css: () => css10,
+  entry: () => entry5,
+  index: () => index5,
+  js: () => js5,
+  module: () => harga_svelte_exports
+});
+var index5, entry5, js5, css10;
+var init__5 = __esm({
+  ".svelte-kit/output/server/nodes/3.js"() {
+    init_harga_svelte();
+    index5 = 3;
+    entry5 = "pages/harga.svelte-907fa774.js";
+    js5 = ["pages/harga.svelte-907fa774.js", "chunks/index-b83f0d2a.js", "chunks/WhatsappButton-b1573f4c.js", "chunks/index.es-638ce7e7.js", "chunks/Pricelist-eddc6c5a.js"];
+    css10 = ["assets/pages/harga.svelte-366dbec9.css", "assets/WhatsappButton-00b0970a.css", "assets/Pricelist-7bce2c6a.css"];
+  }
+});
+
+// .svelte-kit/output/server/entries/pages/tema/index.svelte.js
+var index_svelte_exports2 = {};
+__export(index_svelte_exports2, {
+  default: () => Tema
+});
+var css11, Tema;
+var init_index_svelte2 = __esm({
+  ".svelte-kit/output/server/entries/pages/tema/index.svelte.js"() {
+    init_index_c5e2452c();
+    init_WhatsappButton_9d53bed0();
+    init_index_es_638ce7e7();
+    css11 = {
+      code: "section.svelte-ki485w{min-height:50vh}",
+      map: null
+    };
+    Tema = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      $$result.css.add(css11);
+      return `${$$result.head += `${$$result.title = `<title>Dinvite - Tema</title>`, ""}`, ""}
+
+
+<main>${validate_component(Header, "Header").$$render($$result, {}, {}, {})}
+    <section class="${"svelte-ki485w"}"></section>
+    ${validate_component(Footer, "Footer").$$render($$result, {}, {}, {})}
+    ${validate_component(WhatsappButton, "WhatsappButton").$$render($$result, {}, {}, {})}
+</main>`;
+    });
+  }
+});
+
+// .svelte-kit/output/server/nodes/5.js
+var __exports6 = {};
+__export(__exports6, {
+  css: () => css12,
+  entry: () => entry6,
+  index: () => index6,
+  js: () => js6,
+  module: () => index_svelte_exports2
+});
+var index6, entry6, js6, css12;
+var init__6 = __esm({
+  ".svelte-kit/output/server/nodes/5.js"() {
+    init_index_svelte2();
+    index6 = 5;
+    entry6 = "pages/tema/index.svelte-8a0aea11.js";
+    js6 = ["pages/tema/index.svelte-8a0aea11.js", "chunks/index-b83f0d2a.js", "chunks/WhatsappButton-b1573f4c.js", "chunks/index.es-638ce7e7.js"];
+    css12 = ["assets/pages/blog.svelte-f00ed4d7.css", "assets/WhatsappButton-00b0970a.css"];
+  }
+});
+
+// node_modules/lightgallery/lightgallery.umd.js
+var require_lightgallery_umd = __commonJS({
+  "node_modules/lightgallery/lightgallery.umd.js"(exports, module2) {
+    (function(global3, factory) {
+      typeof exports === "object" && typeof module2 !== "undefined" ? module2.exports = factory() : typeof define === "function" && define.amd ? define(factory) : (global3 = typeof globalThis !== "undefined" ? globalThis : global3 || self, global3.lightGallery = factory());
+    })(exports, function() {
+      "use strict";
+      var __assign = function() {
+        __assign = Object.assign || function __assign2(t2) {
+          for (var s3, i2 = 1, n = arguments.length; i2 < n; i2++) {
+            s3 = arguments[i2];
+            for (var p in s3)
+              if (Object.prototype.hasOwnProperty.call(s3, p))
+                t2[p] = s3[p];
+          }
+          return t2;
+        };
+        return __assign.apply(this, arguments);
+      };
+      function __spreadArrays() {
+        for (var s3 = 0, i2 = 0, il = arguments.length; i2 < il; i2++)
+          s3 += arguments[i2].length;
+        for (var r2 = Array(s3), k = 0, i2 = 0; i2 < il; i2++)
+          for (var a = arguments[i2], j = 0, jl = a.length; j < jl; j++, k++)
+            r2[k] = a[j];
+        return r2;
+      }
+      var lGEvents = {
+        afterAppendSlide: "lgAfterAppendSlide",
+        init: "lgInit",
+        hasVideo: "lgHasVideo",
+        containerResize: "lgContainerResize",
+        updateSlides: "lgUpdateSlides",
+        afterAppendSubHtml: "lgAfterAppendSubHtml",
+        beforeOpen: "lgBeforeOpen",
+        afterOpen: "lgAfterOpen",
+        slideItemLoad: "lgSlideItemLoad",
+        beforeSlide: "lgBeforeSlide",
+        afterSlide: "lgAfterSlide",
+        posterClick: "lgPosterClick",
+        dragStart: "lgDragStart",
+        dragMove: "lgDragMove",
+        dragEnd: "lgDragEnd",
+        beforeNextSlide: "lgBeforeNextSlide",
+        beforePrevSlide: "lgBeforePrevSlide",
+        beforeClose: "lgBeforeClose",
+        afterClose: "lgAfterClose",
+        rotateLeft: "lgRotateLeft",
+        rotateRight: "lgRotateRight",
+        flipHorizontal: "lgFlipHorizontal",
+        flipVertical: "lgFlipVertical",
+        autoplay: "lgAutoplay",
+        autoplayStart: "lgAutoplayStart",
+        autoplayStop: "lgAutoplayStop"
+      };
+      var lightGalleryCoreSettings = {
+        mode: "lg-slide",
+        easing: "ease",
+        speed: 400,
+        licenseKey: "0000-0000-000-0000",
+        height: "100%",
+        width: "100%",
+        addClass: "",
+        startClass: "lg-start-zoom",
+        backdropDuration: 300,
+        container: "",
+        startAnimationDuration: 400,
+        zoomFromOrigin: true,
+        hideBarsDelay: 0,
+        showBarsAfter: 1e4,
+        slideDelay: 0,
+        supportLegacyBrowser: true,
+        allowMediaOverlap: false,
+        videoMaxSize: "1280-720",
+        loadYouTubePoster: true,
+        defaultCaptionHeight: 0,
+        ariaLabelledby: "",
+        ariaDescribedby: "",
+        resetScrollPosition: true,
+        hideScrollbar: false,
+        closable: true,
+        swipeToClose: true,
+        closeOnTap: true,
+        showCloseIcon: true,
+        showMaximizeIcon: false,
+        loop: true,
+        escKey: true,
+        keyPress: true,
+        trapFocus: true,
+        controls: true,
+        slideEndAnimation: true,
+        hideControlOnEnd: false,
+        mousewheel: false,
+        getCaptionFromTitleOrAlt: true,
+        appendSubHtmlTo: ".lg-sub-html",
+        subHtmlSelectorRelative: false,
+        preload: 2,
+        numberOfSlideItemsInDom: 10,
+        selector: "",
+        selectWithin: "",
+        nextHtml: "",
+        prevHtml: "",
+        index: 0,
+        iframeWidth: "100%",
+        iframeHeight: "100%",
+        iframeMaxWidth: "100%",
+        iframeMaxHeight: "100%",
+        download: true,
+        counter: true,
+        appendCounterTo: ".lg-toolbar",
+        swipeThreshold: 50,
+        enableSwipe: true,
+        enableDrag: true,
+        dynamic: false,
+        dynamicEl: [],
+        extraProps: [],
+        exThumbImage: "",
+        isMobile: void 0,
+        mobileSettings: {
+          controls: false,
+          showCloseIcon: false,
+          download: false
+        },
+        plugins: [],
+        strings: {
+          closeGallery: "Close gallery",
+          toggleMaximize: "Toggle maximize",
+          previousSlide: "Previous slide",
+          nextSlide: "Next slide",
+          download: "Download",
+          playVideo: "Play video"
+        }
+      };
+      function initLgPolyfills() {
+        (function() {
+          if (typeof window.CustomEvent === "function")
+            return false;
+          function CustomEvent2(event, params) {
+            params = params || {
+              bubbles: false,
+              cancelable: false,
+              detail: null
+            };
+            var evt = document.createEvent("CustomEvent");
+            evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+            return evt;
+          }
+          window.CustomEvent = CustomEvent2;
+        })();
+        (function() {
+          if (!Element.prototype.matches) {
+            Element.prototype.matches = Element.prototype.msMatchesSelector || Element.prototype.webkitMatchesSelector;
+          }
+        })();
+      }
+      var lgQuery = function() {
+        function lgQuery2(selector) {
+          this.cssVenderPrefixes = [
+            "TransitionDuration",
+            "TransitionTimingFunction",
+            "Transform",
+            "Transition"
+          ];
+          this.selector = this._getSelector(selector);
+          this.firstElement = this._getFirstEl();
+          return this;
+        }
+        lgQuery2.generateUUID = function() {
+          return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+            var r2 = Math.random() * 16 | 0, v = c == "x" ? r2 : r2 & 3 | 8;
+            return v.toString(16);
+          });
+        };
+        lgQuery2.prototype._getSelector = function(selector, context) {
+          if (context === void 0) {
+            context = document;
+          }
+          if (typeof selector !== "string") {
+            return selector;
+          }
+          context = context || document;
+          var fl = selector.substring(0, 1);
+          if (fl === "#") {
+            return context.querySelector(selector);
+          } else {
+            return context.querySelectorAll(selector);
+          }
+        };
+        lgQuery2.prototype._each = function(func) {
+          if (!this.selector) {
+            return this;
+          }
+          if (this.selector.length !== void 0) {
+            [].forEach.call(this.selector, func);
+          } else {
+            func(this.selector, 0);
+          }
+          return this;
+        };
+        lgQuery2.prototype._setCssVendorPrefix = function(el, cssProperty, value) {
+          var property = cssProperty.replace(/-([a-z])/gi, function(s3, group1) {
+            return group1.toUpperCase();
+          });
+          if (this.cssVenderPrefixes.indexOf(property) !== -1) {
+            el.style[property.charAt(0).toLowerCase() + property.slice(1)] = value;
+            el.style["webkit" + property] = value;
+            el.style["moz" + property] = value;
+            el.style["ms" + property] = value;
+            el.style["o" + property] = value;
+          } else {
+            el.style[property] = value;
+          }
+        };
+        lgQuery2.prototype._getFirstEl = function() {
+          if (this.selector && this.selector.length !== void 0) {
+            return this.selector[0];
+          } else {
+            return this.selector;
+          }
+        };
+        lgQuery2.prototype.isEventMatched = function(event, eventName) {
+          var eventNamespace = eventName.split(".");
+          return event.split(".").filter(function(e2) {
+            return e2;
+          }).every(function(e2) {
+            return eventNamespace.indexOf(e2) !== -1;
+          });
+        };
+        lgQuery2.prototype.attr = function(attr, value) {
+          if (value === void 0) {
+            if (!this.firstElement) {
+              return "";
+            }
+            return this.firstElement.getAttribute(attr);
+          }
+          this._each(function(el) {
+            el.setAttribute(attr, value);
+          });
+          return this;
+        };
+        lgQuery2.prototype.find = function(selector) {
+          return $LG(this._getSelector(selector, this.selector));
+        };
+        lgQuery2.prototype.first = function() {
+          if (this.selector && this.selector.length !== void 0) {
+            return $LG(this.selector[0]);
+          } else {
+            return $LG(this.selector);
+          }
+        };
+        lgQuery2.prototype.eq = function(index8) {
+          return $LG(this.selector[index8]);
+        };
+        lgQuery2.prototype.parent = function() {
+          return $LG(this.selector.parentElement);
+        };
+        lgQuery2.prototype.get = function() {
+          return this._getFirstEl();
+        };
+        lgQuery2.prototype.removeAttr = function(attributes) {
+          var attrs = attributes.split(" ");
+          this._each(function(el) {
+            attrs.forEach(function(attr) {
+              return el.removeAttribute(attr);
+            });
+          });
+          return this;
+        };
+        lgQuery2.prototype.wrap = function(className) {
+          if (!this.firstElement) {
+            return this;
+          }
+          var wrapper = document.createElement("div");
+          wrapper.className = className;
+          this.firstElement.parentNode.insertBefore(wrapper, this.firstElement);
+          this.firstElement.parentNode.removeChild(this.firstElement);
+          wrapper.appendChild(this.firstElement);
+          return this;
+        };
+        lgQuery2.prototype.addClass = function(classNames) {
+          if (classNames === void 0) {
+            classNames = "";
+          }
+          this._each(function(el) {
+            classNames.split(" ").forEach(function(className) {
+              if (className) {
+                el.classList.add(className);
+              }
+            });
+          });
+          return this;
+        };
+        lgQuery2.prototype.removeClass = function(classNames) {
+          this._each(function(el) {
+            classNames.split(" ").forEach(function(className) {
+              if (className) {
+                el.classList.remove(className);
+              }
+            });
+          });
+          return this;
+        };
+        lgQuery2.prototype.hasClass = function(className) {
+          if (!this.firstElement) {
+            return false;
+          }
+          return this.firstElement.classList.contains(className);
+        };
+        lgQuery2.prototype.hasAttribute = function(attribute) {
+          if (!this.firstElement) {
+            return false;
+          }
+          return this.firstElement.hasAttribute(attribute);
+        };
+        lgQuery2.prototype.toggleClass = function(className) {
+          if (!this.firstElement) {
+            return this;
+          }
+          if (this.hasClass(className)) {
+            this.removeClass(className);
+          } else {
+            this.addClass(className);
+          }
+          return this;
+        };
+        lgQuery2.prototype.css = function(property, value) {
+          var _this = this;
+          this._each(function(el) {
+            _this._setCssVendorPrefix(el, property, value);
+          });
+          return this;
+        };
+        lgQuery2.prototype.on = function(events, listener) {
+          var _this = this;
+          if (!this.selector) {
+            return this;
+          }
+          events.split(" ").forEach(function(event) {
+            if (!Array.isArray(lgQuery2.eventListeners[event])) {
+              lgQuery2.eventListeners[event] = [];
+            }
+            lgQuery2.eventListeners[event].push(listener);
+            _this.selector.addEventListener(event.split(".")[0], listener);
+          });
+          return this;
+        };
+        lgQuery2.prototype.once = function(event, listener) {
+          var _this = this;
+          this.on(event, function() {
+            _this.off(event);
+            listener(event);
+          });
+          return this;
+        };
+        lgQuery2.prototype.off = function(event) {
+          var _this = this;
+          if (!this.selector) {
+            return this;
+          }
+          Object.keys(lgQuery2.eventListeners).forEach(function(eventName) {
+            if (_this.isEventMatched(event, eventName)) {
+              lgQuery2.eventListeners[eventName].forEach(function(listener) {
+                _this.selector.removeEventListener(eventName.split(".")[0], listener);
+              });
+              lgQuery2.eventListeners[eventName] = [];
+            }
+          });
+          return this;
+        };
+        lgQuery2.prototype.trigger = function(event, detail) {
+          if (!this.firstElement) {
+            return this;
+          }
+          var customEvent = new CustomEvent(event.split(".")[0], {
+            detail: detail || null
+          });
+          this.firstElement.dispatchEvent(customEvent);
+          return this;
+        };
+        lgQuery2.prototype.load = function(url) {
+          var _this = this;
+          fetch(url).then(function(res) {
+            return res.text();
+          }).then(function(html) {
+            _this.selector.innerHTML = html;
+          });
+          return this;
+        };
+        lgQuery2.prototype.html = function(html) {
+          if (html === void 0) {
+            if (!this.firstElement) {
+              return "";
+            }
+            return this.firstElement.innerHTML;
+          }
+          this._each(function(el) {
+            el.innerHTML = html;
+          });
+          return this;
+        };
+        lgQuery2.prototype.append = function(html) {
+          this._each(function(el) {
+            if (typeof html === "string") {
+              el.insertAdjacentHTML("beforeend", html);
+            } else {
+              el.appendChild(html);
+            }
+          });
+          return this;
+        };
+        lgQuery2.prototype.prepend = function(html) {
+          this._each(function(el) {
+            el.insertAdjacentHTML("afterbegin", html);
+          });
+          return this;
+        };
+        lgQuery2.prototype.remove = function() {
+          this._each(function(el) {
+            el.parentNode.removeChild(el);
+          });
+          return this;
+        };
+        lgQuery2.prototype.empty = function() {
+          this._each(function(el) {
+            el.innerHTML = "";
+          });
+          return this;
+        };
+        lgQuery2.prototype.scrollTop = function(scrollTop) {
+          if (scrollTop !== void 0) {
+            document.body.scrollTop = scrollTop;
+            document.documentElement.scrollTop = scrollTop;
+            return this;
+          } else {
+            return window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+          }
+        };
+        lgQuery2.prototype.scrollLeft = function(scrollLeft) {
+          if (scrollLeft !== void 0) {
+            document.body.scrollLeft = scrollLeft;
+            document.documentElement.scrollLeft = scrollLeft;
+            return this;
+          } else {
+            return window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft || 0;
+          }
+        };
+        lgQuery2.prototype.offset = function() {
+          if (!this.firstElement) {
+            return {
+              left: 0,
+              top: 0
+            };
+          }
+          var rect = this.firstElement.getBoundingClientRect();
+          var bodyMarginLeft = $LG("body").style().marginLeft;
+          return {
+            left: rect.left - parseFloat(bodyMarginLeft) + this.scrollLeft(),
+            top: rect.top + this.scrollTop()
+          };
+        };
+        lgQuery2.prototype.style = function() {
+          if (!this.firstElement) {
+            return {};
+          }
+          return this.firstElement.currentStyle || window.getComputedStyle(this.firstElement);
+        };
+        lgQuery2.prototype.width = function() {
+          var style = this.style();
+          return this.firstElement.clientWidth - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight);
+        };
+        lgQuery2.prototype.height = function() {
+          var style = this.style();
+          return this.firstElement.clientHeight - parseFloat(style.paddingTop) - parseFloat(style.paddingBottom);
+        };
+        lgQuery2.eventListeners = {};
+        return lgQuery2;
+      }();
+      function $LG(selector) {
+        initLgPolyfills();
+        return new lgQuery(selector);
+      }
+      var defaultDynamicOptions = [
+        "src",
+        "sources",
+        "subHtml",
+        "subHtmlUrl",
+        "html",
+        "video",
+        "poster",
+        "slideName",
+        "responsive",
+        "srcset",
+        "sizes",
+        "iframe",
+        "downloadUrl",
+        "download",
+        "width",
+        "facebookShareUrl",
+        "tweetText",
+        "iframeTitle",
+        "twitterShareUrl",
+        "pinterestShareUrl",
+        "pinterestText",
+        "fbHtml",
+        "disqusIdentifier",
+        "disqusUrl"
+      ];
+      function convertToData(attr) {
+        if (attr === "href") {
+          return "src";
+        }
+        attr = attr.replace("data-", "");
+        attr = attr.charAt(0).toLowerCase() + attr.slice(1);
+        attr = attr.replace(/-([a-z])/g, function(g) {
+          return g[1].toUpperCase();
+        });
+        return attr;
+      }
+      var utils2 = {
+        getSize: function(el, container, spacing, defaultLgSize) {
+          if (spacing === void 0) {
+            spacing = 0;
+          }
+          var LGel = $LG(el);
+          var lgSize = LGel.attr("data-lg-size") || defaultLgSize;
+          if (!lgSize) {
+            return;
+          }
+          var isResponsiveSizes = lgSize.split(",");
+          if (isResponsiveSizes[1]) {
+            var wWidth = window.innerWidth;
+            for (var i2 = 0; i2 < isResponsiveSizes.length; i2++) {
+              var size_1 = isResponsiveSizes[i2];
+              var responsiveWidth = parseInt(size_1.split("-")[2], 10);
+              if (responsiveWidth > wWidth) {
+                lgSize = size_1;
+                break;
+              }
+              if (i2 === isResponsiveSizes.length - 1) {
+                lgSize = size_1;
+              }
+            }
+          }
+          var size = lgSize.split("-");
+          var width = parseInt(size[0], 10);
+          var height = parseInt(size[1], 10);
+          var cWidth = container.width();
+          var cHeight = container.height() - spacing;
+          var maxWidth = Math.min(cWidth, width);
+          var maxHeight = Math.min(cHeight, height);
+          var ratio = Math.min(maxWidth / width, maxHeight / height);
+          return { width: width * ratio, height: height * ratio };
+        },
+        getTransform: function(el, container, top, bottom, imageSize) {
+          if (!imageSize) {
+            return;
+          }
+          var LGel = $LG(el).find("img").first();
+          if (!LGel.get()) {
+            return;
+          }
+          var containerRect = container.get().getBoundingClientRect();
+          var wWidth = containerRect.width;
+          var wHeight = container.height() - (top + bottom);
+          var elWidth = LGel.width();
+          var elHeight = LGel.height();
+          var elStyle = LGel.style();
+          var x2 = (wWidth - elWidth) / 2 - LGel.offset().left + (parseFloat(elStyle.paddingLeft) || 0) + (parseFloat(elStyle.borderLeft) || 0) + $LG(window).scrollLeft() + containerRect.left;
+          var y = (wHeight - elHeight) / 2 - LGel.offset().top + (parseFloat(elStyle.paddingTop) || 0) + (parseFloat(elStyle.borderTop) || 0) + $LG(window).scrollTop() + top;
+          var scX = elWidth / imageSize.width;
+          var scY = elHeight / imageSize.height;
+          var transform = "translate3d(" + (x2 *= -1) + "px, " + (y *= -1) + "px, 0) scale3d(" + scX + ", " + scY + ", 1)";
+          return transform;
+        },
+        getIframeMarkup: function(iframeWidth, iframeHeight, iframeMaxWidth, iframeMaxHeight, src, iframeTitle) {
+          var title = iframeTitle ? 'title="' + iframeTitle + '"' : "";
+          return '<div class="lg-video-cont lg-has-iframe" style="width:' + iframeWidth + "; max-width:" + iframeMaxWidth + "; height: " + iframeHeight + "; max-height:" + iframeMaxHeight + '">\n                    <iframe class="lg-object" frameborder="0" ' + title + ' src="' + src + '"  allowfullscreen="true"></iframe>\n                </div>';
+        },
+        getImgMarkup: function(index8, src, altAttr, srcset, sizes, sources) {
+          var srcsetAttr = srcset ? 'srcset="' + srcset + '"' : "";
+          var sizesAttr = sizes ? 'sizes="' + sizes + '"' : "";
+          var imgMarkup = "<img " + altAttr + " " + srcsetAttr + "  " + sizesAttr + ' class="lg-object lg-image" data-index="' + index8 + '" src="' + src + '" />';
+          var sourceTag = "";
+          if (sources) {
+            var sourceObj = typeof sources === "string" ? JSON.parse(sources) : sources;
+            sourceTag = sourceObj.map(function(source) {
+              var attrs = "";
+              Object.keys(source).forEach(function(key2) {
+                attrs += " " + key2 + '="' + source[key2] + '"';
+              });
+              return "<source " + attrs + "></source>";
+            });
+          }
+          return "" + sourceTag + imgMarkup;
+        },
+        getResponsiveSrc: function(srcItms) {
+          var rsWidth = [];
+          var rsSrc = [];
+          var src = "";
+          for (var i2 = 0; i2 < srcItms.length; i2++) {
+            var _src = srcItms[i2].split(" ");
+            if (_src[0] === "") {
+              _src.splice(0, 1);
+            }
+            rsSrc.push(_src[0]);
+            rsWidth.push(_src[1]);
+          }
+          var wWidth = window.innerWidth;
+          for (var j = 0; j < rsWidth.length; j++) {
+            if (parseInt(rsWidth[j], 10) > wWidth) {
+              src = rsSrc[j];
+              break;
+            }
+          }
+          return src;
+        },
+        isImageLoaded: function(img) {
+          if (!img)
+            return false;
+          if (!img.complete) {
+            return false;
+          }
+          if (img.naturalWidth === 0) {
+            return false;
+          }
+          return true;
+        },
+        getVideoPosterMarkup: function(_poster, dummyImg, videoContStyle, playVideoString, _isVideo) {
+          var videoClass = "";
+          if (_isVideo && _isVideo.youtube) {
+            videoClass = "lg-has-youtube";
+          } else if (_isVideo && _isVideo.vimeo) {
+            videoClass = "lg-has-vimeo";
+          } else {
+            videoClass = "lg-has-html5";
+          }
+          return '<div class="lg-video-cont ' + videoClass + '" style="' + videoContStyle + '">\n                <div class="lg-video-play-button">\n                <svg\n                    viewBox="0 0 20 20"\n                    preserveAspectRatio="xMidYMid"\n                    focusable="false"\n                    aria-labelledby="' + playVideoString + '"\n                    role="img"\n                    class="lg-video-play-icon"\n                >\n                    <title>' + playVideoString + '</title>\n                    <polygon class="lg-video-play-icon-inner" points="1,0 20,10 1,20"></polygon>\n                </svg>\n                <svg class="lg-video-play-icon-bg" viewBox="0 0 50 50" focusable="false">\n                    <circle cx="50%" cy="50%" r="20"></circle></svg>\n                <svg class="lg-video-play-icon-circle" viewBox="0 0 50 50" focusable="false">\n                    <circle cx="50%" cy="50%" r="20"></circle>\n                </svg>\n            </div>\n            ' + (dummyImg || "") + '\n            <img class="lg-object lg-video-poster" src="' + _poster + '" />\n        </div>';
+        },
+        getFocusableElements: function(container) {
+          var elements = container.querySelectorAll('a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])');
+          var visibleElements = [].filter.call(elements, function(element) {
+            var style = window.getComputedStyle(element);
+            return style.display !== "none" && style.visibility !== "hidden";
+          });
+          return visibleElements;
+        },
+        getDynamicOptions: function(items, extraProps, getCaptionFromTitleOrAlt, exThumbImage) {
+          var dynamicElements = [];
+          var availableDynamicOptions = __spreadArrays(defaultDynamicOptions, extraProps);
+          [].forEach.call(items, function(item) {
+            var dynamicEl = {};
+            for (var i2 = 0; i2 < item.attributes.length; i2++) {
+              var attr = item.attributes[i2];
+              if (attr.specified) {
+                var dynamicAttr = convertToData(attr.name);
+                var label = "";
+                if (availableDynamicOptions.indexOf(dynamicAttr) > -1) {
+                  label = dynamicAttr;
+                }
+                if (label) {
+                  dynamicEl[label] = attr.value;
+                }
+              }
+            }
+            var currentItem = $LG(item);
+            var alt = currentItem.find("img").first().attr("alt");
+            var title = currentItem.attr("title");
+            var thumb = exThumbImage ? currentItem.attr(exThumbImage) : currentItem.find("img").first().attr("src");
+            dynamicEl.thumb = thumb;
+            if (getCaptionFromTitleOrAlt && !dynamicEl.subHtml) {
+              dynamicEl.subHtml = title || alt || "";
+            }
+            dynamicEl.alt = alt || title || "";
+            dynamicElements.push(dynamicEl);
+          });
+          return dynamicElements;
+        },
+        isMobile: function() {
+          return /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+        },
+        isVideo: function(src, isHTML5VIdeo, index8) {
+          if (!src) {
+            if (isHTML5VIdeo) {
+              return {
+                html5: true
+              };
+            } else {
+              console.error("lightGallery :- data-src is not provided on slide item " + (index8 + 1) + ". Please make sure the selector property is properly configured. More info - https://www.lightgalleryjs.com/demos/html-markup/");
+              return;
+            }
+          }
+          var youtube = src.match(/\/\/(?:www\.)?youtu(?:\.be|be\.com|be-nocookie\.com)\/(?:watch\?v=|embed\/)?([a-z0-9\-\_\%]+)([\&|?][\S]*)*/i);
+          var vimeo = src.match(/\/\/(?:www\.)?(?:player\.)?vimeo.com\/(?:video\/)?([0-9a-z\-_]+)(.*)?/i);
+          var wistia = src.match(/https?:\/\/(.+)?(wistia\.com|wi\.st)\/(medias|embed)\/([0-9a-z\-_]+)(.*)/);
+          if (youtube) {
+            return {
+              youtube
+            };
+          } else if (vimeo) {
+            return {
+              vimeo
+            };
+          } else if (wistia) {
+            return {
+              wistia
+            };
+          }
+        }
+      };
+      var lgId = 0;
+      var LightGallery = function() {
+        function LightGallery2(element, options) {
+          this.lgOpened = false;
+          this.index = 0;
+          this.plugins = [];
+          this.lGalleryOn = false;
+          this.lgBusy = false;
+          this.currentItemsInDom = [];
+          this.prevScrollTop = 0;
+          this.bodyPaddingRight = 0;
+          this.isDummyImageRemoved = false;
+          this.dragOrSwipeEnabled = false;
+          this.mediaContainerPosition = {
+            top: 0,
+            bottom: 0
+          };
+          if (!element) {
+            return this;
+          }
+          lgId++;
+          this.lgId = lgId;
+          this.el = element;
+          this.LGel = $LG(element);
+          this.generateSettings(options);
+          this.buildModules();
+          if (this.settings.dynamic && this.settings.dynamicEl !== void 0 && !Array.isArray(this.settings.dynamicEl)) {
+            throw "When using dynamic mode, you must also define dynamicEl as an Array.";
+          }
+          this.galleryItems = this.getItems();
+          this.normalizeSettings();
+          this.init();
+          this.validateLicense();
+          return this;
+        }
+        LightGallery2.prototype.generateSettings = function(options) {
+          this.settings = __assign(__assign({}, lightGalleryCoreSettings), options);
+          if (this.settings.isMobile && typeof this.settings.isMobile === "function" ? this.settings.isMobile() : utils2.isMobile()) {
+            var mobileSettings = __assign(__assign({}, this.settings.mobileSettings), this.settings.mobileSettings);
+            this.settings = __assign(__assign({}, this.settings), mobileSettings);
+          }
+        };
+        LightGallery2.prototype.normalizeSettings = function() {
+          if (this.settings.slideEndAnimation) {
+            this.settings.hideControlOnEnd = false;
+          }
+          if (!this.settings.closable) {
+            this.settings.swipeToClose = false;
+          }
+          this.zoomFromOrigin = this.settings.zoomFromOrigin;
+          if (this.settings.dynamic) {
+            this.zoomFromOrigin = false;
+          }
+          if (!this.settings.container) {
+            this.settings.container = document.body;
+          }
+          this.settings.preload = Math.min(this.settings.preload, this.galleryItems.length);
+        };
+        LightGallery2.prototype.init = function() {
+          var _this = this;
+          this.addSlideVideoInfo(this.galleryItems);
+          this.buildStructure();
+          this.LGel.trigger(lGEvents.init, {
+            instance: this
+          });
+          if (this.settings.keyPress) {
+            this.keyPress();
+          }
+          setTimeout(function() {
+            _this.enableDrag();
+            _this.enableSwipe();
+            _this.triggerPosterClick();
+          }, 50);
+          this.arrow();
+          if (this.settings.mousewheel) {
+            this.mousewheel();
+          }
+          if (!this.settings.dynamic) {
+            this.openGalleryOnItemClick();
+          }
+        };
+        LightGallery2.prototype.openGalleryOnItemClick = function() {
+          var _this = this;
+          var _loop_1 = function(index9) {
+            var element = this_1.items[index9];
+            var $element = $LG(element);
+            var uuid = lgQuery.generateUUID();
+            $element.attr("data-lg-id", uuid).on("click.lgcustom-item-" + uuid, function(e2) {
+              e2.preventDefault();
+              var currentItemIndex = _this.settings.index || index9;
+              _this.openGallery(currentItemIndex, element);
+            });
+          };
+          var this_1 = this;
+          for (var index8 = 0; index8 < this.items.length; index8++) {
+            _loop_1(index8);
+          }
+        };
+        LightGallery2.prototype.buildModules = function() {
+          var _this = this;
+          this.settings.plugins.forEach(function(plugin) {
+            _this.plugins.push(new plugin(_this, $LG));
+          });
+        };
+        LightGallery2.prototype.validateLicense = function() {
+          if (!this.settings.licenseKey) {
+            console.error("Please provide a valid license key");
+          } else if (this.settings.licenseKey === "0000-0000-000-0000") {
+            console.warn("lightGallery: " + this.settings.licenseKey + " license key is not valid for production use");
+          }
+        };
+        LightGallery2.prototype.getSlideItem = function(index8) {
+          return $LG(this.getSlideItemId(index8));
+        };
+        LightGallery2.prototype.getSlideItemId = function(index8) {
+          return "#lg-item-" + this.lgId + "-" + index8;
+        };
+        LightGallery2.prototype.getIdName = function(id) {
+          return id + "-" + this.lgId;
+        };
+        LightGallery2.prototype.getElementById = function(id) {
+          return $LG("#" + this.getIdName(id));
+        };
+        LightGallery2.prototype.manageSingleSlideClassName = function() {
+          if (this.galleryItems.length < 2) {
+            this.outer.addClass("lg-single-item");
+          } else {
+            this.outer.removeClass("lg-single-item");
+          }
+        };
+        LightGallery2.prototype.buildStructure = function() {
+          var _this = this;
+          var container = this.$container && this.$container.get();
+          if (container) {
+            return;
+          }
+          var controls = "";
+          var subHtmlCont = "";
+          if (this.settings.controls) {
+            controls = '<button type="button" id="' + this.getIdName("lg-prev") + '" aria-label="' + this.settings.strings["previousSlide"] + '" class="lg-prev lg-icon"> ' + this.settings.prevHtml + ' </button>\n                <button type="button" id="' + this.getIdName("lg-next") + '" aria-label="' + this.settings.strings["nextSlide"] + '" class="lg-next lg-icon"> ' + this.settings.nextHtml + " </button>";
+          }
+          if (this.settings.appendSubHtmlTo !== ".lg-item") {
+            subHtmlCont = '<div class="lg-sub-html" role="status" aria-live="polite"></div>';
+          }
+          var addClasses = "";
+          if (this.settings.allowMediaOverlap) {
+            addClasses += "lg-media-overlap ";
+          }
+          var ariaLabelledby = this.settings.ariaLabelledby ? 'aria-labelledby="' + this.settings.ariaLabelledby + '"' : "";
+          var ariaDescribedby = this.settings.ariaDescribedby ? 'aria-describedby="' + this.settings.ariaDescribedby + '"' : "";
+          var containerClassName = "lg-container " + this.settings.addClass + " " + (document.body !== this.settings.container ? "lg-inline" : "");
+          var closeIcon = this.settings.closable && this.settings.showCloseIcon ? '<button type="button" aria-label="' + this.settings.strings["closeGallery"] + '" id="' + this.getIdName("lg-close") + '" class="lg-close lg-icon"></button>' : "";
+          var maximizeIcon = this.settings.showMaximizeIcon ? '<button type="button" aria-label="' + this.settings.strings["toggleMaximize"] + '" id="' + this.getIdName("lg-maximize") + '" class="lg-maximize lg-icon"></button>' : "";
+          var template2 = '\n        <div class="' + containerClassName + '" id="' + this.getIdName("lg-container") + '" tabindex="-1" aria-modal="true" ' + ariaLabelledby + " " + ariaDescribedby + ' role="dialog"\n        >\n            <div id="' + this.getIdName("lg-backdrop") + '" class="lg-backdrop"></div>\n\n            <div id="' + this.getIdName("lg-outer") + '" class="lg-outer lg-use-css3 lg-css3 lg-hide-items ' + addClasses + ' ">\n\n              <div id="' + this.getIdName("lg-content") + '" class="lg-content">\n                <div id="' + this.getIdName("lg-inner") + '" class="lg-inner">\n                </div>\n                ' + controls + '\n              </div>\n                <div id="' + this.getIdName("lg-toolbar") + '" class="lg-toolbar lg-group">\n                    ' + maximizeIcon + "\n                    " + closeIcon + "\n                    </div>\n                    " + (this.settings.appendSubHtmlTo === ".lg-outer" ? subHtmlCont : "") + '\n                <div id="' + this.getIdName("lg-components") + '" class="lg-components">\n                    ' + (this.settings.appendSubHtmlTo === ".lg-sub-html" ? subHtmlCont : "") + "\n                </div>\n            </div>\n        </div>\n        ";
+          $LG(this.settings.container).append(template2);
+          if (document.body !== this.settings.container) {
+            $LG(this.settings.container).css("position", "relative");
+          }
+          this.outer = this.getElementById("lg-outer");
+          this.$lgComponents = this.getElementById("lg-components");
+          this.$backdrop = this.getElementById("lg-backdrop");
+          this.$container = this.getElementById("lg-container");
+          this.$inner = this.getElementById("lg-inner");
+          this.$content = this.getElementById("lg-content");
+          this.$toolbar = this.getElementById("lg-toolbar");
+          this.$backdrop.css("transition-duration", this.settings.backdropDuration + "ms");
+          var outerClassNames = this.settings.mode + " ";
+          this.manageSingleSlideClassName();
+          if (this.settings.enableDrag) {
+            outerClassNames += "lg-grab ";
+          }
+          this.outer.addClass(outerClassNames);
+          this.$inner.css("transition-timing-function", this.settings.easing);
+          this.$inner.css("transition-duration", this.settings.speed + "ms");
+          if (this.settings.download) {
+            this.$toolbar.append('<a id="' + this.getIdName("lg-download") + '" target="_blank" rel="noopener" aria-label="' + this.settings.strings["download"] + '" download class="lg-download lg-icon"></a>');
+          }
+          this.counter();
+          $LG(window).on("resize.lg.global" + this.lgId + " orientationchange.lg.global" + this.lgId, function() {
+            _this.refreshOnResize();
+          });
+          this.hideBars();
+          this.manageCloseGallery();
+          this.toggleMaximize();
+          this.initModules();
+        };
+        LightGallery2.prototype.refreshOnResize = function() {
+          if (this.lgOpened) {
+            var currentGalleryItem = this.galleryItems[this.index];
+            var __slideVideoInfo = currentGalleryItem.__slideVideoInfo;
+            this.mediaContainerPosition = this.getMediaContainerPosition();
+            var _a = this.mediaContainerPosition, top_1 = _a.top, bottom = _a.bottom;
+            this.currentImageSize = utils2.getSize(this.items[this.index], this.outer, top_1 + bottom, __slideVideoInfo && this.settings.videoMaxSize);
+            if (__slideVideoInfo) {
+              this.resizeVideoSlide(this.index, this.currentImageSize);
+            }
+            if (this.zoomFromOrigin && !this.isDummyImageRemoved) {
+              var imgStyle = this.getDummyImgStyles(this.currentImageSize);
+              this.outer.find(".lg-current .lg-dummy-img").first().attr("style", imgStyle);
+            }
+            this.LGel.trigger(lGEvents.containerResize);
+          }
+        };
+        LightGallery2.prototype.resizeVideoSlide = function(index8, imageSize) {
+          var lgVideoStyle = this.getVideoContStyle(imageSize);
+          var currentSlide = this.getSlideItem(index8);
+          currentSlide.find(".lg-video-cont").attr("style", lgVideoStyle);
+        };
+        LightGallery2.prototype.updateSlides = function(items, index8) {
+          if (this.index > items.length - 1) {
+            this.index = items.length - 1;
+          }
+          if (items.length === 1) {
+            this.index = 0;
+          }
+          if (!items.length) {
+            this.closeGallery();
+            return;
+          }
+          var currentSrc = this.galleryItems[index8].src;
+          this.galleryItems = items;
+          this.updateControls();
+          this.$inner.empty();
+          this.currentItemsInDom = [];
+          var _index = 0;
+          this.galleryItems.some(function(galleryItem, itemIndex) {
+            if (galleryItem.src === currentSrc) {
+              _index = itemIndex;
+              return true;
+            }
+            return false;
+          });
+          this.currentItemsInDom = this.organizeSlideItems(_index, -1);
+          this.loadContent(_index, true);
+          this.getSlideItem(_index).addClass("lg-current");
+          this.index = _index;
+          this.updateCurrentCounter(_index);
+          this.LGel.trigger(lGEvents.updateSlides);
+        };
+        LightGallery2.prototype.getItems = function() {
+          this.items = [];
+          if (!this.settings.dynamic) {
+            if (this.settings.selector === "this") {
+              this.items.push(this.el);
+            } else if (this.settings.selector) {
+              if (typeof this.settings.selector === "string") {
+                if (this.settings.selectWithin) {
+                  var selectWithin = $LG(this.settings.selectWithin);
+                  this.items = selectWithin.find(this.settings.selector).get();
+                } else {
+                  this.items = this.el.querySelectorAll(this.settings.selector);
+                }
+              } else {
+                this.items = this.settings.selector;
+              }
+            } else {
+              this.items = this.el.children;
+            }
+            return utils2.getDynamicOptions(this.items, this.settings.extraProps, this.settings.getCaptionFromTitleOrAlt, this.settings.exThumbImage);
+          } else {
+            return this.settings.dynamicEl || [];
+          }
+        };
+        LightGallery2.prototype.shouldHideScrollbar = function() {
+          return this.settings.hideScrollbar && document.body === this.settings.container;
+        };
+        LightGallery2.prototype.hideScrollbar = function() {
+          if (!this.shouldHideScrollbar()) {
+            return;
+          }
+          this.bodyPaddingRight = parseFloat($LG("body").style().paddingRight);
+          var bodyRect = document.documentElement.getBoundingClientRect();
+          var scrollbarWidth = window.innerWidth - bodyRect.width;
+          $LG(document.body).css("padding-right", scrollbarWidth + this.bodyPaddingRight + "px");
+          $LG(document.body).addClass("lg-overlay-open");
+        };
+        LightGallery2.prototype.resetScrollBar = function() {
+          if (!this.shouldHideScrollbar()) {
+            return;
+          }
+          $LG(document.body).css("padding-right", this.bodyPaddingRight + "px");
+          $LG(document.body).removeClass("lg-overlay-open");
+        };
+        LightGallery2.prototype.openGallery = function(index8, element) {
+          var _this = this;
+          if (index8 === void 0) {
+            index8 = this.settings.index;
+          }
+          if (this.lgOpened)
+            return;
+          this.lgOpened = true;
+          this.outer.removeClass("lg-hide-items");
+          this.hideScrollbar();
+          this.$container.addClass("lg-show");
+          var itemsToBeInsertedToDom = this.getItemsToBeInsertedToDom(index8, index8);
+          this.currentItemsInDom = itemsToBeInsertedToDom;
+          var items = "";
+          itemsToBeInsertedToDom.forEach(function(item) {
+            items = items + ('<div id="' + item + '" class="lg-item"></div>');
+          });
+          this.$inner.append(items);
+          this.addHtml(index8);
+          var transform = "";
+          this.mediaContainerPosition = this.getMediaContainerPosition();
+          var _a = this.mediaContainerPosition, top = _a.top, bottom = _a.bottom;
+          if (!this.settings.allowMediaOverlap) {
+            this.setMediaContainerPosition(top, bottom);
+          }
+          var __slideVideoInfo = this.galleryItems[index8].__slideVideoInfo;
+          if (this.zoomFromOrigin && element) {
+            this.currentImageSize = utils2.getSize(element, this.outer, top + bottom, __slideVideoInfo && this.settings.videoMaxSize);
+            transform = utils2.getTransform(element, this.outer, top, bottom, this.currentImageSize);
+          }
+          if (!this.zoomFromOrigin || !transform) {
+            this.outer.addClass(this.settings.startClass);
+            this.getSlideItem(index8).removeClass("lg-complete");
+          }
+          var timeout = this.settings.zoomFromOrigin ? 100 : this.settings.backdropDuration;
+          setTimeout(function() {
+            _this.outer.addClass("lg-components-open");
+          }, timeout);
+          this.index = index8;
+          this.LGel.trigger(lGEvents.beforeOpen);
+          this.getSlideItem(index8).addClass("lg-current");
+          this.lGalleryOn = false;
+          this.prevScrollTop = $LG(window).scrollTop();
+          setTimeout(function() {
+            if (_this.zoomFromOrigin && transform) {
+              var currentSlide_1 = _this.getSlideItem(index8);
+              currentSlide_1.css("transform", transform);
+              setTimeout(function() {
+                currentSlide_1.addClass("lg-start-progress lg-start-end-progress").css("transition-duration", _this.settings.startAnimationDuration + "ms");
+                _this.outer.addClass("lg-zoom-from-image");
+              });
+              setTimeout(function() {
+                currentSlide_1.css("transform", "translate3d(0, 0, 0)");
+              }, 100);
+            }
+            setTimeout(function() {
+              _this.$backdrop.addClass("in");
+              _this.$container.addClass("lg-show-in");
+            }, 10);
+            setTimeout(function() {
+              if (_this.settings.trapFocus && document.body === _this.settings.container) {
+                _this.trapFocus();
+              }
+            }, _this.settings.backdropDuration + 50);
+            if (!_this.zoomFromOrigin || !transform) {
+              setTimeout(function() {
+                _this.outer.addClass("lg-visible");
+              }, _this.settings.backdropDuration);
+            }
+            _this.slide(index8, false, false, false);
+            _this.LGel.trigger(lGEvents.afterOpen);
+          });
+          if (document.body === this.settings.container) {
+            $LG("html").addClass("lg-on");
+          }
+        };
+        LightGallery2.prototype.getMediaContainerPosition = function() {
+          if (this.settings.allowMediaOverlap) {
+            return {
+              top: 0,
+              bottom: 0
+            };
+          }
+          var top = this.$toolbar.get().clientHeight || 0;
+          var subHtml = this.outer.find(".lg-components .lg-sub-html").get();
+          var captionHeight = this.settings.defaultCaptionHeight || subHtml && subHtml.clientHeight || 0;
+          var thumbContainer = this.outer.find(".lg-thumb-outer").get();
+          var thumbHeight = thumbContainer ? thumbContainer.clientHeight : 0;
+          var bottom = thumbHeight + captionHeight;
+          return {
+            top,
+            bottom
+          };
+        };
+        LightGallery2.prototype.setMediaContainerPosition = function(top, bottom) {
+          if (top === void 0) {
+            top = 0;
+          }
+          if (bottom === void 0) {
+            bottom = 0;
+          }
+          this.$content.css("top", top + "px").css("bottom", bottom + "px");
+        };
+        LightGallery2.prototype.hideBars = function() {
+          var _this = this;
+          setTimeout(function() {
+            _this.outer.removeClass("lg-hide-items");
+            if (_this.settings.hideBarsDelay > 0) {
+              _this.outer.on("mousemove.lg click.lg touchstart.lg", function() {
+                _this.outer.removeClass("lg-hide-items");
+                clearTimeout(_this.hideBarTimeout);
+                _this.hideBarTimeout = setTimeout(function() {
+                  _this.outer.addClass("lg-hide-items");
+                }, _this.settings.hideBarsDelay);
+              });
+              _this.outer.trigger("mousemove.lg");
+            }
+          }, this.settings.showBarsAfter);
+        };
+        LightGallery2.prototype.initPictureFill = function($img) {
+          if (this.settings.supportLegacyBrowser) {
+            try {
+              picturefill({
+                elements: [$img.get()]
+              });
+            } catch (e2) {
+              console.warn("lightGallery :- If you want srcset or picture tag to be supported for older browser please include picturefil javascript library in your document.");
+            }
+          }
+        };
+        LightGallery2.prototype.counter = function() {
+          if (this.settings.counter) {
+            var counterHtml = '<div class="lg-counter" role="status" aria-live="polite">\n                <span id="' + this.getIdName("lg-counter-current") + '" class="lg-counter-current">' + (this.index + 1) + ' </span> /\n                <span id="' + this.getIdName("lg-counter-all") + '" class="lg-counter-all">' + this.galleryItems.length + " </span></div>";
+            this.outer.find(this.settings.appendCounterTo).append(counterHtml);
+          }
+        };
+        LightGallery2.prototype.addHtml = function(index8) {
+          var subHtml;
+          var subHtmlUrl;
+          if (this.galleryItems[index8].subHtmlUrl) {
+            subHtmlUrl = this.galleryItems[index8].subHtmlUrl;
+          } else {
+            subHtml = this.galleryItems[index8].subHtml;
+          }
+          if (!subHtmlUrl) {
+            if (subHtml) {
+              var fL = subHtml.substring(0, 1);
+              if (fL === "." || fL === "#") {
+                if (this.settings.subHtmlSelectorRelative && !this.settings.dynamic) {
+                  subHtml = $LG(this.items).eq(index8).find(subHtml).first().html();
+                } else {
+                  subHtml = $LG(subHtml).first().html();
+                }
+              }
+            } else {
+              subHtml = "";
+            }
+          }
+          if (this.settings.appendSubHtmlTo !== ".lg-item") {
+            if (subHtmlUrl) {
+              this.outer.find(".lg-sub-html").load(subHtmlUrl);
+            } else {
+              this.outer.find(".lg-sub-html").html(subHtml);
+            }
+          } else {
+            var currentSlide = $LG(this.getSlideItemId(index8));
+            if (subHtmlUrl) {
+              currentSlide.load(subHtmlUrl);
+            } else {
+              currentSlide.append('<div class="lg-sub-html">' + subHtml + "</div>");
+            }
+          }
+          if (typeof subHtml !== "undefined" && subHtml !== null) {
+            if (subHtml === "") {
+              this.outer.find(this.settings.appendSubHtmlTo).addClass("lg-empty-html");
+            } else {
+              this.outer.find(this.settings.appendSubHtmlTo).removeClass("lg-empty-html");
+            }
+          }
+          this.LGel.trigger(lGEvents.afterAppendSubHtml, {
+            index: index8
+          });
+        };
+        LightGallery2.prototype.preload = function(index8) {
+          for (var i2 = 1; i2 <= this.settings.preload; i2++) {
+            if (i2 >= this.galleryItems.length - index8) {
+              break;
+            }
+            this.loadContent(index8 + i2, false);
+          }
+          for (var j = 1; j <= this.settings.preload; j++) {
+            if (index8 - j < 0) {
+              break;
+            }
+            this.loadContent(index8 - j, false);
+          }
+        };
+        LightGallery2.prototype.getDummyImgStyles = function(imageSize) {
+          if (!imageSize)
+            return "";
+          return "width:" + imageSize.width + "px;\n                margin-left: -" + imageSize.width / 2 + "px;\n                margin-top: -" + imageSize.height / 2 + "px;\n                height:" + imageSize.height + "px";
+        };
+        LightGallery2.prototype.getVideoContStyle = function(imageSize) {
+          if (!imageSize)
+            return "";
+          return "width:" + imageSize.width + "px;\n                height:" + imageSize.height + "px";
+        };
+        LightGallery2.prototype.getDummyImageContent = function($currentSlide, index8, alt) {
+          var $currentItem;
+          if (!this.settings.dynamic) {
+            $currentItem = $LG(this.items).eq(index8);
+          }
+          if ($currentItem) {
+            var _dummyImgSrc = void 0;
+            if (!this.settings.exThumbImage) {
+              _dummyImgSrc = $currentItem.find("img").first().attr("src");
+            } else {
+              _dummyImgSrc = $currentItem.attr(this.settings.exThumbImage);
+            }
+            if (!_dummyImgSrc)
+              return "";
+            var imgStyle = this.getDummyImgStyles(this.currentImageSize);
+            var dummyImgContent = "<img " + alt + ' style="' + imgStyle + '" class="lg-dummy-img" src="' + _dummyImgSrc + '" />';
+            $currentSlide.addClass("lg-first-slide");
+            this.outer.addClass("lg-first-slide-loading");
+            return dummyImgContent;
+          }
+          return "";
+        };
+        LightGallery2.prototype.setImgMarkup = function(src, $currentSlide, index8) {
+          var currentGalleryItem = this.galleryItems[index8];
+          var alt = currentGalleryItem.alt, srcset = currentGalleryItem.srcset, sizes = currentGalleryItem.sizes, sources = currentGalleryItem.sources;
+          var imgContent = "";
+          var altAttr = alt ? 'alt="' + alt + '"' : "";
+          if (this.isFirstSlideWithZoomAnimation()) {
+            imgContent = this.getDummyImageContent($currentSlide, index8, altAttr);
+          } else {
+            imgContent = utils2.getImgMarkup(index8, src, altAttr, srcset, sizes, sources);
+          }
+          var imgMarkup = '<picture class="lg-img-wrap"> ' + imgContent + "</picture>";
+          $currentSlide.prepend(imgMarkup);
+        };
+        LightGallery2.prototype.onSlideObjectLoad = function($slide, isHTML5VideoWithoutPoster, onLoad, onError2) {
+          var mediaObject = $slide.find(".lg-object").first();
+          if (utils2.isImageLoaded(mediaObject.get()) || isHTML5VideoWithoutPoster) {
+            onLoad();
+          } else {
+            mediaObject.on("load.lg error.lg", function() {
+              onLoad && onLoad();
+            });
+            mediaObject.on("error.lg", function() {
+              onError2 && onError2();
+            });
+          }
+        };
+        LightGallery2.prototype.onLgObjectLoad = function(currentSlide, index8, delay, speed, isFirstSlide, isHTML5VideoWithoutPoster) {
+          var _this = this;
+          this.onSlideObjectLoad(currentSlide, isHTML5VideoWithoutPoster, function() {
+            _this.triggerSlideItemLoad(currentSlide, index8, delay, speed, isFirstSlide);
+          }, function() {
+            currentSlide.addClass("lg-complete lg-complete_");
+            currentSlide.html('<span class="lg-error-msg">Oops... Failed to load content...</span>');
+          });
+        };
+        LightGallery2.prototype.triggerSlideItemLoad = function($currentSlide, index8, delay, speed, isFirstSlide) {
+          var _this = this;
+          var currentGalleryItem = this.galleryItems[index8];
+          var _speed = isFirstSlide && this.getSlideType(currentGalleryItem) === "video" && !currentGalleryItem.poster ? speed : 0;
+          setTimeout(function() {
+            $currentSlide.addClass("lg-complete lg-complete_");
+            _this.LGel.trigger(lGEvents.slideItemLoad, {
+              index: index8,
+              delay: delay || 0,
+              isFirstSlide
+            });
+          }, _speed);
+        };
+        LightGallery2.prototype.isFirstSlideWithZoomAnimation = function() {
+          return !!(!this.lGalleryOn && this.zoomFromOrigin && this.currentImageSize);
+        };
+        LightGallery2.prototype.addSlideVideoInfo = function(items) {
+          var _this = this;
+          items.forEach(function(element, index8) {
+            element.__slideVideoInfo = utils2.isVideo(element.src, !!element.video, index8);
+            if (element.__slideVideoInfo && _this.settings.loadYouTubePoster && !element.poster && element.__slideVideoInfo.youtube) {
+              element.poster = "//img.youtube.com/vi/" + element.__slideVideoInfo.youtube[1] + "/maxresdefault.jpg";
+            }
+          });
+        };
+        LightGallery2.prototype.loadContent = function(index8, rec) {
+          var _this = this;
+          var currentGalleryItem = this.galleryItems[index8];
+          var $currentSlide = $LG(this.getSlideItemId(index8));
+          var poster = currentGalleryItem.poster, srcset = currentGalleryItem.srcset, sizes = currentGalleryItem.sizes, sources = currentGalleryItem.sources;
+          var src = currentGalleryItem.src;
+          var video = currentGalleryItem.video;
+          var _html5Video = video && typeof video === "string" ? JSON.parse(video) : video;
+          if (currentGalleryItem.responsive) {
+            var srcDyItms = currentGalleryItem.responsive.split(",");
+            src = utils2.getResponsiveSrc(srcDyItms) || src;
+          }
+          var videoInfo = currentGalleryItem.__slideVideoInfo;
+          var lgVideoStyle = "";
+          var iframe = !!currentGalleryItem.iframe;
+          var isFirstSlide = !this.lGalleryOn;
+          var delay = 0;
+          if (isFirstSlide) {
+            if (this.zoomFromOrigin && this.currentImageSize) {
+              delay = this.settings.startAnimationDuration + 10;
+            } else {
+              delay = this.settings.backdropDuration + 10;
+            }
+          }
+          if (!$currentSlide.hasClass("lg-loaded")) {
+            if (videoInfo) {
+              var _a = this.mediaContainerPosition, top_2 = _a.top, bottom = _a.bottom;
+              var videoSize = utils2.getSize(this.items[index8], this.outer, top_2 + bottom, videoInfo && this.settings.videoMaxSize);
+              lgVideoStyle = this.getVideoContStyle(videoSize);
+            }
+            if (iframe) {
+              var markup = utils2.getIframeMarkup(this.settings.iframeWidth, this.settings.iframeHeight, this.settings.iframeMaxWidth, this.settings.iframeMaxHeight, src, currentGalleryItem.iframeTitle);
+              $currentSlide.prepend(markup);
+            } else if (poster) {
+              var dummyImg = "";
+              var hasStartAnimation = isFirstSlide && this.zoomFromOrigin && this.currentImageSize;
+              if (hasStartAnimation) {
+                dummyImg = this.getDummyImageContent($currentSlide, index8, "");
+              }
+              var markup = utils2.getVideoPosterMarkup(poster, dummyImg || "", lgVideoStyle, this.settings.strings["playVideo"], videoInfo);
+              $currentSlide.prepend(markup);
+            } else if (videoInfo) {
+              var markup = '<div class="lg-video-cont " style="' + lgVideoStyle + '"></div>';
+              $currentSlide.prepend(markup);
+            } else {
+              this.setImgMarkup(src, $currentSlide, index8);
+              if (srcset || sources) {
+                var $img = $currentSlide.find(".lg-object");
+                this.initPictureFill($img);
+              }
+            }
+            if (poster || videoInfo) {
+              this.LGel.trigger(lGEvents.hasVideo, {
+                index: index8,
+                src,
+                html5Video: _html5Video,
+                hasPoster: !!poster
+              });
+            }
+            this.LGel.trigger(lGEvents.afterAppendSlide, { index: index8 });
+            if (this.lGalleryOn && this.settings.appendSubHtmlTo === ".lg-item") {
+              this.addHtml(index8);
+            }
+          }
+          var _speed = 0;
+          if (delay && !$LG(document.body).hasClass("lg-from-hash")) {
+            _speed = delay;
+          }
+          if (this.isFirstSlideWithZoomAnimation()) {
+            setTimeout(function() {
+              $currentSlide.removeClass("lg-start-end-progress lg-start-progress").removeAttr("style");
+            }, this.settings.startAnimationDuration + 100);
+            if (!$currentSlide.hasClass("lg-loaded")) {
+              setTimeout(function() {
+                if (_this.getSlideType(currentGalleryItem) === "image") {
+                  var alt = currentGalleryItem.alt;
+                  var altAttr = alt ? 'alt="' + alt + '"' : "";
+                  $currentSlide.find(".lg-img-wrap").append(utils2.getImgMarkup(index8, src, altAttr, srcset, sizes, currentGalleryItem.sources));
+                  if (srcset || sources) {
+                    var $img2 = $currentSlide.find(".lg-object");
+                    _this.initPictureFill($img2);
+                  }
+                }
+                if (_this.getSlideType(currentGalleryItem) === "image" || _this.getSlideType(currentGalleryItem) === "video" && poster) {
+                  _this.onLgObjectLoad($currentSlide, index8, delay, _speed, true, false);
+                  _this.onSlideObjectLoad($currentSlide, !!(videoInfo && videoInfo.html5 && !poster), function() {
+                    _this.loadContentOnFirstSlideLoad(index8, $currentSlide, _speed);
+                  }, function() {
+                    _this.loadContentOnFirstSlideLoad(index8, $currentSlide, _speed);
+                  });
+                }
+              }, this.settings.startAnimationDuration + 100);
+            }
+          }
+          $currentSlide.addClass("lg-loaded");
+          if (!this.isFirstSlideWithZoomAnimation() || this.getSlideType(currentGalleryItem) === "video" && !poster) {
+            this.onLgObjectLoad($currentSlide, index8, delay, _speed, isFirstSlide, !!(videoInfo && videoInfo.html5 && !poster));
+          }
+          if ((!this.zoomFromOrigin || !this.currentImageSize) && $currentSlide.hasClass("lg-complete_") && !this.lGalleryOn) {
+            setTimeout(function() {
+              $currentSlide.addClass("lg-complete");
+            }, this.settings.backdropDuration);
+          }
+          this.lGalleryOn = true;
+          if (rec === true) {
+            if (!$currentSlide.hasClass("lg-complete_")) {
+              $currentSlide.find(".lg-object").first().on("load.lg error.lg", function() {
+                _this.preload(index8);
+              });
+            } else {
+              this.preload(index8);
+            }
+          }
+        };
+        LightGallery2.prototype.loadContentOnFirstSlideLoad = function(index8, $currentSlide, speed) {
+          var _this = this;
+          setTimeout(function() {
+            $currentSlide.find(".lg-dummy-img").remove();
+            $currentSlide.removeClass("lg-first-slide");
+            _this.outer.removeClass("lg-first-slide-loading");
+            _this.isDummyImageRemoved = true;
+            _this.preload(index8);
+          }, speed + 300);
+        };
+        LightGallery2.prototype.getItemsToBeInsertedToDom = function(index8, prevIndex, numberOfItems) {
+          var _this = this;
+          if (numberOfItems === void 0) {
+            numberOfItems = 0;
+          }
+          var itemsToBeInsertedToDom = [];
+          var possibleNumberOfItems = Math.max(numberOfItems, 3);
+          possibleNumberOfItems = Math.min(possibleNumberOfItems, this.galleryItems.length);
+          var prevIndexItem = "lg-item-" + this.lgId + "-" + prevIndex;
+          if (this.galleryItems.length <= 3) {
+            this.galleryItems.forEach(function(_element, index9) {
+              itemsToBeInsertedToDom.push("lg-item-" + _this.lgId + "-" + index9);
+            });
+            return itemsToBeInsertedToDom;
+          }
+          if (index8 < (this.galleryItems.length - 1) / 2) {
+            for (var idx = index8; idx > index8 - possibleNumberOfItems / 2 && idx >= 0; idx--) {
+              itemsToBeInsertedToDom.push("lg-item-" + this.lgId + "-" + idx);
+            }
+            var numberOfExistingItems = itemsToBeInsertedToDom.length;
+            for (var idx = 0; idx < possibleNumberOfItems - numberOfExistingItems; idx++) {
+              itemsToBeInsertedToDom.push("lg-item-" + this.lgId + "-" + (index8 + idx + 1));
+            }
+          } else {
+            for (var idx = index8; idx <= this.galleryItems.length - 1 && idx < index8 + possibleNumberOfItems / 2; idx++) {
+              itemsToBeInsertedToDom.push("lg-item-" + this.lgId + "-" + idx);
+            }
+            var numberOfExistingItems = itemsToBeInsertedToDom.length;
+            for (var idx = 0; idx < possibleNumberOfItems - numberOfExistingItems; idx++) {
+              itemsToBeInsertedToDom.push("lg-item-" + this.lgId + "-" + (index8 - idx - 1));
+            }
+          }
+          if (this.settings.loop) {
+            if (index8 === this.galleryItems.length - 1) {
+              itemsToBeInsertedToDom.push("lg-item-" + this.lgId + "-" + 0);
+            } else if (index8 === 0) {
+              itemsToBeInsertedToDom.push("lg-item-" + this.lgId + "-" + (this.galleryItems.length - 1));
+            }
+          }
+          if (itemsToBeInsertedToDom.indexOf(prevIndexItem) === -1) {
+            itemsToBeInsertedToDom.push("lg-item-" + this.lgId + "-" + prevIndex);
+          }
+          return itemsToBeInsertedToDom;
+        };
+        LightGallery2.prototype.organizeSlideItems = function(index8, prevIndex) {
+          var _this = this;
+          var itemsToBeInsertedToDom = this.getItemsToBeInsertedToDom(index8, prevIndex, this.settings.numberOfSlideItemsInDom);
+          itemsToBeInsertedToDom.forEach(function(item) {
+            if (_this.currentItemsInDom.indexOf(item) === -1) {
+              _this.$inner.append('<div id="' + item + '" class="lg-item"></div>');
+            }
+          });
+          this.currentItemsInDom.forEach(function(item) {
+            if (itemsToBeInsertedToDom.indexOf(item) === -1) {
+              $LG("#" + item).remove();
+            }
+          });
+          return itemsToBeInsertedToDom;
+        };
+        LightGallery2.prototype.getPreviousSlideIndex = function() {
+          var prevIndex = 0;
+          try {
+            var currentItemId = this.outer.find(".lg-current").first().attr("id");
+            prevIndex = parseInt(currentItemId.split("-")[3]) || 0;
+          } catch (error2) {
+            prevIndex = 0;
+          }
+          return prevIndex;
+        };
+        LightGallery2.prototype.setDownloadValue = function(index8) {
+          if (this.settings.download) {
+            var currentGalleryItem = this.galleryItems[index8];
+            var hideDownloadBtn = currentGalleryItem.downloadUrl === false || currentGalleryItem.downloadUrl === "false";
+            if (hideDownloadBtn) {
+              this.outer.addClass("lg-hide-download");
+            } else {
+              var $download = this.getElementById("lg-download");
+              this.outer.removeClass("lg-hide-download");
+              $download.attr("href", currentGalleryItem.downloadUrl || currentGalleryItem.src);
+              if (currentGalleryItem.download) {
+                $download.attr("download", currentGalleryItem.download);
+              }
+            }
+          }
+        };
+        LightGallery2.prototype.makeSlideAnimation = function(direction, currentSlideItem, previousSlideItem) {
+          var _this = this;
+          if (this.lGalleryOn) {
+            previousSlideItem.addClass("lg-slide-progress");
+          }
+          setTimeout(function() {
+            _this.outer.addClass("lg-no-trans");
+            _this.outer.find(".lg-item").removeClass("lg-prev-slide lg-next-slide");
+            if (direction === "prev") {
+              currentSlideItem.addClass("lg-prev-slide");
+              previousSlideItem.addClass("lg-next-slide");
+            } else {
+              currentSlideItem.addClass("lg-next-slide");
+              previousSlideItem.addClass("lg-prev-slide");
+            }
+            setTimeout(function() {
+              _this.outer.find(".lg-item").removeClass("lg-current");
+              currentSlideItem.addClass("lg-current");
+              _this.outer.removeClass("lg-no-trans");
+            }, 50);
+          }, this.lGalleryOn ? this.settings.slideDelay : 0);
+        };
+        LightGallery2.prototype.slide = function(index8, fromTouch, fromThumb, direction) {
+          var _this = this;
+          var prevIndex = this.getPreviousSlideIndex();
+          this.currentItemsInDom = this.organizeSlideItems(index8, prevIndex);
+          if (this.lGalleryOn && prevIndex === index8) {
+            return;
+          }
+          var numberOfGalleryItems = this.galleryItems.length;
+          if (!this.lgBusy) {
+            if (this.settings.counter) {
+              this.updateCurrentCounter(index8);
+            }
+            var currentSlideItem = this.getSlideItem(index8);
+            var previousSlideItem_1 = this.getSlideItem(prevIndex);
+            var currentGalleryItem = this.galleryItems[index8];
+            var videoInfo = currentGalleryItem.__slideVideoInfo;
+            this.outer.attr("data-lg-slide-type", this.getSlideType(currentGalleryItem));
+            this.setDownloadValue(index8);
+            if (videoInfo) {
+              var _a = this.mediaContainerPosition, top_3 = _a.top, bottom = _a.bottom;
+              var videoSize = utils2.getSize(this.items[index8], this.outer, top_3 + bottom, videoInfo && this.settings.videoMaxSize);
+              this.resizeVideoSlide(index8, videoSize);
+            }
+            this.LGel.trigger(lGEvents.beforeSlide, {
+              prevIndex,
+              index: index8,
+              fromTouch: !!fromTouch,
+              fromThumb: !!fromThumb
+            });
+            this.lgBusy = true;
+            clearTimeout(this.hideBarTimeout);
+            this.arrowDisable(index8);
+            if (!direction) {
+              if (index8 < prevIndex) {
+                direction = "prev";
+              } else if (index8 > prevIndex) {
+                direction = "next";
+              }
+            }
+            if (!fromTouch) {
+              this.makeSlideAnimation(direction, currentSlideItem, previousSlideItem_1);
+            } else {
+              this.outer.find(".lg-item").removeClass("lg-prev-slide lg-current lg-next-slide");
+              var touchPrev = void 0;
+              var touchNext = void 0;
+              if (numberOfGalleryItems > 2) {
+                touchPrev = index8 - 1;
+                touchNext = index8 + 1;
+                if (index8 === 0 && prevIndex === numberOfGalleryItems - 1) {
+                  touchNext = 0;
+                  touchPrev = numberOfGalleryItems - 1;
+                } else if (index8 === numberOfGalleryItems - 1 && prevIndex === 0) {
+                  touchNext = 0;
+                  touchPrev = numberOfGalleryItems - 1;
+                }
+              } else {
+                touchPrev = 0;
+                touchNext = 1;
+              }
+              if (direction === "prev") {
+                this.getSlideItem(touchNext).addClass("lg-next-slide");
+              } else {
+                this.getSlideItem(touchPrev).addClass("lg-prev-slide");
+              }
+              currentSlideItem.addClass("lg-current");
+            }
+            if (!this.lGalleryOn) {
+              this.loadContent(index8, true);
+            } else {
+              setTimeout(function() {
+                _this.loadContent(index8, true);
+                if (_this.settings.appendSubHtmlTo !== ".lg-item") {
+                  _this.addHtml(index8);
+                }
+              }, this.settings.speed + 50 + (fromTouch ? 0 : this.settings.slideDelay));
+            }
+            setTimeout(function() {
+              _this.lgBusy = false;
+              previousSlideItem_1.removeClass("lg-slide-progress");
+              _this.LGel.trigger(lGEvents.afterSlide, {
+                prevIndex,
+                index: index8,
+                fromTouch,
+                fromThumb
+              });
+            }, (this.lGalleryOn ? this.settings.speed + 100 : 100) + (fromTouch ? 0 : this.settings.slideDelay));
+          }
+          this.index = index8;
+        };
+        LightGallery2.prototype.updateCurrentCounter = function(index8) {
+          this.getElementById("lg-counter-current").html(index8 + 1 + "");
+        };
+        LightGallery2.prototype.updateCounterTotal = function() {
+          this.getElementById("lg-counter-all").html(this.galleryItems.length + "");
+        };
+        LightGallery2.prototype.getSlideType = function(item) {
+          if (item.__slideVideoInfo) {
+            return "video";
+          } else if (item.iframe) {
+            return "iframe";
+          } else {
+            return "image";
+          }
+        };
+        LightGallery2.prototype.touchMove = function(startCoords, endCoords, e2) {
+          var distanceX = endCoords.pageX - startCoords.pageX;
+          var distanceY = endCoords.pageY - startCoords.pageY;
+          var allowSwipe = false;
+          if (this.swipeDirection) {
+            allowSwipe = true;
+          } else {
+            if (Math.abs(distanceX) > 15) {
+              this.swipeDirection = "horizontal";
+              allowSwipe = true;
+            } else if (Math.abs(distanceY) > 15) {
+              this.swipeDirection = "vertical";
+              allowSwipe = true;
+            }
+          }
+          if (!allowSwipe) {
+            return;
+          }
+          var $currentSlide = this.getSlideItem(this.index);
+          if (this.swipeDirection === "horizontal") {
+            e2 === null || e2 === void 0 ? void 0 : e2.preventDefault();
+            this.outer.addClass("lg-dragging");
+            this.setTranslate($currentSlide, distanceX, 0);
+            var width = $currentSlide.get().offsetWidth;
+            var slideWidthAmount = width * 15 / 100;
+            var gutter = slideWidthAmount - Math.abs(distanceX * 10 / 100);
+            this.setTranslate(this.outer.find(".lg-prev-slide").first(), -width + distanceX - gutter, 0);
+            this.setTranslate(this.outer.find(".lg-next-slide").first(), width + distanceX + gutter, 0);
+          } else if (this.swipeDirection === "vertical") {
+            if (this.settings.swipeToClose) {
+              e2 === null || e2 === void 0 ? void 0 : e2.preventDefault();
+              this.$container.addClass("lg-dragging-vertical");
+              var opacity = 1 - Math.abs(distanceY) / window.innerHeight;
+              this.$backdrop.css("opacity", opacity);
+              var scale = 1 - Math.abs(distanceY) / (window.innerWidth * 2);
+              this.setTranslate($currentSlide, 0, distanceY, scale, scale);
+              if (Math.abs(distanceY) > 100) {
+                this.outer.addClass("lg-hide-items").removeClass("lg-components-open");
+              }
+            }
+          }
+        };
+        LightGallery2.prototype.touchEnd = function(endCoords, startCoords, event) {
+          var _this = this;
+          var distance;
+          if (this.settings.mode !== "lg-slide") {
+            this.outer.addClass("lg-slide");
+          }
+          setTimeout(function() {
+            _this.$container.removeClass("lg-dragging-vertical");
+            _this.outer.removeClass("lg-dragging lg-hide-items").addClass("lg-components-open");
+            var triggerClick = true;
+            if (_this.swipeDirection === "horizontal") {
+              distance = endCoords.pageX - startCoords.pageX;
+              var distanceAbs = Math.abs(endCoords.pageX - startCoords.pageX);
+              if (distance < 0 && distanceAbs > _this.settings.swipeThreshold) {
+                _this.goToNextSlide(true);
+                triggerClick = false;
+              } else if (distance > 0 && distanceAbs > _this.settings.swipeThreshold) {
+                _this.goToPrevSlide(true);
+                triggerClick = false;
+              }
+            } else if (_this.swipeDirection === "vertical") {
+              distance = Math.abs(endCoords.pageY - startCoords.pageY);
+              if (_this.settings.closable && _this.settings.swipeToClose && distance > 100) {
+                _this.closeGallery();
+                return;
+              } else {
+                _this.$backdrop.css("opacity", 1);
+              }
+            }
+            _this.outer.find(".lg-item").removeAttr("style");
+            if (triggerClick && Math.abs(endCoords.pageX - startCoords.pageX) < 5) {
+              var target = $LG(event.target);
+              if (_this.isPosterElement(target)) {
+                _this.LGel.trigger(lGEvents.posterClick);
+              }
+            }
+            _this.swipeDirection = void 0;
+          });
+          setTimeout(function() {
+            if (!_this.outer.hasClass("lg-dragging") && _this.settings.mode !== "lg-slide") {
+              _this.outer.removeClass("lg-slide");
+            }
+          }, this.settings.speed + 100);
+        };
+        LightGallery2.prototype.enableSwipe = function() {
+          var _this = this;
+          var startCoords = {};
+          var endCoords = {};
+          var isMoved = false;
+          var isSwiping = false;
+          if (this.settings.enableSwipe) {
+            this.$inner.on("touchstart.lg", function(e2) {
+              _this.dragOrSwipeEnabled = true;
+              var $item = _this.getSlideItem(_this.index);
+              if (($LG(e2.target).hasClass("lg-item") || $item.get().contains(e2.target)) && !_this.outer.hasClass("lg-zoomed") && !_this.lgBusy && e2.targetTouches.length === 1) {
+                isSwiping = true;
+                _this.touchAction = "swipe";
+                _this.manageSwipeClass();
+                startCoords = {
+                  pageX: e2.targetTouches[0].pageX,
+                  pageY: e2.targetTouches[0].pageY
+                };
+              }
+            });
+            this.$inner.on("touchmove.lg", function(e2) {
+              if (isSwiping && _this.touchAction === "swipe" && e2.targetTouches.length === 1) {
+                endCoords = {
+                  pageX: e2.targetTouches[0].pageX,
+                  pageY: e2.targetTouches[0].pageY
+                };
+                _this.touchMove(startCoords, endCoords, e2);
+                isMoved = true;
+              }
+            });
+            this.$inner.on("touchend.lg", function(event) {
+              if (_this.touchAction === "swipe") {
+                if (isMoved) {
+                  isMoved = false;
+                  _this.touchEnd(endCoords, startCoords, event);
+                } else if (isSwiping) {
+                  var target = $LG(event.target);
+                  if (_this.isPosterElement(target)) {
+                    _this.LGel.trigger(lGEvents.posterClick);
+                  }
+                }
+                _this.touchAction = void 0;
+                isSwiping = false;
+              }
+            });
+          }
+        };
+        LightGallery2.prototype.enableDrag = function() {
+          var _this = this;
+          var startCoords = {};
+          var endCoords = {};
+          var isDraging = false;
+          var isMoved = false;
+          if (this.settings.enableDrag) {
+            this.outer.on("mousedown.lg", function(e2) {
+              _this.dragOrSwipeEnabled = true;
+              var $item = _this.getSlideItem(_this.index);
+              if ($LG(e2.target).hasClass("lg-item") || $item.get().contains(e2.target)) {
+                if (!_this.outer.hasClass("lg-zoomed") && !_this.lgBusy) {
+                  e2.preventDefault();
+                  if (!_this.lgBusy) {
+                    _this.manageSwipeClass();
+                    startCoords = {
+                      pageX: e2.pageX,
+                      pageY: e2.pageY
+                    };
+                    isDraging = true;
+                    _this.outer.get().scrollLeft += 1;
+                    _this.outer.get().scrollLeft -= 1;
+                    _this.outer.removeClass("lg-grab").addClass("lg-grabbing");
+                    _this.LGel.trigger(lGEvents.dragStart);
+                  }
+                }
+              }
+            });
+            $LG(window).on("mousemove.lg.global" + this.lgId, function(e2) {
+              if (isDraging && _this.lgOpened) {
+                isMoved = true;
+                endCoords = {
+                  pageX: e2.pageX,
+                  pageY: e2.pageY
+                };
+                _this.touchMove(startCoords, endCoords);
+                _this.LGel.trigger(lGEvents.dragMove);
+              }
+            });
+            $LG(window).on("mouseup.lg.global" + this.lgId, function(event) {
+              if (!_this.lgOpened) {
+                return;
+              }
+              var target = $LG(event.target);
+              if (isMoved) {
+                isMoved = false;
+                _this.touchEnd(endCoords, startCoords, event);
+                _this.LGel.trigger(lGEvents.dragEnd);
+              } else if (_this.isPosterElement(target)) {
+                _this.LGel.trigger(lGEvents.posterClick);
+              }
+              if (isDraging) {
+                isDraging = false;
+                _this.outer.removeClass("lg-grabbing").addClass("lg-grab");
+              }
+            });
+          }
+        };
+        LightGallery2.prototype.triggerPosterClick = function() {
+          var _this = this;
+          this.$inner.on("click.lg", function(event) {
+            if (!_this.dragOrSwipeEnabled && _this.isPosterElement($LG(event.target))) {
+              _this.LGel.trigger(lGEvents.posterClick);
+            }
+          });
+        };
+        LightGallery2.prototype.manageSwipeClass = function() {
+          var _touchNext = this.index + 1;
+          var _touchPrev = this.index - 1;
+          if (this.settings.loop && this.galleryItems.length > 2) {
+            if (this.index === 0) {
+              _touchPrev = this.galleryItems.length - 1;
+            } else if (this.index === this.galleryItems.length - 1) {
+              _touchNext = 0;
+            }
+          }
+          this.outer.find(".lg-item").removeClass("lg-next-slide lg-prev-slide");
+          if (_touchPrev > -1) {
+            this.getSlideItem(_touchPrev).addClass("lg-prev-slide");
+          }
+          this.getSlideItem(_touchNext).addClass("lg-next-slide");
+        };
+        LightGallery2.prototype.goToNextSlide = function(fromTouch) {
+          var _this = this;
+          var _loop = this.settings.loop;
+          if (fromTouch && this.galleryItems.length < 3) {
+            _loop = false;
+          }
+          if (!this.lgBusy) {
+            if (this.index + 1 < this.galleryItems.length) {
+              this.index++;
+              this.LGel.trigger(lGEvents.beforeNextSlide, {
+                index: this.index
+              });
+              this.slide(this.index, !!fromTouch, false, "next");
+            } else {
+              if (_loop) {
+                this.index = 0;
+                this.LGel.trigger(lGEvents.beforeNextSlide, {
+                  index: this.index
+                });
+                this.slide(this.index, !!fromTouch, false, "next");
+              } else if (this.settings.slideEndAnimation && !fromTouch) {
+                this.outer.addClass("lg-right-end");
+                setTimeout(function() {
+                  _this.outer.removeClass("lg-right-end");
+                }, 400);
+              }
+            }
+          }
+        };
+        LightGallery2.prototype.goToPrevSlide = function(fromTouch) {
+          var _this = this;
+          var _loop = this.settings.loop;
+          if (fromTouch && this.galleryItems.length < 3) {
+            _loop = false;
+          }
+          if (!this.lgBusy) {
+            if (this.index > 0) {
+              this.index--;
+              this.LGel.trigger(lGEvents.beforePrevSlide, {
+                index: this.index,
+                fromTouch
+              });
+              this.slide(this.index, !!fromTouch, false, "prev");
+            } else {
+              if (_loop) {
+                this.index = this.galleryItems.length - 1;
+                this.LGel.trigger(lGEvents.beforePrevSlide, {
+                  index: this.index,
+                  fromTouch
+                });
+                this.slide(this.index, !!fromTouch, false, "prev");
+              } else if (this.settings.slideEndAnimation && !fromTouch) {
+                this.outer.addClass("lg-left-end");
+                setTimeout(function() {
+                  _this.outer.removeClass("lg-left-end");
+                }, 400);
+              }
+            }
+          }
+        };
+        LightGallery2.prototype.keyPress = function() {
+          var _this = this;
+          $LG(window).on("keydown.lg.global" + this.lgId, function(e2) {
+            if (_this.lgOpened && _this.settings.escKey === true && e2.keyCode === 27) {
+              e2.preventDefault();
+              if (_this.settings.allowMediaOverlap && _this.outer.hasClass("lg-can-toggle") && _this.outer.hasClass("lg-components-open")) {
+                _this.outer.removeClass("lg-components-open");
+              } else {
+                _this.closeGallery();
+              }
+            }
+            if (_this.lgOpened && _this.galleryItems.length > 1) {
+              if (e2.keyCode === 37) {
+                e2.preventDefault();
+                _this.goToPrevSlide();
+              }
+              if (e2.keyCode === 39) {
+                e2.preventDefault();
+                _this.goToNextSlide();
+              }
+            }
+          });
+        };
+        LightGallery2.prototype.arrow = function() {
+          var _this = this;
+          this.getElementById("lg-prev").on("click.lg", function() {
+            _this.goToPrevSlide();
+          });
+          this.getElementById("lg-next").on("click.lg", function() {
+            _this.goToNextSlide();
+          });
+        };
+        LightGallery2.prototype.arrowDisable = function(index8) {
+          if (!this.settings.loop && this.settings.hideControlOnEnd) {
+            var $prev = this.getElementById("lg-prev");
+            var $next = this.getElementById("lg-next");
+            if (index8 + 1 === this.galleryItems.length) {
+              $next.attr("disabled", "disabled").addClass("disabled");
+            } else {
+              $next.removeAttr("disabled").removeClass("disabled");
+            }
+            if (index8 === 0) {
+              $prev.attr("disabled", "disabled").addClass("disabled");
+            } else {
+              $prev.removeAttr("disabled").removeClass("disabled");
+            }
+          }
+        };
+        LightGallery2.prototype.setTranslate = function($el, xValue, yValue, scaleX, scaleY) {
+          if (scaleX === void 0) {
+            scaleX = 1;
+          }
+          if (scaleY === void 0) {
+            scaleY = 1;
+          }
+          $el.css("transform", "translate3d(" + xValue + "px, " + yValue + "px, 0px) scale3d(" + scaleX + ", " + scaleY + ", 1)");
+        };
+        LightGallery2.prototype.mousewheel = function() {
+          var _this = this;
+          var lastCall = 0;
+          this.outer.on("wheel.lg", function(e2) {
+            if (!e2.deltaY || _this.galleryItems.length < 2) {
+              return;
+            }
+            e2.preventDefault();
+            var now = new Date().getTime();
+            if (now - lastCall < 1e3) {
+              return;
+            }
+            lastCall = now;
+            if (e2.deltaY > 0) {
+              _this.goToNextSlide();
+            } else if (e2.deltaY < 0) {
+              _this.goToPrevSlide();
+            }
+          });
+        };
+        LightGallery2.prototype.isSlideElement = function(target) {
+          return target.hasClass("lg-outer") || target.hasClass("lg-item") || target.hasClass("lg-img-wrap");
+        };
+        LightGallery2.prototype.isPosterElement = function(target) {
+          var playButton = this.getSlideItem(this.index).find(".lg-video-play-button").get();
+          return target.hasClass("lg-video-poster") || target.hasClass("lg-video-play-button") || playButton && playButton.contains(target.get());
+        };
+        LightGallery2.prototype.toggleMaximize = function() {
+          var _this = this;
+          this.getElementById("lg-maximize").on("click.lg", function() {
+            _this.$container.toggleClass("lg-inline");
+            _this.refreshOnResize();
+          });
+        };
+        LightGallery2.prototype.invalidateItems = function() {
+          for (var index8 = 0; index8 < this.items.length; index8++) {
+            var element = this.items[index8];
+            var $element = $LG(element);
+            $element.off("click.lgcustom-item-" + $element.attr("data-lg-id"));
+          }
+        };
+        LightGallery2.prototype.trapFocus = function() {
+          var _this = this;
+          this.$container.get().focus({
+            preventScroll: true
+          });
+          $LG(window).on("keydown.lg.global" + this.lgId, function(e2) {
+            if (!_this.lgOpened) {
+              return;
+            }
+            var isTabPressed = e2.key === "Tab" || e2.keyCode === 9;
+            if (!isTabPressed) {
+              return;
+            }
+            var focusableEls = utils2.getFocusableElements(_this.$container.get());
+            var firstFocusableEl = focusableEls[0];
+            var lastFocusableEl = focusableEls[focusableEls.length - 1];
+            if (e2.shiftKey) {
+              if (document.activeElement === firstFocusableEl) {
+                lastFocusableEl.focus();
+                e2.preventDefault();
+              }
+            } else {
+              if (document.activeElement === lastFocusableEl) {
+                firstFocusableEl.focus();
+                e2.preventDefault();
+              }
+            }
+          });
+        };
+        LightGallery2.prototype.manageCloseGallery = function() {
+          var _this = this;
+          if (!this.settings.closable)
+            return;
+          var mousedown = false;
+          this.getElementById("lg-close").on("click.lg", function() {
+            _this.closeGallery();
+          });
+          if (this.settings.closeOnTap) {
+            this.outer.on("mousedown.lg", function(e2) {
+              var target = $LG(e2.target);
+              if (_this.isSlideElement(target)) {
+                mousedown = true;
+              } else {
+                mousedown = false;
+              }
+            });
+            this.outer.on("mousemove.lg", function() {
+              mousedown = false;
+            });
+            this.outer.on("mouseup.lg", function(e2) {
+              var target = $LG(e2.target);
+              if (_this.isSlideElement(target) && mousedown) {
+                if (!_this.outer.hasClass("lg-dragging")) {
+                  _this.closeGallery();
+                }
+              }
+            });
+          }
+        };
+        LightGallery2.prototype.closeGallery = function(force) {
+          var _this = this;
+          if (!this.lgOpened || !this.settings.closable && !force) {
+            return 0;
+          }
+          this.LGel.trigger(lGEvents.beforeClose);
+          if (this.settings.resetScrollPosition && !this.settings.hideScrollbar) {
+            $LG(window).scrollTop(this.prevScrollTop);
+          }
+          var currentItem = this.items[this.index];
+          var transform;
+          if (this.zoomFromOrigin && currentItem) {
+            var _a = this.mediaContainerPosition, top_4 = _a.top, bottom = _a.bottom;
+            var _b = this.galleryItems[this.index], __slideVideoInfo = _b.__slideVideoInfo, poster = _b.poster;
+            var imageSize = utils2.getSize(currentItem, this.outer, top_4 + bottom, __slideVideoInfo && poster && this.settings.videoMaxSize);
+            transform = utils2.getTransform(currentItem, this.outer, top_4, bottom, imageSize);
+          }
+          if (this.zoomFromOrigin && transform) {
+            this.outer.addClass("lg-closing lg-zoom-from-image");
+            this.getSlideItem(this.index).addClass("lg-start-end-progress").css("transition-duration", this.settings.startAnimationDuration + "ms").css("transform", transform);
+          } else {
+            this.outer.addClass("lg-hide-items");
+            this.outer.removeClass("lg-zoom-from-image");
+          }
+          this.destroyModules();
+          this.lGalleryOn = false;
+          this.isDummyImageRemoved = false;
+          this.zoomFromOrigin = this.settings.zoomFromOrigin;
+          clearTimeout(this.hideBarTimeout);
+          this.hideBarTimeout = false;
+          $LG("html").removeClass("lg-on");
+          this.outer.removeClass("lg-visible lg-components-open");
+          this.$backdrop.removeClass("in").css("opacity", 0);
+          var removeTimeout = this.zoomFromOrigin && transform ? Math.max(this.settings.startAnimationDuration, this.settings.backdropDuration) : this.settings.backdropDuration;
+          this.$container.removeClass("lg-show-in");
+          setTimeout(function() {
+            if (_this.zoomFromOrigin && transform) {
+              _this.outer.removeClass("lg-zoom-from-image");
+            }
+            _this.$container.removeClass("lg-show");
+            _this.resetScrollBar();
+            _this.$backdrop.removeAttr("style").css("transition-duration", _this.settings.backdropDuration + "ms");
+            _this.outer.removeClass("lg-closing " + _this.settings.startClass);
+            _this.getSlideItem(_this.index).removeClass("lg-start-end-progress");
+            _this.$inner.empty();
+            if (_this.lgOpened) {
+              _this.LGel.trigger(lGEvents.afterClose, {
+                instance: _this
+              });
+            }
+            if (_this.$container.get()) {
+              _this.$container.get().blur();
+            }
+            _this.lgOpened = false;
+          }, removeTimeout + 100);
+          return removeTimeout + 100;
+        };
+        LightGallery2.prototype.initModules = function() {
+          this.plugins.forEach(function(module3) {
+            try {
+              module3.init();
+            } catch (err) {
+              console.warn("lightGallery:- make sure lightGallery module is properly initiated");
+            }
+          });
+        };
+        LightGallery2.prototype.destroyModules = function(destroy2) {
+          this.plugins.forEach(function(module3) {
+            try {
+              if (destroy2) {
+                module3.destroy();
+              } else {
+                module3.closeGallery && module3.closeGallery();
+              }
+            } catch (err) {
+              console.warn("lightGallery:- make sure lightGallery module is properly destroyed");
+            }
+          });
+        };
+        LightGallery2.prototype.refresh = function(galleryItems) {
+          if (!this.settings.dynamic) {
+            this.invalidateItems();
+          }
+          if (galleryItems) {
+            this.galleryItems = galleryItems;
+          } else {
+            this.galleryItems = this.getItems();
+          }
+          this.updateControls();
+          this.openGalleryOnItemClick();
+          this.LGel.trigger(lGEvents.updateSlides);
+        };
+        LightGallery2.prototype.updateControls = function() {
+          this.addSlideVideoInfo(this.galleryItems);
+          this.updateCounterTotal();
+          this.manageSingleSlideClassName();
+        };
+        LightGallery2.prototype.destroy = function() {
+          var _this = this;
+          var closeTimeout = this.closeGallery(true);
+          setTimeout(function() {
+            _this.destroyModules(true);
+            if (!_this.settings.dynamic) {
+              _this.invalidateItems();
+            }
+            $LG(window).off(".lg.global" + _this.lgId);
+            _this.LGel.off(".lg");
+            _this.$container.remove();
+          }, closeTimeout);
+          return closeTimeout;
+        };
+        return LightGallery2;
+      }();
+      function lightGallery(el, options) {
+        return new LightGallery(el, options);
+      }
+      return lightGallery;
+    });
+  }
+});
+
+// .svelte-kit/output/server/entries/pages/tema/preview/001.svelte.js
+var svelte_exports = {};
+__export(svelte_exports, {
+  default: () => _001
+});
+var import_lightgallery, css$4, Cover, css$33, Hero2, css$23, Fa2, css$13, Brides, css13, SaveTheDate, Gallery, _001;
+var init_svelte = __esm({
+  ".svelte-kit/output/server/entries/pages/tema/preview/001.svelte.js"() {
+    init_index_c5e2452c();
+    init_index_es_638ce7e7();
+    import_lightgallery = __toESM(require_lightgallery_umd(), 1);
+    css$4 = {
+      code: "section.svelte-1ndw765{position:fixed;top:0;left:0;z-index:999;height:100vh;width:100vw;transition:0.3s ease;line-height:1}section.hide.svelte-1ndw765{transform:translateY(-100%)}.container.svelte-1ndw765{background-size:cover;background-repeat:no-repeat;background-position:center center;height:100%;color:whitesmoke;width:100%;padding:0}.overlay.svelte-1ndw765{position:absolute;top:0;left:0;width:100%;height:100%;background:#25252581;z-index:1}.content.svelte-1ndw765{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:0.5rem;height:100%;width:100%;padding:1rem;position:absolute;z-index:2;color:whitesmoke;text-align:center}h1.svelte-1ndw765{font-family:'Arima', cursive;font-weight:900;font-size:3rem}button.svelte-1ndw765{background-color:var(--primary-color);padding:0.3rem 1rem;font-size:1.1em;border:none;border-radius:0.5em;color:whitesmoke;box-shadow:var(--box-shadow);cursor:pointer;margin-top:1rem}",
+      map: null
+    };
+    Cover = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      $$result.css.add(css$4);
+      return `<section class="${escape(null_to_empty("")) + " svelte-1ndw765"}"><div class="${"container svelte-1ndw765"}" style="${"background-image: url('https://cdn.imweb.me/upload/S201904265cc294845b98d/3aeac83be14ce.jpg');"}"><div class="${"overlay svelte-1ndw765"}"></div>
+        <div class="${"content svelte-1ndw765"}"><p>Hai..</p>
+            <p>You are invited to our wedding day</p>
+            <h1 class="${"svelte-1ndw765"}">Andy &amp; Indah</h1>
+            <button class="${"svelte-1ndw765"}">Let&#39;s Begin</button></div></div>
+</section>`;
+    });
+    css$33 = {
+      code: "section.svelte-86kb3g{height:100%;min-height:100vh;position:relative}.container.svelte-86kb3g{background-position:center center;background-size:cover;background-repeat:no-repeat;display:flex;flex-direction:column;align-items:center;height:100%;position:absolute;width:100%;padding:1rem}.overlay.svelte-86kb3g{position:absolute;top:0;left:0;width:100%;height:100%;background:#25252581;z-index:1}.content.svelte-86kb3g{display:flex;flex-direction:column;justify-content:center;align-items:center;height:100%;margin-top:-1rem;padding:1rem;position:absolute;z-index:2;color:whitesmoke}.image.svelte-86kb3g{width:80%;aspect-ratio:9 / 14;border-radius:10px;overflow:hidden}img.svelte-86kb3g{width:100%;height:100%;object-fit:cover}h1.svelte-86kb3g{font-family:'Arima', cursive;font-weight:900;font-size:3rem}h3.svelte-86kb3g{transform:scaleX(1.1);letter-spacing:3px;text-transform:uppercase;font-weight:600;font-size:1rem}",
+      map: null
+    };
+    Hero2 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      $$result.css.add(css$33);
+      return `<section class="${"svelte-86kb3g"}"><div class="${"container svelte-86kb3g"}" style="${"background-image: url('https://cdn.imweb.me/upload/S201904265cc294845b98d/3aeac83be14ce.jpg');"}"><div class="${"overlay svelte-86kb3g"}"></div>
+        <div class="${"content svelte-86kb3g"}">
+            <div class="${"image svelte-86kb3g"}"><img src="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/3aeac83be14ce.jpg"}" loading="${"lazy"}" class="${"svelte-86kb3g"}"></div>
+            <p style="${"margin-top: 1rem;"}">Wedding Invitation</p>
+            <h1 class="${"svelte-86kb3g"}">Andi &amp; Indah</h1>
+            <p style="${"font-style: italic;"}">#2gether4ever</p>
+            <h3 class="${"svelte-86kb3g"}">Minggu, 12 April 2023</h3></div></div>
+</section>`;
+    });
+    css$23 = {
+      code: ".spin.svelte-1cj2gr0{animation:svelte-1cj2gr0-spin 2s 0s infinite linear}.pulse.svelte-1cj2gr0{animation:svelte-1cj2gr0-spin 1s infinite steps(8)}@keyframes svelte-1cj2gr0-spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}",
+      map: null
+    };
+    Fa2 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      let { class: clazz = "" } = $$props;
+      let { id = "" } = $$props;
+      let { style = "" } = $$props;
+      let { icon } = $$props;
+      let { size = "" } = $$props;
+      let { color = "" } = $$props;
+      let { fw = false } = $$props;
+      let { pull = "" } = $$props;
+      let { scale = 1 } = $$props;
+      let { translateX = 0 } = $$props;
+      let { translateY = 0 } = $$props;
+      let { rotate = "" } = $$props;
+      let { flip = false } = $$props;
+      let { spin = false } = $$props;
+      let { pulse = false } = $$props;
+      let { primaryColor = "" } = $$props;
+      let { secondaryColor = "" } = $$props;
+      let { primaryOpacity = 1 } = $$props;
+      let { secondaryOpacity = 0.4 } = $$props;
+      let { swapOpacity = false } = $$props;
+      let i2;
+      let s3;
+      let transform;
+      if ($$props.class === void 0 && $$bindings.class && clazz !== void 0)
+        $$bindings.class(clazz);
+      if ($$props.id === void 0 && $$bindings.id && id !== void 0)
+        $$bindings.id(id);
+      if ($$props.style === void 0 && $$bindings.style && style !== void 0)
+        $$bindings.style(style);
+      if ($$props.icon === void 0 && $$bindings.icon && icon !== void 0)
+        $$bindings.icon(icon);
+      if ($$props.size === void 0 && $$bindings.size && size !== void 0)
+        $$bindings.size(size);
+      if ($$props.color === void 0 && $$bindings.color && color !== void 0)
+        $$bindings.color(color);
+      if ($$props.fw === void 0 && $$bindings.fw && fw !== void 0)
+        $$bindings.fw(fw);
+      if ($$props.pull === void 0 && $$bindings.pull && pull !== void 0)
+        $$bindings.pull(pull);
+      if ($$props.scale === void 0 && $$bindings.scale && scale !== void 0)
+        $$bindings.scale(scale);
+      if ($$props.translateX === void 0 && $$bindings.translateX && translateX !== void 0)
+        $$bindings.translateX(translateX);
+      if ($$props.translateY === void 0 && $$bindings.translateY && translateY !== void 0)
+        $$bindings.translateY(translateY);
+      if ($$props.rotate === void 0 && $$bindings.rotate && rotate !== void 0)
+        $$bindings.rotate(rotate);
+      if ($$props.flip === void 0 && $$bindings.flip && flip !== void 0)
+        $$bindings.flip(flip);
+      if ($$props.spin === void 0 && $$bindings.spin && spin !== void 0)
+        $$bindings.spin(spin);
+      if ($$props.pulse === void 0 && $$bindings.pulse && pulse !== void 0)
+        $$bindings.pulse(pulse);
+      if ($$props.primaryColor === void 0 && $$bindings.primaryColor && primaryColor !== void 0)
+        $$bindings.primaryColor(primaryColor);
+      if ($$props.secondaryColor === void 0 && $$bindings.secondaryColor && secondaryColor !== void 0)
+        $$bindings.secondaryColor(secondaryColor);
+      if ($$props.primaryOpacity === void 0 && $$bindings.primaryOpacity && primaryOpacity !== void 0)
+        $$bindings.primaryOpacity(primaryOpacity);
+      if ($$props.secondaryOpacity === void 0 && $$bindings.secondaryOpacity && secondaryOpacity !== void 0)
+        $$bindings.secondaryOpacity(secondaryOpacity);
+      if ($$props.swapOpacity === void 0 && $$bindings.swapOpacity && swapOpacity !== void 0)
+        $$bindings.swapOpacity(swapOpacity);
+      $$result.css.add(css$23);
+      i2 = icon && icon.icon || [0, 0, "", [], ""];
+      s3 = getStyles(style, size, pull, fw);
+      transform = getTransform(scale, translateX, translateY, rotate, flip, 512);
+      return `${i2[4] ? `<svg${add_attribute("id", id, 0)} class="${[
+        "svelte-fa " + escape(clazz) + " svelte-1cj2gr0",
+        (pulse ? "pulse" : "") + " " + (spin ? "spin" : "")
+      ].join(" ").trim()}"${add_attribute("style", s3, 0)} viewBox="${"0 0 " + escape(i2[0]) + " " + escape(i2[1])}" aria-hidden="${"true"}" role="${"img"}" xmlns="${"http://www.w3.org/2000/svg"}"><g transform="${"translate(" + escape(i2[0] / 2) + " " + escape(i2[1] / 2) + ")"}" transform-origin="${escape(i2[0] / 4) + " 0"}"><g${add_attribute("transform", transform, 0)}>${typeof i2[4] == "string" ? `<path${add_attribute("d", i2[4], 0)}${add_attribute("fill", color || primaryColor || "currentColor", 0)} transform="${"translate(" + escape(i2[0] / -2) + " " + escape(i2[1] / -2) + ")"}"></path>` : `
+          <path${add_attribute("d", i2[4][0], 0)}${add_attribute("fill", secondaryColor || color || "currentColor", 0)}${add_attribute("fill-opacity", swapOpacity != false ? primaryOpacity : secondaryOpacity, 0)} transform="${"translate(" + escape(i2[0] / -2) + " " + escape(i2[1] / -2) + ")"}"></path>
+          <path${add_attribute("d", i2[4][1], 0)}${add_attribute("fill", primaryColor || color || "currentColor", 0)}${add_attribute("fill-opacity", swapOpacity != false ? secondaryOpacity : primaryOpacity, 0)} transform="${"translate(" + escape(i2[0] / -2) + " " + escape(i2[1] / -2) + ")"}"></path>`}</g></g></svg>` : ``}`;
+    });
+    css$13 = {
+      code: ".container.svelte-11wk2q7.svelte-11wk2q7{padding:1rem;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding-block:2rem;gap:2rem}.head.svelte-11wk2q7.svelte-11wk2q7{margin-bottom:3rem;color:var(--primary-color);line-height:1.5}h3.svelte-11wk2q7.svelte-11wk2q7{font-family:'Arima', cursive;font-weight:900;color:var(--primary-color)}.brides.svelte-11wk2q7.svelte-11wk2q7{display:flex;flex-direction:column;justify-content:center;align-items:center}.brides.svelte-11wk2q7 h3.svelte-11wk2q7{margin-top:1rem}.brides.svelte-11wk2q7 a.svelte-11wk2q7{background-color:var(--primary-color);width:2rem;height:2rem;color:whitesmoke;display:flex;justify-content:center;align-items:center;border-radius:5px;margin-top:1rem}.image.svelte-11wk2q7.svelte-11wk2q7{width:200px;height:200px;border-radius:50%;overflow:hidden}img.svelte-11wk2q7.svelte-11wk2q7{width:100%;height:100%;object-fit:cover}",
+      map: null
+    };
+    Brides = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      $$result.css.add(css$13);
+      return `<section><div class="${"container svelte-11wk2q7"}"><div class="${"head svelte-11wk2q7"}"><h3 class="${"svelte-11wk2q7"}">Bride &amp; Groom</h3>
+            <p>Maha suci Allah SWT yang telah menciptakan makhluk-Nya berpasang-pasangan. Ya Allah, perkenankanlah kami merangkai kasih sayang yang Kau ciptakan di antara putra-putri kami:</p></div>
+        <div class="${"brides svelte-11wk2q7"}"><div class="${"image svelte-11wk2q7"}"><img src="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/6648600291075.jpg"}" alt="${""}" class="${"svelte-11wk2q7"}"></div>
+            <h3 class="${"svelte-11wk2q7"}">Andi Putra Pratama, SE</h3>
+            <p style="${"font-style: italic;"}">Putra dari pasangan</p>
+            <p style="${"font-weight: 500; color: var(--secondary-color);"}">Bpk. Haris Sustyanto &amp; Ibu. Bella Ayu</p>
+            <a href="${"https://instagram.com/ddtamn"}" class="${"svelte-11wk2q7"}">${validate_component(Fa2, "Fa").$$render($$result, { icon: faInstagram }, {}, {})}</a></div>
+        <div style="${"margin-bottom: 1rem; color: var(--primary-color); font-size: 6rem; display: flex; justify-content: center; align-items: center; line-height: 1.5; font-family: 'Arima', cursive; font-weight: 900;"}">&amp;</div>
+        <div class="${"brides svelte-11wk2q7"}"><div class="${"image svelte-11wk2q7"}"><img src="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/70c569ab32e12.jpg"}" alt="${""}" class="${"svelte-11wk2q7"}"></div>
+            <h3 class="${"svelte-11wk2q7"}">Indah Permata Sari, SH., MM</h3>
+            <p style="${"font-style: italic;"}">Putri dari pasangan</p>
+            <p style="${"font-weight: 500; color: var(--secondary-color);"}">Bpk. Haris Sustyanto &amp; Ibu. Bella Ayu</p>
+            <a href="${"https://instagram.com/ddtamn"}" class="${"svelte-11wk2q7"}">${validate_component(Fa2, "Fa").$$render($$result, { icon: faInstagram }, {}, {})}</a></div></div>
+</section>`;
+    });
+    css13 = {
+      code: "section.svelte-tug2qs.svelte-tug2qs{background-image:url('https://cdn.imweb.me/upload/S201904265cc294845b98d/72d552aefd853.jpg');background-position:center center;background-size:cover;background-repeat:no-repeat;position:relative;height:300px}.container.svelte-tug2qs.svelte-tug2qs{padding:1rem}.overlay.svelte-tug2qs.svelte-tug2qs{position:absolute;top:0;left:0;width:100%;height:100%;z-index:1;background:var(--primary-color);opacity:0.7}.content.svelte-tug2qs.svelte-tug2qs{display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:2rem;width:100%;height:100%;left:0;top:0;position:absolute;z-index:2;color:whitesmoke}h1.svelte-tug2qs.svelte-tug2qs{font-size:2rem;letter-spacing:0.5rem;text-transform:uppercase;font-family:'Arima', cursive;font-weight:900}.counter.svelte-tug2qs.svelte-tug2qs{display:flex;justify-content:center;align-items:center;gap:1.3rem}.counter.svelte-tug2qs h6.svelte-tug2qs{font-weight:bold;font-size:1.3rem}a.svelte-tug2qs.svelte-tug2qs{border-radius:5px;border:1px solid whitesmoke;padding:0.5rem 0.8rem;font-size:0.8rem;background-color:var(--primary-color);color:whitesmoke;text-decoration:none;box-shadow:var(--box-shadow)}",
+      map: null
+    };
+    SaveTheDate = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      $$result.css.add(css13);
+      return `<section class="${"svelte-tug2qs"}"><div class="${"container svelte-tug2qs"}"><div class="${"overlay svelte-tug2qs"}"></div>
+        <div class="${"content svelte-tug2qs"}"><h1 class="${"svelte-tug2qs"}">save the date</h1>
+            <div class="${"counter svelte-tug2qs"}"><div class="${"count"}"><h6 class="${"svelte-tug2qs"}">00</h6><p>Days</p></div>
+                <div class="${"count"}"><h6 class="${"svelte-tug2qs"}">00</h6><p>Hours</p></div>
+                <div class="${"count"}"><h6 class="${"svelte-tug2qs"}">00</h6><p>Minutes</p></div>
+                <div class="${"count"}"><h6 class="${"svelte-tug2qs"}">00</h6><p>Seconds</p></div></div>
+            <a href="${"#d"}" class="${"svelte-tug2qs"}">Add to Calendar</a></div></div>
+</section>`;
+    });
+    Gallery = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      return `<section><div class="${"container"}"><div class="${"head"}"><h3>Our Moment&#39;s</h3>
+            <p>True love stands by each other\u2019s side on good days and stands closer on bad days</p></div>
+        <div class="${"flexbin flexbin-margin"}" id="${"lightgallery"}"><a href="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/b2d3bc663702a.jpg"}"><img src="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/b2d3bc663702a.jpg"}" alt="${""}"></a>
+            <a href="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/e6e512e4e7668.jpg"}"><img src="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/e6e512e4e7668.jpg"}" alt="${""}"></a>
+            <a href="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/238d27e87b918.jpg"}"><img src="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/238d27e87b918.jpg"}" alt="${""}"></a>
+            <a href="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/74e3f2d06773d.jpg"}"><img src="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/74e3f2d06773d.jpg"}" alt="${""}"></a>
+            <a href="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/2aae3d50e20f6.jpg"}"><img src="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/2aae3d50e20f6.jpg"}" alt="${""}"></a>
+            <a href="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/27c1b036ae3bc.jpg"}"><img src="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/27c1b036ae3bc.jpg"}" alt="${""}"></a>
+            <a href="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/b2fdc287b3da6.jpg"}"><img src="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/b2fdc287b3da6.jpg"}" alt="${""}"></a>
+            <a href="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/32d4161951e3d.jpg"}"><img src="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/32d4161951e3d.jpg"}" alt="${""}"></a>
+            <a href="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/9955a968d7bae.jpg"}"><img src="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/9955a968d7bae.jpg"}" alt="${""}"></a>
+            <a href="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/232fb3b70c156.jpg"}"><img src="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/232fb3b70c156.jpg"}" alt="${""}"></a>
+            <a href="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/5d43ef2b2f57e.jpg"}"><img src="${"https://cdn.imweb.me/upload/S201904265cc294845b98d/5d43ef2b2f57e.jpg"}" alt="${""}"></a></div></div></section>`;
+    });
+    _001 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+      return `<main>${validate_component(Cover, "Cover").$$render($$result, {}, {}, {})}
+    ${validate_component(Hero2, "Hero").$$render($$result, {}, {}, {})}
+    ${validate_component(Brides, "Brides").$$render($$result, {}, {}, {})}
+    ${validate_component(SaveTheDate, "SaveTheDate").$$render($$result, {}, {}, {})}
+    ${validate_component(Gallery, "Gallery").$$render($$result, {}, {}, {})}</main>`;
+    });
+  }
+});
+
+// .svelte-kit/output/server/nodes/6.js
+var __exports7 = {};
+__export(__exports7, {
+  css: () => css14,
+  entry: () => entry7,
+  index: () => index7,
+  js: () => js7,
+  module: () => svelte_exports
+});
+var index7, entry7, js7, css14;
+var init__7 = __esm({
+  ".svelte-kit/output/server/nodes/6.js"() {
+    init_svelte();
+    index7 = 6;
+    entry7 = "pages/tema/preview/001.svelte-2df84ffc.js";
+    js7 = ["pages/tema/preview/001.svelte-2df84ffc.js", "chunks/index-b83f0d2a.js", "chunks/index.es-638ce7e7.js"];
+    css14 = ["assets/pages/tema/preview/001.svelte-24f2a878.css"];
   }
 });
 
@@ -6764,8 +9303,8 @@ var _FormData$1 = class {
     const name = toUSVString$4(args[0]);
     const filename = args.length === 3 ? toUSVString$4(args[2]) : void 0;
     const value = isBlobLike$2(args[1]) ? args[1] : toUSVString$4(args[1]);
-    const entry4 = makeEntry(name, value, filename);
-    this[kState$4].push(entry4);
+    const entry8 = makeEntry(name, value, filename);
+    this[kState$4].push(entry8);
   }
   delete(...args) {
     if (!(this instanceof _FormData$1)) {
@@ -6776,9 +9315,9 @@ var _FormData$1 = class {
     }
     const name = toUSVString$4(args[0]);
     const next = [];
-    for (const entry4 of this[kState$4]) {
-      if (entry4.name !== name) {
-        next.push(entry4);
+    for (const entry8 of this[kState$4]) {
+      if (entry8.name !== name) {
+        next.push(entry8);
       }
     }
     this[kState$4] = next;
@@ -6791,7 +9330,7 @@ var _FormData$1 = class {
       throw new TypeError(`Failed to execute 'get' on 'FormData': 1 arguments required, but only ${args.length} present.`);
     }
     const name = toUSVString$4(args[0]);
-    const idx = this[kState$4].findIndex((entry4) => entry4.name === name);
+    const idx = this[kState$4].findIndex((entry8) => entry8.name === name);
     if (idx === -1) {
       return null;
     }
@@ -6805,7 +9344,7 @@ var _FormData$1 = class {
       throw new TypeError(`Failed to execute 'getAll' on 'FormData': 1 arguments required, but only ${args.length} present.`);
     }
     const name = toUSVString$4(args[0]);
-    return this[kState$4].filter((entry4) => entry4.name === name).map((entry4) => entry4.value);
+    return this[kState$4].filter((entry8) => entry8.name === name).map((entry8) => entry8.value);
   }
   has(...args) {
     if (!(this instanceof _FormData$1)) {
@@ -6815,7 +9354,7 @@ var _FormData$1 = class {
       throw new TypeError(`Failed to execute 'has' on 'FormData': 1 arguments required, but only ${args.length} present.`);
     }
     const name = toUSVString$4(args[0]);
-    return this[kState$4].findIndex((entry4) => entry4.name === name) !== -1;
+    return this[kState$4].findIndex((entry8) => entry8.name === name) !== -1;
   }
   set(...args) {
     if (!(this instanceof _FormData$1)) {
@@ -6830,16 +9369,16 @@ var _FormData$1 = class {
     const name = toUSVString$4(args[0]);
     const filename = args.length === 3 ? toUSVString$4(args[2]) : void 0;
     const value = isBlobLike$2(args[1]) ? args[1] : toUSVString$4(args[1]);
-    const entry4 = makeEntry(name, value, filename);
-    const idx = this[kState$4].findIndex((entry5) => entry5.name === name);
+    const entry8 = makeEntry(name, value, filename);
+    const idx = this[kState$4].findIndex((entry9) => entry9.name === name);
     if (idx !== -1) {
       this[kState$4] = [
         ...this[kState$4].slice(0, idx),
-        entry4,
-        ...this[kState$4].slice(idx + 1).filter((entry5) => entry5.name !== name)
+        entry8,
+        ...this[kState$4].slice(idx + 1).filter((entry9) => entry9.name !== name)
       ];
     } else {
-      this[kState$4].push(entry4);
+      this[kState$4].push(entry8);
     }
   }
   get [Symbol.toStringTag]() {
@@ -6878,19 +9417,19 @@ var _FormData$1 = class {
 var FormData$1 = _FormData$1;
 __publicField(FormData$1, "name", "FormData");
 function makeEntry(name, value, filename) {
-  const entry4 = {
+  const entry8 = {
     name: null,
     value: null
   };
-  entry4.name = name;
+  entry8.name = name;
   if (isBlobLike$2(value) && !isFileLike(value)) {
     value = value instanceof Blob$2 ? new File([value], "blob", value) : new FileLike(value, "blob", value);
   }
   if (isFileLike(value) && filename != null) {
     value = value instanceof File ? new File([value], filename, value) : new FileLike(value, filename, value);
   }
-  entry4.value = value;
-  return entry4;
+  entry8.value = value;
+  return entry8;
 }
 var formdata = { FormData: FormData$1 };
 var util$f = util$h;
@@ -13061,12 +15600,12 @@ function devalue(value) {
   }
   walk(value);
   var names = /* @__PURE__ */ new Map();
-  Array.from(counts).filter(function(entry4) {
-    return entry4[1] > 1;
+  Array.from(counts).filter(function(entry8) {
+    return entry8[1] > 1;
   }).sort(function(a, b) {
     return b[1] - a[1];
-  }).forEach(function(entry4, i2) {
-    names.set(entry4[0], getName(i2));
+  }).forEach(function(entry8, i2) {
+    names.set(entry8[0], getName(i2));
   });
   function stringify(thing) {
     if (names.has(thing)) {
@@ -13832,20 +16371,20 @@ function parse$1(str, options) {
   var obj = {};
   var opt = options || {};
   var dec = opt.decode || decode;
-  var index4 = 0;
-  while (index4 < str.length) {
-    var eqIdx = str.indexOf("=", index4);
+  var index8 = 0;
+  while (index8 < str.length) {
+    var eqIdx = str.indexOf("=", index8);
     if (eqIdx === -1) {
       break;
     }
-    var endIdx = str.indexOf(";", index4);
+    var endIdx = str.indexOf(";", index8);
     if (endIdx === -1) {
       endIdx = str.length;
     } else if (endIdx < eqIdx) {
-      index4 = str.lastIndexOf(";", eqIdx - 1) + 1;
+      index8 = str.lastIndexOf(";", eqIdx - 1) + 1;
       continue;
     }
-    var key2 = str.slice(index4, eqIdx).trim();
+    var key2 = str.slice(index8, eqIdx).trim();
     if (obj[key2] === void 0) {
       var val = str.slice(eqIdx + 1, endIdx).trim();
       if (val.charCodeAt(0) === 34) {
@@ -13853,7 +16392,7 @@ function parse$1(str, options) {
       }
       obj[key2] = tryDecode(val, dec);
     }
-    index4 = endIdx + 1;
+    index8 = endIdx + 1;
   }
   return obj;
 }
@@ -14632,8 +17171,8 @@ async function respond$1(opts) {
         if (error2) {
           while (i2--) {
             if (route.b[i2]) {
-              const index4 = route.b[i2];
-              const error_node = await options.manifest._.nodes[index4]();
+              const index8 = route.b[i2];
+              const error_node = await options.manifest._.nodes[index8]();
               let node_loaded;
               let j = i2;
               while (!(node_loaded = branch[j])) {
@@ -15044,7 +17583,7 @@ function set_paths(paths) {
   base = paths.base;
   assets = paths.assets || base;
 }
-var template = ({ head, body: body2, assets: assets2, nonce }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="' + assets2 + '/favicon.png" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		' + head + "\n	</head>\n	<body>\n		<div>" + body2 + "</div>\n	</body>\n</html>\n";
+var template = ({ head, body: body2, assets: assets2, nonce }) => '<!DOCTYPE html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="' + assets2 + '/favicon.png" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		<meta name="theme-color" content="#5a9fbf" />\n		<title>Dinvite</title>\n		' + head + "\n	</head>\n	<body>\n		<div>" + body2 + "</div>\n	</body>\n</html>\n";
 var read = null;
 set_paths({ "base": "", "assets": "" });
 var Server = class {
@@ -15103,14 +17642,18 @@ var Server = class {
 // .svelte-kit/vercel-tmp/manifest.js
 var manifest = {
   appDir: "_app",
-  assets: /* @__PURE__ */ new Set(["bg-wa-box.jpg", "dinvite.png", "favicon.png", "fonts/Cano.otf", "images/Cara Dapat Jackpot di FaFaFa Higgs Domino Island Terbaru.jpg", "images/hero.png"]),
-  mimeTypes: { ".jpg": "image/jpeg", ".png": "image/png", ".otf": "font/otf" },
+  assets: /* @__PURE__ */ new Set(["favicon.png", "fonts/Cano.otf", "images/bg-wa-box.jpg", "images/dinvite.png", "images/hero.png"]),
+  mimeTypes: { ".png": "image/png", ".otf": "font/otf", ".jpg": "image/jpeg" },
   _: {
-    entry: { "file": "start-4c84bead.js", "js": ["start-4c84bead.js", "chunks/index-1114af13.js"], "css": [] },
+    entry: { "file": "start-7274f6b4.js", "js": ["start-7274f6b4.js", "chunks/index-b83f0d2a.js"], "css": [] },
     nodes: [
       () => Promise.resolve().then(() => (init__(), __exports)),
       () => Promise.resolve().then(() => (init__2(), __exports2)),
-      () => Promise.resolve().then(() => (init__3(), __exports3))
+      () => Promise.resolve().then(() => (init__3(), __exports3)),
+      () => Promise.resolve().then(() => (init__4(), __exports4)),
+      () => Promise.resolve().then(() => (init__5(), __exports5)),
+      () => Promise.resolve().then(() => (init__6(), __exports6)),
+      () => Promise.resolve().then(() => (init__7(), __exports7))
     ],
     routes: [
       {
@@ -15122,6 +17665,50 @@ var manifest = {
         path: "/",
         shadow: null,
         a: [0, 2],
+        b: [1]
+      },
+      {
+        type: "page",
+        id: "blog",
+        pattern: /^\/blog\/?$/,
+        names: [],
+        types: [],
+        path: "/blog",
+        shadow: null,
+        a: [0, 3],
+        b: [1]
+      },
+      {
+        type: "page",
+        id: "harga",
+        pattern: /^\/harga\/?$/,
+        names: [],
+        types: [],
+        path: "/harga",
+        shadow: null,
+        a: [0, 4],
+        b: [1]
+      },
+      {
+        type: "page",
+        id: "tema",
+        pattern: /^\/tema\/?$/,
+        names: [],
+        types: [],
+        path: "/tema",
+        shadow: null,
+        a: [0, 5],
+        b: [1]
+      },
+      {
+        type: "page",
+        id: "tema/preview/001",
+        pattern: /^\/tema\/preview\/001\/?$/,
+        names: [],
+        types: [],
+        path: "/tema/preview/001",
+        shadow: null,
+        a: [0, 6],
         b: [1]
       }
     ],
@@ -15161,6 +17748,26 @@ var serverless_default = async (req, res) => {
  * Copyright(c) 2015 Douglas Christopher Wilson
  * MIT Licensed
  */
+/*!
+ * lightgallery | 2.5.0 | June 13th 2022
+ * http://www.lightgalleryjs.com/
+ * Copyright (c) 2020 Sachin Neravath;
+ * @license GPLv3
+ */
+/*! *****************************************************************************
+    Copyright (c) Microsoft Corporation.
+
+    Permission to use, copy, modify, and/or distribute this software for any
+    purpose with or without fee is hereby granted.
+
+    THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+    REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+    AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+    INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+    LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+    OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+    PERFORMANCE OF THIS SOFTWARE.
+    ***************************************************************************** */
 /*! fetch-blob. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
 /*! formdata-polyfill. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */
 /*! node-domexception. MIT License. Jimmy Wärting <https://jimmy.warting.se/opensource> */

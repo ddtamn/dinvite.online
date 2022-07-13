@@ -25,6 +25,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@sveltejs/adapter-vercel": "^1.0.0-next.59"
+		"@sveltejs/adapter-vercel": "^1.0.0-next.59",
+		"lightgallery": "^2.5.0"
 	}
 }
