@@ -93,6 +93,7 @@
         position: relative;
         /* box-shadow: var(--box-shadow); */
         border-left: 1px solid var(--secondary-color);
+        color: whitesmoke;
         
     }
 
