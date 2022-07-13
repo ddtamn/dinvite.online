@@ -6,8 +6,8 @@
     <div class="container" style="background-image: url('https://cdn.imweb.me/upload/S201904265cc294845b98d/3aeac83be14ce.jpg');">
         <div class="overlay"></div>
         <div class="content" data-aos="zoom-in">
-            <p>Hai..</p>
-            <p>You are invited to our wedding day</p>
+            <p style="font-weight: 300;">Hai..</p>
+            <p style="font-weight: 300;">You are invited to our wedding day</p>
             <h1>Andy & Indah</h1>
             <button on:click="{() => hide = true}">Let's Begin</button>
         </div>

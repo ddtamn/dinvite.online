@@ -40,6 +40,15 @@
         
     }
 
+    h4 {
+        font-family: 'Arima', cursive;
+        font-weight: 900;
+    }
+
+    .head p {
+        font-weight: 300;
+    }
+
     .timeline {
         position: relative;
     }
@@ -52,6 +61,10 @@
         height: 100%;
         width: 3px;
         background-color: darkgrey;
+    }
+
+    .timeline p {
+        font-weight: 200;
     }
 
     .inner {
@@ -98,7 +111,7 @@
     }
 
     .content::before {
-        content: '\2665';
+        content: '🤍';
         position: absolute;
         left: -45px;
         top: 12px;

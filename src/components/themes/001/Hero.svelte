@@ -4,9 +4,9 @@
         <div class="content" data-aos="zoom-in">
             <!-- svelte-ignore a11y-missing-attribute -->
             <div class="image"><img src="https://cdn.imweb.me/upload/S201904265cc294845b98d/3aeac83be14ce.jpg" loading="lazy"></div>
-            <p style="margin-top: 1rem;">Wedding Invitation</p>
+            <p style="margin-top: 1rem; font-weight: 300;">Wedding Invitation</p>
             <h1>Andi & Indah</h1>
-            <p style="font-style: italic;">#2gether4ever</p>
+            <p  style="font-style: italic; font-weight: 300;">#2gether4ever</p>
             <h3>Minggu, 12 April 2023</h3>
         </div>
     </div>

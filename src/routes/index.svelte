@@ -9,6 +9,7 @@
     import Pricelist from '../components/Pricelist.svelte';
     import Footer from '../components/Footer.svelte';
     import WhatsappButton from '../components/WhatsappButton.svelte';
+    
 
     onMount(() => {
         document.body.style.overflowY = 'scroll'

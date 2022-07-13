@@ -17,7 +17,7 @@
                 <div class="flower" style="left: 10rem;"><Flower001 color={'var(--primary-color)'} width={'200px'} height={'200px'}/></div>
             </div>
             <h3>Andi Putra Pratama, SE</h3>
-            <p style="font-style: italic;">Putra dari pasangan</p>
+            <p style="font-style: italic; font-weight: 300;">Putra dari pasangan</p>
             <p style="font-weight: 500; color: var(--secondary-color);">Bpk. Haris Sustyanto & Ibu. Bella Ayu</p>
             <a href="https://instagram.com/ddtamn"><Fa icon={faInstagram}/></a>
         </div>
@@ -38,7 +38,7 @@
                 <div class="flower" style="transform: scale(-1);"><Flower001 color={'var(--primary-color)'} width={'200px'} height={'200px'}/></div>
             </div>
             <h3>Indah Permata Sari, SH., MM</h3>
-            <p style="font-style: italic;">Putri dari pasangan</p>
+            <p style="font-style: italic; font-weight: 300;">Putri dari pasangan</p>
             <p style="font-weight: 500; color: var(--secondary-color);">Bpk. Haris Sustyanto & Ibu. Bella Ayu</p>
             <a href="https://instagram.com/ddtamn"><Fa icon={faInstagram}/></a>
         </div>
@@ -80,6 +80,10 @@
         font-family: 'Arima', cursive;
         font-weight: 900;
         color: var(--primary-color);
+    }
+
+    .head p {
+        font-weight: 300;
     }
 
     .brides {
