@@ -1,6 +1,6 @@
 <script>
     import Fa from 'svelte-fa'
-    import {faInstagram} from '@fortawesome/free-brands-svg-icons'
+    import {faInstagram} from '@fortawesome/free-brands-svg-icons/index.es'
 </script>
 
 <section>
