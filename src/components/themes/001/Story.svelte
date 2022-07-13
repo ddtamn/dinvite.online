@@ -91,7 +91,7 @@
         padding: 1rem;
         border-radius: 00.5rem;
         position: relative;
-        box-shadow: var(--box-shadow);
+        /* box-shadow: var(--box-shadow); */
         border-left: 1px solid var(--secondary-color);
         
     }
@@ -108,6 +108,7 @@
         display: grid;
         place-items: center;
         border-radius: 50%;
+        color: whitesmoke;
     }
 
     .content::after {
@@ -121,7 +122,7 @@
         left: 0;
         top: 18px;
         margin-left: -9px;
-        border-right-color: var(--secondary-color)
+        border-right-color: var(--secondary-color);
 
     }
 </style>
