@@ -19,9 +19,6 @@
     <title>Dinvite</title>
 </svelte:head>
 
-
-
-
 <main>
     <Header/>
     <Hero/>
