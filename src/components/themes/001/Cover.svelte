@@ -10,7 +10,6 @@
     let play = false
 
     onMount(() => {
-        console.log(window.location.href)
         let url = new URL(window.location.href);
         let params = new URLSearchParams(url.search);
         guest = params.get('to')
@@ -43,7 +42,7 @@
             <p style="font-weight: 300;">You are invited to our wedding day</p>
             <h1>Andy & Indah</h1>
             <button on:click="{(e) => openCover(e)}">Let's Begin</button>
-            <audio src="http://drive.google.com/uc?export=view&id=1-oLHjArCAM4KVhWURk66QKPEbnrDbXMo" loop="true"></audio>
+            <audio src="https://drive.google.com/uc?export=view&id=1-oLHjArCAM4KVhWURk66QKPEbnrDbXMo" loop="true"></audio>
         </div>
     </div>
 </section>
