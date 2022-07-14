@@ -10,6 +10,7 @@
     import Story from '../../../components/themes/001/Story.svelte';
     import Wish from '../../../components/themes/001/Wish.svelte';
     import Gift from '../../../components/themes/001/Gift.svelte';
+    import Footer from '../../../components/themes/001/Footer.svelte'
 
     import AOS from 'aos'
     import "aos/dist/aos.css";
@@ -36,4 +37,5 @@
     <Events/>
     <Wish/>
     <Gift/>
+    <Footer/>
 </main>

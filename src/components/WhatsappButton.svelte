@@ -27,7 +27,7 @@
             <a class="send" href="https://wa.me/6281354911647" target="_blank"><Fa icon={faWhatsapp}/> Start Chat</a>
             <p>
                 ⚡ by
-                <a href="/" target="_blank">dinvite.id</a>
+                <a href="/" target="_blank">dinvite.online</a>
             </p>
         </div>
     </div>

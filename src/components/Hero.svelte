@@ -2,7 +2,7 @@
     <div class="container">
         <div class="content">
             <h1>Undangan Pernikahan Digital Website</h1>
-            <p>solusi undangan pernikahan website kamu jadi lebih menarik & berkesan</p>
+            <p style="font-weight: 300;">solusi undangan pernikahan website kamu jadi lebih menarik & berkesan</p>
             <div class="buttons">
                 <a class="order" href="/">Pesan Sekarang</a>
                 <a class="pricelist" href="/">Harga</a>                

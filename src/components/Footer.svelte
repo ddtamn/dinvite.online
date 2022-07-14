@@ -44,7 +44,7 @@
                 </li>
             </ul>
             <p>
-            Copyright 2021 - {new Date().getFullYear()} | <a href="/"><strong style="color: var(--primary)">dinvite.id</strong></a> Jasa pembuatan
+            Copyright 2021 - {new Date().getFullYear()} | <a href="/"><strong style="color: var(--primary)">dinvite.online</strong></a> Jasa pembuatan
             undangan
             digital website - All rights reserved. <br> self-developed by
             <strong style="color: #666666"> diditamin.m </strong>from Luwuk Banggai.

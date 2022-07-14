@@ -23,7 +23,7 @@ import { onMount } from "svelte";
 
 <header>
     <div class="container">
-        <a href="/" class="logo">dinvite</a>
+        <a href="/" class="logo"><img src="/logo.png" alt=""> <span>dinvite</span></a>
         <div on:click="{mobileToggle}" class="mobile-toggle {open ? 'open' : ''}">
             <span></span>
             <span></span>
@@ -87,9 +87,25 @@ import { onMount } from "svelte";
 }
 
 .logo {
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logo span {
     font-family: "cano", sans-serif;
+    font-weight: 100;
+    /* color: var(--color); */
     color: var(--primary);
     font-size: 1.8rem;
+    margin-top: 7px;
+}
+
+.logo img {
+    width: 35px;
+    
 }
 
 ul {
