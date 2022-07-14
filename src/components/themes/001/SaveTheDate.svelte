@@ -1,15 +1,33 @@
+<script>
+    let days = '00', hours = '00' , minutes = '00', seconds = '00'
+    function countdown(date) {
+        const countDate = new Date(date).getTime();
+        const now = new Date().getTime();
+        const gap = countDate - now;
+        const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
+        days = Math.floor(gap / day);
+        hours = Math.floor((gap % day) / hour);
+        minutes = Math.floor((gap % hour) / minute)
+        seconds = Math.floor((gap % minute) / second)
+    }
+    setInterval(() => {
+       countdown('Minggu 12 April 2023');
+    }, 1000);
+</script>
+
 <section>
     <div class="container">
         <div class="overlay"></div>
         <div class="content" data-aos="zoom-in">
             <h1>save the date</h1>
             <div class="counter">
-                <div class="count"><h6>00</h6><p>Days</p></div>
-                <div class="count"><h6>00</h6><p>Hours</p></div>
-                <div class="count"><h6>00</h6><p>Minutes</p></div>
-                <div class="count"><h6>00</h6><p>Seconds</p></div>
+                <div class="count"><h6>{days}</h6><p style="font-weight: 200;">Days</p></div>
+                <div class="count"><h6>{hours}</h6><p style="font-weight: 200;">Hours</p></div>
+                <div class="count"><h6>{minutes}</h6><p style="font-weight: 200;">Minutes</p></div>
+                <div class="count"><h6>{seconds}</h6><p style="font-weight: 200;">Seconds</p></div>
             </div>
-            <a href="#d">Add to Calendar</a>
+            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20230209%2F20231018&details=Special%20Inivited%20for%20you&location=https%3A%2F%2Fgoo.gl%2Fmaps%2FcVQmACWGxEZyp2KY7&text=Pernikahan%20Andi%20%26%20Indah" target="_blank">Add to Calendar</a>
+            
         </div>
     </div>
 </section>
@@ -35,7 +53,6 @@
         left: 0;
         width: 100%;
         height: 100%;
-        /* background: #25252581; */
         z-index: 1;
         background: var(--primary-color);
         opacity: 0.7;

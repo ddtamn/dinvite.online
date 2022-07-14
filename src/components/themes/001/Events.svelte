@@ -12,7 +12,7 @@
             <p style="font-size: 0.8rem;">Jl. Setia Budi Luwuk Banggai</p>
              <!-- svelte-ignore a11y-missing-attribute -->
             <div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d381.75811685649677!2d122.78865638325985!3d-0.9481183995158275!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d86a3e7ac7d28d5%3A0x9a2ef0fc7f1a2da9!2zMMKwNTYnNTMuMyJTIDEyMsKwNDcnMTguNyJF!5e0!3m2!1sid!2sid!4v1657702285355!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-            <button>Open Map</button>
+            <button><a style="text-decoration: none; color: whitesmoke;" href="https://goo.gl/maps/Gpyp4gs93HaKZXML7" target="_blank">Open Map</a>p</button>
         </div>
         <div class="activity" data-aos="fade-left">
             <h3>Resepsi</h3>
@@ -22,7 +22,7 @@
             <p style="font-size: 0.8rem;">Jl. Dr. Moh. Hatta Kawasan Bukit Halimun, Tj. Tuwis, Luwuk, Kabupaten Banggai, Sulawesi Tengah 94715</p>
             <!-- svelte-ignore a11y-missing-attribute -->
             <div class="map"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.2141964147722!2d122.79077731460545!3d-0.9970789992726605!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe84979efe572067e!2sEstrella%20hotel%20%26%20d%20club!5e0!3m2!1sid!2sid!4v1657702420794!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-            <button>Open Map</button>
+            <button><a style="text-decoration: none; color: whitesmoke;" href="https://goo.gl/maps/Gpyp4gs93HaKZXML7" target="_blank">Open Map</a></button>
         </div>
     </div>
 </section>

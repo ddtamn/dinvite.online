@@ -10,13 +10,13 @@
     <div class="container">
         <h3  data-aos="fade-up">Wedding Gift</h3>
         <p  data-aos="fade-up">Tanpa Mengurangi Rasa Hormat, Bagi Anda Yang Ingin Memberikan Tanda Kasih Untuk Mempelai, Dapat Melalui Virtual Account / E-Wallet</p>
-        <button on:click="{() => show = true}"><Fa icon={faGift}/> Send Gift</button>
+        <button on:click="{() => show = true}" data-aos="fade-up"><Fa icon={faGift}/> Send Gift</button>
     </div>
 </section>
 <div class="modal {show ? 'show' : ''}" >
     <div class="container {show ? 'show' : ''}">
         <div class="close" on:click="{() => show = false}"><Fa icon={faXmark}/></div>
-       <div class="head">
+       <div class="head" >
             <h3>Send Gift</h3>
             <p>Silahkan transfer hadiah melalui
             nomor rekening maupun dompet digital berikut</p>

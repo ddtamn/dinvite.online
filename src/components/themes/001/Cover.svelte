@@ -1,18 +1,55 @@
 <script>
+    import { onMount } from "svelte";
+    import Fa from 'svelte-fa'
+    import {faPlay, faPause, faL} from '@fortawesome/free-solid-svg-icons/index.es'
+
     export let hide = false
+
+    let guest;
+    let audio;
+    let play = false
+
+    onMount(() => {
+        console.log(window.location.href)
+        let url = new URL(window.location.href);
+        let params = new URLSearchParams(url.search);
+        guest = params.get('to')
+    })
+
+    function openCover(e) {
+        hide = true
+        e.target.closest('.content').querySelector('audio').play()
+        play = true
+        audio = e.target.closest('.content').querySelector('audio')
+    }
+
+    function playPause() {
+        if (audio.paused) {
+            audio.play()
+            play = true
+        } else {
+            audio.pause()
+            play = false
+        }
+        
+    }
 </script>
 
 <section class="{hide ? 'hide' : ''}">
     <div class="container" style="background-image: url('https://cdn.imweb.me/upload/S201904265cc294845b98d/3aeac83be14ce.jpg');">
         <div class="overlay"></div>
         <div class="content" data-aos="zoom-in">
-            <p style="font-weight: 300;">Hai..</p>
+            <p style="font-weight: 300;">Hai, {guest || ''}</p>
             <p style="font-weight: 300;">You are invited to our wedding day</p>
             <h1>Andy & Indah</h1>
-            <button on:click="{() => hide = true}">Let's Begin</button>
+            <button on:click="{(e) => openCover(e)}">Let's Begin</button>
+            <audio src="http://drive.google.com/uc?export=view&id=1-oLHjArCAM4KVhWURk66QKPEbnrDbXMo" loop="true"></audio>
         </div>
     </div>
 </section>
+<div class="audio-controls" on:click="{playPause}">
+    <div class="pause"><Fa icon={play ? faPause : faPlay}/></div>
+</div>
 
 
 
@@ -84,5 +121,21 @@
         box-shadow: var(--box-shadow);
         cursor: pointer;
         margin-top: 1rem;
+    }
+
+    .audio-controls {
+        position: fixed;
+        bottom: 1rem;
+        right: 1rem;
+        background-color: var(--primary-color);
+        z-index: 998;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        color: whitesmoke;
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        box-shadow: var(--box-shadow);
     }
 </style>

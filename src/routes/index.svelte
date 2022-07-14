@@ -23,7 +23,7 @@
     <meta name="description" content="solusi undangan pernikahan website kamu jadi lebih menarik & berkesan">
 
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="website"> 
     <meta property="og:url" content="https://dinvite.online/">
     <meta property="og:title" content="Dinvite - Undangan Pernikahan Digital Website">
     <meta property="og:description" content="solusi undangan pernikahan website kamu jadi lebih menarik & berkesan">
