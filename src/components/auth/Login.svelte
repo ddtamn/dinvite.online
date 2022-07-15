@@ -1,3 +1,5 @@
+
+
 <script>
     import '../../css/style.css'
     import { auth } from "../../routes/ddtamn/firebase";
