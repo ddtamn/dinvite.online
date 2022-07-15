@@ -10,8 +10,10 @@
     const login = async () => {
         const userCredential = await signInWithEmailAndPassword(auth, email, password)
         const idToken = userCredential._tokenResponse.idToken
-        await request("/ddtamn/auth", 'POST', {idToken});
-        goto('ddtamn/app');
+        const res = await request("/ddtamn/auth", 'POST', {idToken});
+        if (res.ok) {
+            window.location.href = '/ddtamn/app'
+        }
     }
   
 
