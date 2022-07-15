@@ -43,7 +43,6 @@
         border-radius: 7px;
         font-size: 15px;
         line-height: 22px;
-        color: var(--primary-clr);
         font-weight: 500;
         background: #fff;
         font-family: sans-serif;

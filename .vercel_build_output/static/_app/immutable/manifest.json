@@ -1,15 +1,18 @@
 {
   ".svelte-kit/runtime/client/start.js": {
-    "file": "start-7274f6b4.js",
+    "file": "start-d0824f3a.js",
     "src": ".svelte-kit/runtime/client/start.js",
     "isEntry": true,
     "imports": [
-      "_index-b83f0d2a.js"
+      "_index-39dc649e.js",
+      "_singletons-d1fb5791.js"
     ],
     "dynamicImports": [
       ".svelte-kit/runtime/components/layout.svelte",
       ".svelte-kit/runtime/components/error.svelte",
       "src/routes/blog.svelte",
+      "src/routes/ddtamn/app.svelte",
+      "src/routes/ddtamn/index.svelte",
       "src/routes/harga.svelte",
       "src/routes/index.svelte",
       "src/routes/tema/index.svelte",
@@ -17,92 +20,124 @@
     ]
   },
   ".svelte-kit/runtime/components/layout.svelte": {
-    "file": "layout.svelte-d08cc9cd.js",
+    "file": "layout.svelte-a65fa156.js",
     "src": ".svelte-kit/runtime/components/layout.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-b83f0d2a.js"
+      "_index-39dc649e.js"
     ]
   },
   ".svelte-kit/runtime/components/error.svelte": {
-    "file": "error.svelte-9e17dc01.js",
+    "file": "error.svelte-4d1728b9.js",
     "src": ".svelte-kit/runtime/components/error.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-b83f0d2a.js"
+      "_index-39dc649e.js"
     ]
   },
   "src/routes/blog.svelte": {
-    "file": "pages/blog.svelte-55df9e3d.js",
+    "file": "pages/blog.svelte-382b1f1d.js",
     "src": "src/routes/blog.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-b83f0d2a.js",
-      "_WhatsappButton-b1573f4c.js",
-      "_index.es-638ce7e7.js"
+      "_index-39dc649e.js",
+      "_WhatsappButton-2b82b1a8.js",
+      "_index.es-1abe5e66.js"
     ],
     "css": [
-      "assets/pages/blog.svelte-f00ed4d7.css"
+      "assets/pages/blog.svelte-f00ed4d7.css",
+      "assets/style-2731f505.css"
+    ]
+  },
+  "src/routes/ddtamn/app.svelte": {
+    "file": "pages/ddtamn/app.svelte-15e02aba.js",
+    "src": "src/routes/ddtamn/app.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-39dc649e.js",
+      "_fetch-706ffe26.js"
+    ],
+    "css": [
+      "assets/style-2731f505.css"
+    ]
+  },
+  "src/routes/ddtamn/index.svelte": {
+    "file": "pages/ddtamn/index.svelte-a63c1bc6.js",
+    "src": "src/routes/ddtamn/index.svelte",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_index-39dc649e.js",
+      "_fetch-706ffe26.js",
+      "_singletons-d1fb5791.js"
+    ],
+    "css": [
+      "assets/pages/ddtamn/index.svelte-5071fa71.css",
+      "assets/style-2731f505.css"
     ]
   },
   "src/routes/harga.svelte": {
-    "file": "pages/harga.svelte-907fa774.js",
+    "file": "pages/harga.svelte-a70851d9.js",
     "src": "src/routes/harga.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-b83f0d2a.js",
-      "_WhatsappButton-b1573f4c.js",
-      "_Pricelist-eddc6c5a.js",
-      "_index.es-638ce7e7.js"
+      "_index-39dc649e.js",
+      "_WhatsappButton-2b82b1a8.js",
+      "_Pricelist-4d52bb93.js",
+      "_index.es-1abe5e66.js"
     ],
     "css": [
-      "assets/pages/harga.svelte-366dbec9.css"
+      "assets/pages/harga.svelte-366dbec9.css",
+      "assets/style-2731f505.css"
     ]
   },
   "src/routes/index.svelte": {
-    "file": "pages/index.svelte-9542a6fc.js",
+    "file": "pages/index.svelte-b089bffc.js",
     "src": "src/routes/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-b83f0d2a.js",
-      "_WhatsappButton-b1573f4c.js",
-      "_index.es-638ce7e7.js",
-      "_Pricelist-eddc6c5a.js"
+      "_index-39dc649e.js",
+      "_WhatsappButton-2b82b1a8.js",
+      "_index.es-1abe5e66.js",
+      "_Pricelist-4d52bb93.js"
     ],
     "css": [
-      "assets/pages/index.svelte-6cbe309c.css"
+      "assets/pages/index.svelte-6cbe309c.css",
+      "assets/style-2731f505.css"
     ]
   },
   "src/routes/tema/index.svelte": {
-    "file": "pages/tema/index.svelte-8a0aea11.js",
+    "file": "pages/tema/index.svelte-0186d100.js",
     "src": "src/routes/tema/index.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-b83f0d2a.js",
-      "_WhatsappButton-b1573f4c.js",
-      "_index.es-638ce7e7.js"
+      "_index-39dc649e.js",
+      "_WhatsappButton-2b82b1a8.js",
+      "_index.es-1abe5e66.js"
     ],
     "css": [
-      "assets/pages/blog.svelte-f00ed4d7.css"
+      "assets/pages/blog.svelte-f00ed4d7.css",
+      "assets/style-2731f505.css"
     ]
   },
   "src/routes/tema/preview/001.svelte": {
-    "file": "pages/tema/preview/001.svelte-2df84ffc.js",
+    "file": "pages/tema/preview/001.svelte-037d154f.js",
     "src": "src/routes/tema/preview/001.svelte",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_index-b83f0d2a.js",
-      "_index.es-638ce7e7.js"
+      "_index-39dc649e.js",
+      "_index.es-1abe5e66.js"
     ],
     "css": [
-      "assets/pages/tema/preview/001.svelte-24f2a878.css"
+      "assets/pages/tema/preview/001.svelte-ab3d9003.css"
     ],
     "assets": [
       "assets/lg-22b72ba5.ttf",
@@ -111,26 +146,32 @@
       "assets/loading-298ad3ff.gif"
     ]
   },
-  "_index-b83f0d2a.js": {
-    "file": "chunks/index-b83f0d2a.js"
+  "_index-39dc649e.js": {
+    "file": "chunks/index-39dc649e.js"
   },
-  "_WhatsappButton-b1573f4c.js": {
-    "file": "chunks/WhatsappButton-b1573f4c.js",
+  "_singletons-d1fb5791.js": {
+    "file": "chunks/singletons-d1fb5791.js"
+  },
+  "_WhatsappButton-2b82b1a8.js": {
+    "file": "chunks/WhatsappButton-2b82b1a8.js",
     "imports": [
-      "_index-b83f0d2a.js",
-      "_index.es-638ce7e7.js"
+      "_index-39dc649e.js",
+      "_index.es-1abe5e66.js"
     ],
     "css": [
-      "assets/WhatsappButton-00b0970a.css"
+      "assets/WhatsappButton-1772013c.css"
     ]
   },
-  "_index.es-638ce7e7.js": {
-    "file": "chunks/index.es-638ce7e7.js"
+  "_index.es-1abe5e66.js": {
+    "file": "chunks/index.es-1abe5e66.js"
   },
-  "_Pricelist-eddc6c5a.js": {
-    "file": "chunks/Pricelist-eddc6c5a.js",
+  "_fetch-706ffe26.js": {
+    "file": "chunks/fetch-706ffe26.js"
+  },
+  "_Pricelist-4d52bb93.js": {
+    "file": "chunks/Pricelist-4d52bb93.js",
     "imports": [
-      "_index-b83f0d2a.js"
+      "_index-39dc649e.js"
     ],
     "css": [
       "assets/Pricelist-7bce2c6a.css"
