@@ -1,0 +1,37 @@
+@import url(../fonts.css);
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--primary-color: #85a188;
+	--secondary-color: #a9b1a3;
+	--box-shadow: 4px 7px 32px -3px rgba(0, 0, 0, 0.25);
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-family: 'Poppins', sans-serif;
+	background-color: whitesmoke;
+	overflow-x: hidden;
+}
+
+main {
+	width: 600px;
+	overflow-x: hidden;
+}
+
+@media screen and (max-width: 600px) {
+	main {
+		width: 100vw;
+	}
+}

@@ -8,7 +8,7 @@
                 pernikahan/undangan berupa link. Undangan online dari <strong style="color: var(--primary)">dinvite</strong>
                 juga menawarkan berbagai fitur
                 menarik.</p>
-            <button class="button">Hubungi Kami</button>
+            <a href="/"><button class="button">Tentang Kami</button></a>
         </div>
 </section>
 

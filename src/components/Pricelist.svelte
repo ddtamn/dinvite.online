@@ -6,10 +6,10 @@
             <div class="packages">
                 <div class="package">
                     <div class="head">
-                        <h4>Paket Standard</h4>
+                        <h4>Paket Standar</h4>
                     </div>
                     <ul>
-                        <li>Pilihan Tema Standard</li>
+                        <li>Pilihan Tema Standar</li>
                         <li>Detail Info Acara</li>
                         <li>Profil Pasangan</li>
                         <li>Protokol Kesehatan</li>
@@ -25,7 +25,7 @@
                     </ul>
                     <div class="footer">
                         <h3>idr 149.000</h3>
-                        <button class="button">Pesan Sekarang</button>
+                        <a href="https://api.whatsapp.com/send?phone=6281342831419&text=halo%20admin%20saya%20ingin%20membeli%20undangan%20digital%20website%20paket%20STANDAR" target="_blank"><button class="button">Pesan Sekarang</button></a>
                     </div>
                 </div>
                 <div class="package">
@@ -34,7 +34,7 @@
                         <span>Hemat 101rb</span>
                     </div>
                     <ul>
-                        <li>Pilihan Tema Standard & Premium</li>
+                        <li>Pilihan Tema Standar & Premium</li>
                         <li>Semua Fitur paket basic</li>
                         <li>Gallery foto (max 20)</li>
                         <li>Tampilkan tombol Live Streaming</li>
@@ -46,13 +46,12 @@
                     </ul>
                     <div class="footer">
                         <h3>idr 199.000 <span>300rb</span></h3>
-                        <button class="button">Pesan Sekarang</button>
-
+                        <a href="https://api.whatsapp.com/send?phone=6281342831419&text=halo%20admin%20saya%20ingin%20membeli%20undangan%20digital%20website%20paket%20PREMIUM" target="_blank"><button class="button">Pesan Sekarang</button></a>
                     </div>
                 </div>
                 <div class="package">
                     <div class="head">
-                        <h4>Paket Special</h4>
+                        <h4>Paket Spesial</h4>
                         <span>Hemat 500rb</span>
                     </div>
                     <ul>
@@ -72,8 +71,8 @@
                     </ul>
                     <div class="footer">
                         <h3>idr 1.500.000 <span>2JT</span></h3>
-                        <button class="button">Pesan Sekarang</button>
-                        <p>*Pemesanan Minimal 1 Bulan sebelum Hari H</p>
+                        <a href="https://api.whatsapp.com/send?phone=6281342831419&text=halo%20admin%20saya%20ingin%20membeli%20undangan%20digital%20website%20paket%20SPESIAL" target="_blank"><button class="button">Pesan Sekarang</button></a>
+                        <p style="text-align: center;">*Pemesanan Minimal 1 Bulan sebelum Hari H</p>
                     </div>
                 </div>
             </div>

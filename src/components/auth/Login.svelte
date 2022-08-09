@@ -5,7 +5,6 @@
     import { auth } from "../../routes/ddtamn/firebase";
     import { signInWithEmailAndPassword } from "firebase/auth";
     import { request } from "../../routes/ddtamn/fetch.js";
-    import { goto } from '$app/navigation';
 
     let email, password
 
@@ -14,7 +13,7 @@
         const idToken = userCredential._tokenResponse.idToken
         const res = await request("/ddtamn/auth", 'POST', {idToken});
         if (res.ok) {
-            window.location.href = '/ddtamn/app'
+            window.location.href = '/ddtamn/dashboard'
         }
     }
   
@@ -27,7 +26,7 @@
         <!-- <p>{message}</p> -->
         <form action="" on:submit|preventDefault="{login}">
             <label for="email">Email</label>
-            <input required bind:value="{email}" name="email" type="email" class="form-control">
+            <input required bind:value="{email}" name="email" type="email" class="form-control" autocomplete="false">
             <label for="password">Password</label>
             <input required bind:value="{password}" name="password" type="password" class="form-control">
             <button type="submit">Login</button>

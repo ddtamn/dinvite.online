@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
 	font-family: cano;
 	src: url('/fonts/Cano.otf');
@@ -77,6 +78,32 @@ img {
 
 .container {
 	padding: 1rem 8rem;
+}
+
+.form-control {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	display: block;
+	width: 100%;
+	padding: 10px;
+	border: none;
+	outline: none;
+	border-radius: 7px;
+	font-size: 15px;
+	line-height: 22px;
+	font-weight: 500;
+	background: #fff;
+	font-family: sans-serif;
+	border: 1px solid rgba(0, 0, 0, 0.2);
+	cursor: text;
+	transition: 0.2s ease-in-out;
+}
+
+.form-control:focus {
+	background: #fff;
+	box-shadow: 0 0 2px var(--primary);
+	border: 1px solid var(--primary);
 }
 
 @media screen and (max-width: 768px) {

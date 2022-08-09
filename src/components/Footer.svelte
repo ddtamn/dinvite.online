@@ -9,7 +9,7 @@
     <div class="top">
         <div class="container">
             <p>Terima kasih untuk kamu yang sudah membaca isi dari website ini. Semoga kita dapat berbincang lebih lanjut.</p>
-            <button>Hubungi Kami</button>
+            <a href="https://wa.me/6281342831419" target="_blank"><button>Hubung Kami</button></a>
         </div>
     </div>
     <div class="bottom">

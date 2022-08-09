@@ -11,7 +11,7 @@
     <div class="container {show  ? 'show' : ''}">
         <div class="head">
             <div on:click="{() => show = false}" class="close-icon"><Fa icon={faXmark}/></div>
-            <div class="avatar"><img src="/images/dinvite.png" alt=""></div>
+            <div class="avatar"><img src="/favicon.png" alt=""></div>
             <div class="text">
                 <h4>dinvite</h4>
                 <p>online</p>
@@ -24,7 +24,7 @@
             </div>
         </div>
         <div class="footer">
-            <a class="send" href="https://wa.me/6281354911647" target="_blank"><Fa icon={faWhatsapp}/> Start Chat</a>
+            <a class="send" href="https://api.whatsapp.com/send?phone=6281342831419&text=halo%20admin%20saya%20tertarik%20membeli%20undangan%20digital%20website%20dari%20https://dinvite.online" target="_blank"><Fa icon={faWhatsapp}/> Start Chat</a>
             <p>
                 ⚡ by
                 <a href="/" target="_blank">dinvite.online</a>

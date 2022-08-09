@@ -4,8 +4,8 @@
             <h1>Undangan Pernikahan Digital Website</h1>
             <p style="font-weight: 300;">solusi undangan pernikahan website kamu jadi lebih menarik & berkesan</p>
             <div class="buttons">
-                <a class="order" href="/">Pesan Sekarang</a>
-                <a class="pricelist" href="/">Harga</a>                
+                <a class="order" href="https://wa.me/6281342831419" target="_blank">Pesan Sekarang</a>
+                <a class="pricelist" href="/harga">Harga</a>                
             </div>
         </div>
         <div class="image"><img src="/images/hero.png" alt=""></div>

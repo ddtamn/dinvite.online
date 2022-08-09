@@ -12,7 +12,7 @@
     })
 
     function redirectToApp() {
-        goto('/ddtamn/app')
+        goto('/ddtamn/dashboard')
     }
 </script>
 <Login on:success={redirectToApp}/>
