@@ -32,20 +32,38 @@
         }
         
     }
+
+
+    export let name;
+    export let backgroundImage;
+    export let backsong;
 </script>
 
 <section class="{hide ? 'hide' : ''}">
+    <div class="container" style="background-image: url('{backgroundImage}');">
+        <div class="overlay"></div>
+        <div class="content" data-aos="zoom-in">
+            <p style="font-weight: 300;">Hai, {guest || ''}</p>
+            <p style="font-weight: 300;">You are invited to our wedding day</p>
+            <h1>{name}</h1>
+            <button on:click="{(e) => openCover(e)}">Let's Begin</button>
+            <audio src="{backsong}" loop="true"></audio>
+        </div>
+    </div>
+</section>
+
+<!-- <section class="{hide ? 'hide' : ''}">
     <div class="container" style="background-image: url('https://cdn.imweb.me/upload/S201904265cc294845b98d/3aeac83be14ce.jpg');">
         <div class="overlay"></div>
         <div class="content" data-aos="zoom-in">
             <p style="font-weight: 300;">Hai, {guest || ''}</p>
             <p style="font-weight: 300;">You are invited to our wedding day</p>
-            <h1>Andy & Indah</h1>
+            <h1>{name}</h1>
             <button on:click="{(e) => openCover(e)}">Let's Begin</button>
             <audio src="https://drive.google.com/uc?export=view&id=1-oLHjArCAM4KVhWURk66QKPEbnrDbXMo" loop="true"></audio>
         </div>
     </div>
-</section>
+</section> -->
 <div class="audio-controls" on:click="{playPause}">
     <div class="pause"><Fa icon={play ? faPause : faPlay}/></div>
 </div>

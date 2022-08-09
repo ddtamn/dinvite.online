@@ -102,6 +102,8 @@
         color: whitesmoke;
         text-align: center;
     }
+
+    
     
 
     h1 {

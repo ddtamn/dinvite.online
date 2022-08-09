@@ -3,6 +3,17 @@
     import {faInstagram} from '@fortawesome/free-brands-svg-icons/index.es'
     import Flower001 from '../../decoration/flower001.svelte';
     
+
+    export let bride;
+    export let brideParents;
+    export let brideImage;
+    export let brideIg;
+    export let groom;
+    export let groomImage;
+    export let groomParents;
+    export let groomIg;
+    
+
 </script>
 
 <section>
@@ -13,13 +24,13 @@
         </div>
         <div class="brides" data-aos="zoom-in">
             <div class="image">
-                <img src="https://cdn.imweb.me/upload/S201904265cc294845b98d/6648600291075.jpg" alt="">
+                <img src="{brideImage}" alt="">
                 <div class="flower" style="left: 10rem;"><Flower001 color={'var(--primary-color)'} width={'200px'} height={'200px'}/></div>
             </div>
-            <h3>Andi Putra Pratama, SE</h3>
-            <p style="font-style: italic; font-weight: 300;">Putra dari pasangan</p>
-            <p style="font-weight: 500; color: var(--secondary-color);">Bpk. Haris Sustyanto & Ibu. Bella Ayu</p>
-            <a href="https://instagram.com/ddtamn"><Fa icon={faInstagram}/></a>
+            <h3>{bride}</h3>
+            <p style="font-style: italic; font-weight: 300;">Putri dari pasangan</p>
+            <p style="font-weight: 500; color: var(--secondary-color);">{brideParents}</p>
+            <a target="_blank" href="{brideIg}"><Fa icon={faInstagram}/></a>
         </div>
         <div 
         style="margin-bottom: 1rem;
@@ -34,13 +45,13 @@
         >&</div>
         <div class="brides" data-aos="zoom-in">
             <div class="image">
-                <img src="https://cdn.imweb.me/upload/S201904265cc294845b98d/70c569ab32e12.jpg" alt="">
+                <img src="{groomImage}" alt="">
                 <div class="flower" style="transform: scale(-1);"><Flower001 color={'var(--primary-color)'} width={'200px'} height={'200px'}/></div>
             </div>
-            <h3>Indah Permata Sari, SH., MM</h3>
-            <p style="font-style: italic; font-weight: 300;">Putri dari pasangan</p>
-            <p style="font-weight: 500; color: var(--secondary-color);">Bpk. Haris Sustyanto & Ibu. Bella Ayu</p>
-            <a href="https://instagram.com/ddtamn"><Fa icon={faInstagram}/></a>
+            <h3>{groom}</h3>
+            <p style="font-style: italic; font-weight: 300;">Putra dari pasangan</p>
+            <p style="font-weight: 500; color: var(--secondary-color);">{groomParents}</p>
+            <a target="_blank" href="{groomIg}"><Fa icon={faInstagram}/></a>
         </div>
     </div>
 </section>

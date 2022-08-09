@@ -9,6 +9,9 @@
             download : false,
         })
     })
+
+    export let galleries;
+    console.log(galleries);
 </script>
 <section>
     <div class="container">
@@ -17,10 +20,12 @@
             <p style="font-weight: 200 ;">True love stands by each other’s side on good days and stands closer on bad days</p>
         </div>
         <div class="flexbin flexbin-margin" id="lightgallery">
-            <a href="https://cdn.imweb.me/upload/S201904265cc294845b98d/b2d3bc663702a.jpg" data-aos="zoom-in-down">
-                <img src="https://cdn.imweb.me/upload/S201904265cc294845b98d/b2d3bc663702a.jpg" alt="">
+            {#each galleries as gallery }
+            <a href="https://drive.google.com/uc?export=view&id={gallery}" data-aos="zoom-in-down">
+                <img src="https://drive.google.com/uc?export=view&id={gallery}" alt="">
             </a>
-            <a href="https://cdn.imweb.me/upload/S201904265cc294845b98d/e6e512e4e7668.jpg" data-aos="zoom-in-down">
+            {/each}
+            <!-- <a href="https://cdn.imweb.me/upload/S201904265cc294845b98d/e6e512e4e7668.jpg" data-aos="zoom-in-down">
                 <img src="https://cdn.imweb.me/upload/S201904265cc294845b98d/e6e512e4e7668.jpg" alt="">
             </a>
             <a href="https://cdn.imweb.me/upload/S201904265cc294845b98d/238d27e87b918.jpg" data-aos="zoom-in-down">
@@ -49,7 +54,7 @@
             </a>
             <a href="https://cdn.imweb.me/upload/S201904265cc294845b98d/5d43ef2b2f57e.jpg" data-aos="zoom-in-down">
                 <img src="https://cdn.imweb.me/upload/S201904265cc294845b98d/5d43ef2b2f57e.jpg" alt="">
-            </a>
+            </a> -->
         </div>
     </div>
 </section>

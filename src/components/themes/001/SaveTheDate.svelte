@@ -1,4 +1,8 @@
 <script>
+
+    export let theDate;
+    export let backgroundImage;
+    export let calendarLink;
     let days = '00', hours = '00' , minutes = '00', seconds = '00'
     function countdown(date) {
         const countDate = new Date(date).getTime();
@@ -11,11 +15,14 @@
         seconds = Math.floor((gap % minute) / second)
     }
     setInterval(() => {
-       countdown('Minggu 12 April 2023');
+       countdown('27 Agustus 2022');
     }, 1000);
+
+
+    
 </script>
 
-<section>
+<section style="background-image: url('{backgroundImage}');">
     <div class="container">
         <div class="overlay"></div>
         <div class="content" data-aos="zoom-in">
@@ -26,7 +33,7 @@
                 <div class="count"><h6>{minutes}</h6><p style="font-weight: 200;">Minutes</p></div>
                 <div class="count"><h6>{seconds}</h6><p style="font-weight: 200;">Seconds</p></div>
             </div>
-            <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&dates=20230209%2F20231018&details=Special%20Inivited%20for%20you&location=https%3A%2F%2Fgoo.gl%2Fmaps%2FcVQmACWGxEZyp2KY7&text=Pernikahan%20Andi%20%26%20Indah" target="_blank">Add to Calendar</a>
+            <a href="{calendarLink}" target="_blank">Add to Calendar</a>
             
         </div>
     </div>
@@ -35,7 +42,7 @@
 
 <style>
     section {
-        background-image: url('https://cdn.imweb.me/upload/S201904265cc294845b98d/72d552aefd853.jpg');
+        /* background-image: url('https://cdn.imweb.me/upload/S201904265cc294845b98d/72d552aefd853.jpg'); */
         background-position: center center;
         background-size: cover;
         background-repeat: no-repeat;
