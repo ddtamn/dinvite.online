@@ -3,6 +3,11 @@
     import {faGift, faMoneyCheck, faCopy, faXmark} from '@fortawesome/free-solid-svg-icons/index.es'
 
     let show = false
+
+
+    export let accountNumber;
+    // export let bankName;
+    export let accountName;
     
 </script>
 
@@ -27,12 +32,12 @@
                 <div class="card-body">
                     <div class="icon"><Fa icon={faMoneyCheck}/></div>
                     <div class="account">
-                        <div class="number"><Fa icon={faCopy}/> <span>021 000 563 888 289</span></div>
-                        <div class="name">Andi Putra Pratama</div>
+                        <div class="number"><Fa icon={faCopy}/> <span>{accountNumber}</span></div>
+                        <div class="name">{accountName}</div>
                     </div>
                 </div>
             </div>
-            <div class="card">
+            <!-- <div class="card">
                 <div class="card-head">
                     <img src="/bank-card/dana.png" alt="">
                 </div>
@@ -43,7 +48,7 @@
                         <div class="name">Andi Putra Pratama</div>
                     </div>
                 </div>
-            </div>
+            </div> -->
        </div>
     </div>
 </div>

@@ -20,6 +20,7 @@
         <p data-aos="zoom-out" style="font-weight: 200;">True love stands by each other’s side on good days and stands closer on bad days</p>
     </div>
     <div class="container">
+        {#if firstEvent}
         <div class="activity" data-aos="fade-right">
             <h3>Akad Nikah</h3>
             <p>{firstEvent}</p>
@@ -30,16 +31,19 @@
             <div class="map"><iframe src="{firstEventMapIframe}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
             <button><a style="text-decoration: none; color: whitesmoke;" href="{firstEventMapLink}" target="_blank">Open Map</a>p</button>
         </div>
-        <div class="activity" data-aos="fade-left">
-            <h3>Resepsi</h3>
-            <p>{secondEvent}</p>
-            <p style="font-style: italic;">{secondEventTime}</p>
-            <p style="font-weight: 500; color: var(--secondary-color);">{secondEventDesc}</p>
-            <p style="font-size: 0.8rem;">{secondEventAddress}</p>
-            <!-- svelte-ignore a11y-missing-attribute -->
-            <div class="map"><iframe src="{secondEventMapIframe}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-            <button><a style="text-decoration: none; color: whitesmoke;" href="{secondEventMapLink}" target="_blank">Open Map</a></button>
-        </div>
+        {/if}
+        {#if secondEvent}
+            <div class="activity" data-aos="fade-left">
+                <h3>Resepsi</h3>
+                <p>{secondEvent}</p>
+                <p style="font-style: italic;">{secondEventTime}</p>
+                <p style="font-weight: 500; color: var(--secondary-color);">{secondEventDesc}</p>
+                <p style="font-size: 0.8rem;">{secondEventAddress}</p>
+                <!-- svelte-ignore a11y-missing-attribute -->
+                <div class="map"><iframe src="{secondEventMapIframe}" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
+                <button><a style="text-decoration: none; color: whitesmoke;" href="{secondEventMapLink}" target="_blank">Open Map</a></button>
+            </div>
+        {/if}
     </div>
 </section>
 

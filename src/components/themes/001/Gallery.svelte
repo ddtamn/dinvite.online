@@ -11,7 +11,6 @@
     })
 
     export let galleries;
-    console.log(galleries);
 </script>
 <section>
     <div class="container">
@@ -21,8 +20,8 @@
         </div>
         <div class="flexbin flexbin-margin" id="lightgallery">
             {#each galleries as gallery }
-            <a href="https://drive.google.com/uc?export=view&id={gallery}" data-aos="zoom-in-down">
-                <img src="https://drive.google.com/uc?export=view&id={gallery}" alt="">
+            <a href="{gallery}" data-aos="zoom-in-down">
+                <img src="{gallery}" alt="">
             </a>
             {/each}
             <!-- <a href="https://cdn.imweb.me/upload/S201904265cc294845b98d/e6e512e4e7668.jpg" data-aos="zoom-in-down">

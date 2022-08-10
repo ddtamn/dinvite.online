@@ -1,8 +1,13 @@
+<script>
+    export let brides;
+    export let date;
+</script>
+
 <section>
     <div class="container" data-aos="fade-up">
         <p style="font-size: 13px; text-align: center; font-style: italic; font-weight: 300;">"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa kasih dan sayang. <br><br> (Ar-Rum: 21)"</p>
-        <h2>Andi & Indah</h2>
-        <h4>Minggu, 12 April 2023</h4>
+        <h2>{brides}</h2>
+        <h4>{date}</h4>
     </div>
     <div class="foot" >
         <p style="font-weight:200 ;" data-aos="fade-up">created with ❤ by</p>
