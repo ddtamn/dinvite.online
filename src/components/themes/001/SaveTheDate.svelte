@@ -15,7 +15,7 @@
         seconds = Math.floor((gap % minute) / second)
     }
     setInterval(() => {
-       countdown('27 Agustus 2022');
+       countdown(theDate);
     }, 1000);
 
 
