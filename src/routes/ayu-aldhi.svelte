@@ -44,7 +44,6 @@
         'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/pwqdju9t9g9urx71u3joas__optimize__.JPG?v=1.1',
         'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/9z1pr6o7inddaua046vw77__optimize__.jpg?v=1.1',
         'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/am5cqjq6h6w9i3bo55rms9__optimize__.jpg?v=1.1',
-        // 'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/vz0t9z60ykmiuh36bwork8__optimize__.jpg?v=1.1',
         'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/xhcb1ax8kxp3bkfzcdb8up__optimize__.jpg?v=1.1',
         `${googleDriveLink}11asaB2ugaNehE6h5uMYaarzUqYM4snTt`,
         `${googleDriveLink}1Eb1sSRXOzU8tMlFefLSKc7kJ0YwhIRod`,
@@ -55,6 +54,7 @@
         `${googleDriveLink}1TvzXtYeV9anyKhuCKtyWQe3leYGbwcL-`,
         `${googleDriveLink}1yH8kJ-KUtE15uZzwQNu_SX1094aFtBLE`,
         `${googleDriveLink}1Q3Xnz7kIdgqzXep8pvNw-ExvHt0U1he3`,
+        `${googleDriveLink}1wafA7PWq5JwEVLCxHMd2nwmgSoa1U4Xf`,
 ]
     
 </script>
