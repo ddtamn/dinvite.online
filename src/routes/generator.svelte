@@ -7,8 +7,11 @@
      let showMessage = false
 
     
-    function generator() {
-        result = generatorLink
+    function generate() {
+        let str = generatorLink
+        let res = str.replace(' ', '%20')
+        result = `https://dinvite.online/ayu-aldhi?to=${res}`
+        showResult = true
     }
 
 function copyLink() {
@@ -47,8 +50,8 @@ showMessage = false
 <section>
     <div class="container">
         <div class="title">Generator tamu undangan <br> Ayu & Aldhi</div>
-        <input placeholder="tuliskan nama tamu" class="form-control" bind:value="{generatorLink}" type="text" on:change={() => {result = `https://dinvite.online/ayu-aldhi?to=${generatorLink}`}}>
-        <button on:click="{() => {if(generatorLink == undefined) {showResult = false} else {result = `https://dinvite.online/ayu-aldhi?to=${generatorLink}` , showResult = true}}}">Generate</button>
+        <input placeholder="tuliskan nama tamu" class="form-control" bind:value="{generatorLink}" type="text" >
+        <button on:click="{generate}">Generate</button>
         {#if showResult}
             <!-- <input class="result" type="text" readonly value="{result}"> -->
             <textarea class="result" readonly value={result}></textarea>
