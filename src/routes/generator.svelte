@@ -48,7 +48,7 @@ showMessage = false
     <div class="container">
         <div class="title">Generator tamu undangan <br> Ayu & Aldhi</div>
         <input placeholder="tuliskan nama tamu" class="form-control" bind:value="{generatorLink}" type="text" on:change={() => {result = `https://dinvite.online/ayu-aldhi?to=${generatorLink}`}}>
-        <button on:click="{() => {result = `https://dinvite.online/ayu-aldhi?to=${generatorLink}` , showResult = true}}">Generate</button>
+        <button on:click="{() => {if(generatorLink == undefined) {showResult = false} else {result = `https://dinvite.online/ayu-aldhi?to=${generatorLink}` , showResult = true}}}">Generate</button>
         {#if showResult}
             <!-- <input class="result" type="text" readonly value="{result}"> -->
             <textarea class="result" readonly value={result}></textarea>
@@ -72,7 +72,8 @@ showMessage = false
         
     }
    .container {
-        width: 100vw ;
+        width: 100vw;
+        max-width: 750px;
         height: 100vh;
         padding: 1rem;
         padding-top: 2rem;
