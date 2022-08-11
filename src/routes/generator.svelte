@@ -11,30 +11,32 @@
         result = generatorLink
     }
 
-    function copyLink() {
-    let text = `Assalamu'alaikum Warahmatullahi Wabarakaatuh 
+function copyLink() {
+let text = `
+Assalamu'alaikum Warahmatullahi Wabarakaatuh 
 
-    Tanpa mengurangi rasa hormat, izinkan kami mengundang Bapak/Ibu/Saudara/i
-    untuk hadir serta memberikan do'a restu pada acara pernikahan kami.
+Tanpa mengurangi rasa hormat, izinkan kami mengundang Bapak/Ibu/Saudara/i
+untuk hadir serta memberikan do'a restu pada acara pernikahan kami.
 
-    Link undangan :
-    ${result}
+Link undangan :
+${result}
 
-    Merupakan suatu kehormatan dan kebahagiaan bagi kami, apabila Bapak/Ibu/Saudara/i 
-    berkenan hadir.
+Merupakan suatu kehormatan dan kebahagiaan bagi kami, apabila Bapak/Ibu/Saudara/i 
+berkenan hadir.
 
-    Do'a restu Anda merupakan hadiah terindah bagi kami.
+Do'a restu Anda merupakan hadiah terindah bagi kami.
 
-    Atas kehadiran dan do'a restu yang telah diberikan, kami ucapkan terima kasih.
+Atas kehadiran dan do'a restu yang telah diberikan, kami ucapkan terima kasih.
 
-    Kami yang berbahagia 
-    Ayu & Aldhi`
-        navigator.clipboard.writeText(text);
-        showMessage = true
+Kami yang berbahagia 
+Ayu & Aldhi`
+        
+navigator.clipboard.writeText(text);
+showMessage = true
         
 
-        setTimeout(() => {
-            showMessage = false
+setTimeout(() => {
+showMessage = false
         }, 500)
     }
 
