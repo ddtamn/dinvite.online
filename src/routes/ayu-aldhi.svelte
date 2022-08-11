@@ -31,10 +31,8 @@
     // array photo link
     let galleries= [
         'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/oqlrg5b1xem7cup8r60jyw__optimize__.jpg?v=1.1', 
-        'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/3xgnyihpmxa1gqjn6i6zcn__optimize__.jpg?v=1.1', 
-        'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/x15kpk58a5e239osag7qg5__optimize__.jpg?v=1.1',
         'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/lbt31y0pgh9kgjjm8n924d__optimize__.jpg?v=1.1',
-        'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/cse28memclgdjkpvy59du8__optimize__.jpg?v=1.1',
+       `${googleDriveLink}17cfABPWi2UKEvJE3APSI1612BuDpad1d`,
         'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/ww7wji15qrx1e96wvnrnr__optimize__.jpg?v=1.1',
         'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/4iuz0cc5u090n54ujzduyu__optimize__.jpg?v=1.1',
         'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/v10fhvsxa58us8u1flpyr__optimize__.jpg?v=1.1',
@@ -44,18 +42,40 @@
         'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/96fyqhe487a6m2qvaql0wj__optimize__.JPG?v=1.1',
         'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/9dl13q941gaungdndwe5q__optimize__.JPG?v=1.1',
         'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/pwqdju9t9g9urx71u3joas__optimize__.JPG?v=1.1',
-        'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/90mbhudmj0f0z9wzwsepcrp__optimize__.jpg?v=1.1',
-        'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/rs3b43h9y5tebom7aq2drv__optimize__.jpg?v=1.1',
         'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/9z1pr6o7inddaua046vw77__optimize__.jpg?v=1.1',
         'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/am5cqjq6h6w9i3bo55rms9__optimize__.jpg?v=1.1',
         'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/vz0t9z60ykmiuh36bwork8__optimize__.jpg?v=1.1',
-        'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/xhcb1ax8kxp3bkfzcdb8up__optimize__.jpg?v=1.1'
+        'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/xhcb1ax8kxp3bkfzcdb8up__optimize__.jpg?v=1.1',
+        `${googleDriveLink}11asaB2ugaNehE6h5uMYaarzUqYM4snTt`,
+        `${googleDriveLink}1Eb1sSRXOzU8tMlFefLSKc7kJ0YwhIRod`,
+        `${googleDriveLink}1ow1ahvwZhK5PULyBRuzFv-tjHRC2guS7`,
+        `${googleDriveLink}1EeMpH8i-8IuRKbQPGggp0o4YUGRGHVVi`,
+        `${googleDriveLink}1W8PwtQ5Dkw6dzo4d6i6vSkI2K_hh41CP`,
+        `${googleDriveLink}12OVxzx28RagD5eSr070T5B4-IV1ApQt2`,
+        `${googleDriveLink}1TvzXtYeV9anyKhuCKtyWQe3leYGbwcL-`,
+        `${googleDriveLink}1yH8kJ-KUtE15uZzwQNu_SX1094aFtBLE`,
+        `${googleDriveLink}1Q3Xnz7kIdgqzXep8pvNw-ExvHt0U1he3`,
 ]
     
 </script>
 
 <svelte:head>
+    <meta name="title" content="The Wedding of Ayu & Aldhi">
+    <meta name="description" content="You are invited to the wedding of ayu & aldhi">
+    <meta name="keywords" content="undangan digital, undangan web, ">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="revisit-after" content="30 days">
+    <meta name="author" content="ddtamn">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dinvite.online/ayu-aldhi">
+    <meta property="og:title" content="The Wedding of Ayu & Aldhi">
+    <meta property="og:description" content="You are invited to the wedding of ayu & aldhi">
+    <meta property="og:image" content="https://metatags.io/assets/meta-tags-16a33a6a8531e519cc0936fbba0ad904e52d35f34a46c97a2c9f6f7dd7d336f2.png">
     <meta name="theme-color" content="#3f5978"/>
+
 </svelte:head>
 
 <main>
@@ -65,7 +85,7 @@
     <SaveTheDate theDate={'Sabtu, 13 Aug 2022'} backgroundImage={'https://d3n3bt0mjyudkt.cloudfront.net/uploads/__filtered__/albums/photoversion/ww7wji15qrx1e96wvnrnr__optimize__.jpg?v=1.1'} calendarLink={'https://calendar.google.com/event?action=TEMPLATE&tmeid=NXVkOW82aW0zZHVhcmJodnRjMWpsODg1cnIgZGlkaXRhbWluLm1AbQ&tmsrc=diditamin.m%40gmail.com'}/>
     <!-- <Story/> -->
     <Gallery {galleries}/>
-    <Events secondEvent={'Sabtu, 13 Agustus 2022'} secondEventTime={'19 : 30 WITA s/d Selesai'} secondEventDesc={'Estrella Hotel & Conference'} secondEventAddress={'Desa Teku, Kecamatan Balantak Utara'} secondEventMapIframe={'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.2142029141473!2d122.79077731528339!3d-0.99707363566158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d86a143afd18541%3A0xd1052911d7aedda4!2sEstrella%20Hotel%20%26%20Conference%20Center%20-%20Luwuk!5e0!3m2!1sid!2sid!4v1660148625156!5m2!1sid!2sid'} secondEventMapLink={'https://goo.gl/maps/2T8paMYyAjBA1UT17'}/>
+    <Events secondEvent={'Sabtu, 13 Agustus 2022'} secondEventTime={'19 : 30 WITA s/d Selesai'} secondEventDesc={'Estrella Hotel & Conference'} secondEventAddress={'Jl. Dr. Moh. Hatta Kawasan Bukit Halimun, Tj. Tuwis, Luwuk, Kabupaten Banggai, Sulawesi Tengah 94715'} secondEventMapIframe={'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.2142029141473!2d122.79077731528339!3d-0.99707363566158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d86a143afd18541%3A0xd1052911d7aedda4!2sEstrella%20Hotel%20%26%20Conference%20Center%20-%20Luwuk!5e0!3m2!1sid!2sid!4v1660148625156!5m2!1sid!2sid'} secondEventMapLink={'https://goo.gl/maps/2T8paMYyAjBA1UT17'}/>
     <Wish/>
     <Gift accountName={'AYU TASYANA PUTRI'} accountNumber={'6795129590'}/>
     <Footer brides={'Ayu & Aldi'} date={'Sabtu, 13 Agustus 2022'} />

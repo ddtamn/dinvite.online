@@ -1,3 +1,8 @@
+<script>
+    export let invitaionName;
+</script>
+
+
 <section>
     <div class="container">
         <div class="head" data-aos="fade-up">
