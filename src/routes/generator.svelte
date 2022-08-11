@@ -1,5 +1,5 @@
 <script>
-
+     import '../css/themes/001.css'
     import '../css/style.css'
     let generatorLink;
     let result = ''
@@ -111,6 +111,19 @@
         background: #fff;
         box-shadow: 0 0 2px var(--primary-color);
         border: 1px solid var(--primary-color);
+    }
+
+    button {
+        padding: 8px 20px;
+        border-radius: 5px;
+        outline: none;
+        border: none;
+        /* background: var(--primary-color); */
+        font-size: 15px;
+        cursor: pointer;
+        color: var(--primary-color);
+        transition: all 0.25s ease-in-out;
+        margin-top: 1rem;
     }
 
 </style>
