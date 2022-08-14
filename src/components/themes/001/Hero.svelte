@@ -13,7 +13,7 @@
             <!-- svelte-ignore a11y-missing-attribute -->
             <div class="image"><img src="{backgroundImage}" loading="lazy"></div>
             <p style="margin-top: 1rem; font-weight: 300;">Wedding Invitation</p>
-            <h1>{title}</h1>
+            <h1 style="text-align: center;">{title}</h1>
             <p  style="font-style: italic; font-weight: 300;">{text ? text : '#2gether4ever'}</p>
             <h3>{date}</h3>
         </div>

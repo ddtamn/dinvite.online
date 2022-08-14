@@ -9,10 +9,19 @@
         const now = new Date().getTime();
         const gap = countDate - now;
         const second = 1000, minute = second * 60, hour = minute * 60, day = hour * 24;
-        days = Math.floor(gap / day);
-        hours = Math.floor((gap % day) / hour);
-        minutes = Math.floor((gap % hour) / minute)
-        seconds = Math.floor((gap % minute) / second)
+
+        if(gap < 0) {
+            days = '00'
+            hours = '00'
+            minutes = '00'
+            seconds = '00'
+        } else {
+            days = Math.floor(gap / day);
+            hours = Math.floor((gap % day) / hour);
+            minutes = Math.floor((gap % hour) / minute)
+            seconds = Math.floor((gap % minute) / second)
+        }
+        
     }
     setInterval(() => {
        countdown(theDate);

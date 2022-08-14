@@ -1,3 +1,18 @@
+<script context=module> 
+export const load = async ({fetch}) => {
+    const res = await fetch('/api/ayu-aldhi.json')
+    const data = await res.json()
+    return {
+        props : {
+            data
+        }
+    }
+}
+
+</script>
+
+
+
 <script>
     import '../css/themes/001.css'
     import '../css/flexbin.css'
@@ -21,6 +36,11 @@
             duration : 1000
         })
     })
+
+    // export let invitaionName;
+    export let data
+    console.log(data)
+
 
     let googleDriveLink = 'https://drive.google.com/uc?export=view&id='
     let aldhyImg = `${googleDriveLink}1nMjMOsvRpBKX1bmTmw2wr6sXwPyK7INk`
@@ -56,6 +76,14 @@
         `${googleDriveLink}1Q3Xnz7kIdgqzXep8pvNw-ExvHt0U1he3`,
         `${googleDriveLink}1wafA7PWq5JwEVLCxHMd2nwmgSoa1U4Xf`,
 ]
+
+let giftData = [
+        {
+            bankName : 'bca',
+            accountName : 'AYU TASYANA PUTRI',
+            accountNumber : '6795129590'
+        },
+    ]
     
 </script>
 
@@ -86,7 +114,7 @@
     <!-- <Story/> -->
     <Gallery {galleries}/>
     <Events secondEvent={'Sabtu, 13 Agustus 2022'} secondEventTime={'19 : 30 WITA s/d Selesai'} secondEventDesc={'Estrella Hotel & Conference'} secondEventAddress={'Jl. Dr. Moh. Hatta Kawasan Bukit Halimun, Tj. Tuwis, Luwuk, Kabupaten Banggai, Sulawesi Tengah 94715'} secondEventMapIframe={'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.2142029141473!2d122.79077731528339!3d-0.99707363566158!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2d86a143afd18541%3A0xd1052911d7aedda4!2sEstrella%20Hotel%20%26%20Conference%20Center%20-%20Luwuk!5e0!3m2!1sid!2sid!4v1660148625156!5m2!1sid!2sid'} secondEventMapLink={'https://goo.gl/maps/2T8paMYyAjBA1UT17'}/>
-    <Wish/>
-    <Gift accountName={'AYU TASYANA PUTRI'} accountNumber={'6795129590'}/>
+    <!-- <Wish messageData={data}/> -->
+    <Gift data={giftData}/>
     <Footer brides={'Ayu & Aldi'} date={'Sabtu, 13 Agustus 2022'} />
 </main>

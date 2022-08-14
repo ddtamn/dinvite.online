@@ -1,8 +1,11 @@
 <script>
-    export let invitaionName;
+    // export let messageData;
+
+    let messageData = [
+        {name : 'ddtamn', msg: 'keren'},
+        {name : 'ddtamn', msg: 'keren'},
+        ]
 </script>
-
-
 <section>
     <div class="container">
         <div class="head" data-aos="fade-up">
@@ -16,9 +19,11 @@
         </div>
         <div class="comments" data-aos="fade-up">
             <div class="comment">
-                <strong>ddtamn</strong>
-                <p>Wishing you a lifetime of love and happinesss.</p>
-                <small>19 May 2022, 01:53</small>
+                {#each messageData.message as data }
+                <strong>{data.name}</strong>
+                <p>{data.msg}</p>
+                <!-- <small>19 May 2022, 01:53</small> -->
+                {/each}
             </div>
         </div>
     </div>
