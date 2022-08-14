@@ -64,8 +64,8 @@
 </svelte:head>
 
 <main>
-    <Cover name={'Indah & Gisman'} backgroundImage={'https://drive.google.com/uc?export=view&id=1v9BFj67e031-7ky1iq5Y3RLiCDe2Mreq'} backsong={'https://drive.google.com/uc?export=view&id=1aaLEA55VcmB_tDCEzfqMHXhL7p8yVWOd'}/>
-    <Hero title={'Indah & Gisman'} backgroundImage={'https://drive.google.com/uc?export=view&id=14WFVFdPfhN9Y6bvXKwkJu6hvp8b0UIlc'} date={'Sabtu, 27 Agustus 2022'}/>
+    <Cover name={'Indah & Gisman'} backgroundImage={'https://dinvite.online/uploads/indahgisman.jpeg'} backsong={'https://drive.google.com/uc?export=view&id=1aaLEA55VcmB_tDCEzfqMHXhL7p8yVWOd'}/>
+    <Hero title={'Indah & Gisman'} backgroundImage={'https://dinvite.online/uploads/indahgisman.jpeg'} date={'Sabtu, 27 Agustus 2022'}/>
     <Brides bride={'Indra Siodja, A. Md.AK'} brideParents={'Bpk. Haswan Siodja & Ibu. Irna Manasai'} brideImage={'https://drive.google.com/uc?export=view&id=1OQve2H59bXVaGIDddgU7djK-WF-QM7q1'} brideIg={'https://www.instagram.com/indahsiodja67/'} groom={'Gisman Laadan, A.Md.Ft'} groomImage={'https://drive.google.com/uc?export=view&id=1UO_miwox-7LpAgXHX8-8mLXHvtV0rWJG'} groomParents={'Bpk. Mahdin Laadam & Ibu. Isra Ladomay'} />
     <SaveTheDate theDate={'Sabtu 27 Aug 2022'} backgroundImage={'https://drive.google.com/uc?export=view&id=1wou99zMIjUZPKgOIGsA2Mjor6iLomlhX'}/>
     <!-- <Story/> -->
