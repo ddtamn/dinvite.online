@@ -22,6 +22,8 @@
         })
     })
 
+    
+
     let data = [{
         name : 'ddtddamn',
         msg : 'happy wedding'
@@ -44,6 +46,20 @@
 </script>
 
 <svelte:head>
+    <meta name="title" content="The Wedding of Indah & Gisman">
+    <meta name="description" content="You are invited to the wedding of Indha & Gisman">
+    <meta name="keywords" content="undangan digital, undangan web, ">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="revisit-after" content="30 days">
+    <meta name="author" content="ddtamn">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://dinvite.online/indah-gisman">
+    <meta property="og:title" content="The Wedding of Indah & Gisman">
+    <meta property="og:description" content="You are invited to the wedding of Indah & Gisman">
+    <meta property="og:image" content="https://dinvite.online/uploads/indahgisman.jpeg">
     <meta name="theme-color" content="#3f5978"/>
 </svelte:head>
 
