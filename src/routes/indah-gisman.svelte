@@ -1,4 +1,6 @@
 <script>
+    import { initializeApp, applicationDefault, cert } from 'firebase-admin/app';
+    import {getFirestore, Timestamp, FieldValue} from 'firebase-admin/firestore'
     import '../css/themes/001.css'
     import '../css/flexbin.css'
     import Cover from '../components/themes/001/Cover.svelte';
@@ -15,6 +17,12 @@
     import AOS from 'aos'
     import "aos/dist/aos.css";
     import { onMount } from 'svelte';
+
+    
+    initializeApp()
+    const db = getFirestore()
+
+    console.log(db)
 
     onMount(() => {
         AOS.init({
@@ -43,6 +51,9 @@
     ]
 
     let googleDriveLink = 'https://drive.google.com/uc?export=view&id='
+
+    
+
 </script>
 
 <svelte:head>
@@ -66,7 +77,7 @@
 <main style="--primary-color : #606350; --secondary-color: #393b2b" >
     <Cover name={'Indah & Gisman'} backgroundImage={'https://dinvite.online/uploads/indahgisman.jpeg'} backsong={'https://drive.google.com/uc?export=view&id=1aaLEA55VcmB_tDCEzfqMHXhL7p8yVWOd'}/>
     <Hero title={'Indah & Gisman'} backgroundImage={'https://dinvite.online/uploads/indahgismancover.jpeg'} date={'Sabtu, 27 Agustus 2022'}/>
-    <Brides bride={'Indra Siodja, A. Md.AK'} brideParents={'Bpk. Haswan Siodja & Ibu. Irna Manasai'} brideImage={'https://drive.google.com/uc?export=view&id=1OQve2H59bXVaGIDddgU7djK-WF-QM7q1'} brideIg={'https://www.instagram.com/indahsiodja67/'} groom={'Gisman Laadan, A.Md.Ft'} groomImage={'https://drive.google.com/uc?export=view&id=1UO_miwox-7LpAgXHX8-8mLXHvtV0rWJG'} groomParents={'Bpk. Mahdin Laadam & Ibu. Isra Ladomay'} />
+    <Brides bride={'Indra Siodja, A. Md.AK'} brideParents={'Bpk. Haswan Siodja & Ibu. Irna Manasai'} brideImage={'https://drive.google.com/uc?export=view&id=1OQve2H59bXVaGIDddgU7djK-WF-QM7q1'} brideIg={'https://www.instagram.com/indahsiodja67/'} groom={'Gisman Laadan, A.Md.Ft'} groomImage={'https://drive.google.com/uc?export=view&id=1UO_miwox-7LpAgXHX8-8mLXHvtV0rWJG'} groomParents={'Bpk. Mahdin Laadam & Ibu. Ikra Ladomay'} />
     <SaveTheDate theDate={'Sabtu 27 Aug 2022'} backgroundImage={'https://drive.google.com/uc?export=view&id=1wou99zMIjUZPKgOIGsA2Mjor6iLomlhX'}/>
     <!-- <Story/> -->
     <Gallery galleries={[`${googleDriveLink}1wou99zMIjUZPKgOIGsA2Mjor6iLomlhX`, `${googleDriveLink}1AFlYBncyriTYlwmwLEG7R7ZtNWZhSLuD`, `${googleDriveLink}1QolE9y8zfY6KhuJFzF7Ptf6q3ii7QcIN`, `${googleDriveLink}1v9BFj67e031-7ky1iq5Y3RLiCDe2Mreq`, `${googleDriveLink}16_gDm9qvqrWIHWxPfjhP6vC8_UGzc1gT`, `${googleDriveLink}14WFVFdPfhN9Y6bvXKwkJu6hvp8b0UIlc`, `${googleDriveLink}1sPkUtfT6wIizxo7WlgKYzJ9K1TN5wRbC`, `${googleDriveLink}1twEP9B1WMv1vNsdnc5nelFSWgI4sPiTj`]}/>
