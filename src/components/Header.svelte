@@ -1,13 +1,9 @@
 <script>
 import { onMount } from "svelte";
-
-
-    
     let open = false
     function mobileToggle() {
         open ? open = false : open = true
     }
-
     let activePath = 'home'
 
     onMount(() => {

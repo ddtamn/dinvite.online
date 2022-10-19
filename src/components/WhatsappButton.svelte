@@ -192,12 +192,12 @@
     }
     
 
-    @media screen and (max-width: 768px) {
+    /* @media screen and (max-width: 768px) {
         .container {
-            left: 1.5rem;
+            background-color: red;
 
         }
-    }
+    } */
 
 
 
