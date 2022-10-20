@@ -10,7 +10,57 @@
         })
     })
 
-    export let galleries;
+    
+    let galleries = [
+        {
+            link : 'https://media.dinvite.online/preview/1.jpg'
+        },
+        {
+            link : 'https://media.dinvite.online/preview/2.jpg'
+        },
+        {
+            link : 'https://media.dinvite.online/preview/3.jpg'
+        },
+        {
+            link : 'https://media.dinvite.online/preview/4.jpg'
+        },
+        {
+            link : 'https://media.dinvite.online/preview/5.jpg'
+        },
+        {
+            link : 'https://media.dinvite.online/preview/6.jpg'
+        },
+        {
+            link : 'https://media.dinvite.online/preview/7.jpg'
+        },
+        {
+            link : 'https://media.dinvite.online/preview/8.jpg'
+        },
+        {
+            link : 'https://media.dinvite.online/preview/9.jpg'
+        },
+        {
+            link : 'https://media.dinvite.online/preview/10.jpg'
+        },
+        {
+            link : 'https://media.dinvite.online/preview/11.jpg'
+        },
+        {
+            link : 'https://media.dinvite.online/preview/12.jpg'
+        },
+        {
+            link : 'https://media.dinvite.online/preview/13.jpg'
+        },
+        {
+            link : 'https://media.dinvite.online/preview/14.jpg'
+        },
+        {
+            link : 'https://media.dinvite.online/preview/15.jpg'
+        },
+    ]
+
+    console.log(galleries[0].link);
+
 </script>
 <section>
     <div class="container">
@@ -20,9 +70,10 @@
         </div>
         <div class="flexbin flexbin-margin" id="lightgallery">
             {#each galleries as gallery }
-            <a href="{gallery}" data-aos="zoom-in-down">
-                <img src="{gallery}" alt="">
+            <a href="{gallery.link}" data-aos="zoom-in-down">
+                <img src="{gallery.link}" alt="">
             </a>
+                
             {/each}
         </div>
     </div>

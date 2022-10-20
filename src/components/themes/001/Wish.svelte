@@ -1,10 +1,11 @@
 <script>
-    // export let messageData;
 
     let messageData = [
         {name : 'ddtamn', msg: 'keren'},
         {name : 'ddtamn', msg: 'keren'},
         ]
+
+    console.log(messageData);
 </script>
 <section>
     <div class="container">
@@ -19,11 +20,10 @@
         </div>
         <div class="comments" data-aos="fade-up">
             <div class="comment">
-                {#each messageData.message as data }
-                <strong>{data.name}</strong>
-                <p>{data.msg}</p>
+                
+                <strong>ddtamn</strong>
+                <p>mantap</p>
                 <!-- <small>19 May 2022, 01:53</small> -->
-                {/each}
             </div>
         </div>
     </div>

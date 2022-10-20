@@ -24,14 +24,14 @@
         
     }
     setInterval(() => {
-       countdown(theDate);
+       countdown(theDate || '12 April 2023');
     }, 1000);
 
 
     
 </script>
 
-<section style="background-image: url('{backgroundImage}');">
+<section style="background-image: url('{backgroundImage || 'https://media.dinvite.online/preview/5.jpg'}');">
     <div class="container">
         <div class="overlay"></div>
         <div class="content" data-aos="zoom-in">
@@ -42,7 +42,7 @@
                 <div class="count"><h6>{minutes}</h6><p style="font-weight: 200;">Minutes</p></div>
                 <div class="count"><h6>{seconds}</h6><p style="font-weight: 200;">Seconds</p></div>
             </div>
-            <a href="{calendarLink}" target="_blank">Add to Calendar</a>
+            <a href="{calendarLink || 'https://calendar.google.com/calendar/u/0/r/eventedit?text=Pernikahan+Andi+%26+Indah&details=You+are+Invited+to+our+wedding+day&location=Jl.+Setia+Budi+Luwuk+Banggai&dates=20230412/20230412'}" target="_blank">Add to Calendar</a>
             
         </div>
     </div>

@@ -9,7 +9,6 @@
     // export let bankName;
     // export let accountName;
     
-    export let data;
 </script>
 
 <section>
@@ -26,20 +25,19 @@
             <h3>Send Gift</h3>
             <p>Silahkan transfer hadiah melalui
             nomor rekening maupun dompet digital berikut</p>
-            {#each data as account }
                 <div class="card">
                     <div class="card-head">
-                        <img src="/bank-card/{account.bankName}.png" alt="">
+                        <img src="/bank-card/bca.png" alt="">
                     </div>
                     <div class="card-body">
                         <div class="icon"><Fa icon={faMoneyCheck}/></div>
                         <div class="account">
-                            <div class="number"><Fa icon={faCopy}/> <span>{account.accountNumber}</span></div>
-                            <div class="name">{account.accountName}</div>
+                            <div class="number"><Fa icon={faCopy}/> <span>856694552</span></div>
+                            <div class="name">dddasd</div>
                         </div>
                     </div>
                 </div>
-            {/each}
+            
             <!-- <div class="card">
                 <div class="card-head">
                     <img src="/bank-card/dana.png" alt="">

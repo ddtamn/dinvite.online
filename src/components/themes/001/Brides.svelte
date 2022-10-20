@@ -24,13 +24,13 @@
         </div>
         <div class="brides" data-aos="zoom-in">
             <div class="image">
-                <img src="{brideImage}" alt="">
+                <img src="{brideImage || 'https://media.dinvite.online/preview/bride.jpg'}" alt="">
                 <div class="flower" style="left: 10rem;"><Flower001 color={'var(--primary-color)'} width={'200px'} height={'200px'}/></div>
             </div>
-            <h3>{bride}</h3>
+            <h3>{bride || 'Indah Permata Sari'}</h3>
             <p style="font-style: italic; font-weight: 300;">Putri dari pasangan</p>
-            <p style="font-weight: 500; color: var(--secondary-color);">{brideParents}</p>
-            <a target="_blank" href="{brideIg}"><Fa icon={faInstagram}/></a>
+            <p style="font-weight: 500; color: var(--secondary-color);">{brideParents || 'Mr Imam Winarno & Mrs.Julia Hassanah '}</p>
+            <a target="_blank" href="{brideIg || 'https://instagram.com/dinvite.online'}"><Fa icon={faInstagram}/></a>
         </div>
         <div 
         style="margin-bottom: 1rem;
@@ -45,13 +45,13 @@
         >&</div>
         <div class="brides" data-aos="zoom-in">
             <div class="image">
-                <img src="{groomImage}" alt="">
+                <img src="{groomImage ||'https://media.dinvite.online/preview/groom.jpg'}" alt="">
                 <div class="flower" style="transform: scale(-1);"><Flower001 color={'var(--primary-color)'} width={'200px'} height={'200px'}/></div>
             </div>
-            <h3>{groom}</h3>
+            <h3>{groom || 'Andi Putra Pratama'}</h3>
             <p style="font-style: italic; font-weight: 300;">Putra dari pasangan</p>
-            <p style="font-weight: 500; color: var(--secondary-color);">{groomParents}</p>
-            <a target="_blank" href="{groomIg}"><Fa icon={faInstagram}/></a>
+            <p style="font-weight: 500; color: var(--secondary-color);">{groomParents || 'Mr Imam Winarno & Mrs.Julia Hassanah '}</p>
+            <a target="_blank" href="{groomIg || 'https://instagram.com/dinvite.online'}"><Fa icon={faInstagram}/></a>
         </div>
     </div>
 </section>

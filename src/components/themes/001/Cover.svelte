@@ -39,31 +39,19 @@
     export let backsong;
 </script>
 
+
 <section class="{hide ? 'hide' : ''}">
-    <div class="container" style="background-image: url('{backgroundImage}');">
+    <div class="container" style="background-image: url('{backgroundImage || 'https://media.dinvite.online/preview/15.jpg'}');">
         <div class="overlay"></div>
         <div class="content" data-aos="zoom-in">
             <p style="font-weight: 300;">Hai, {guest || ''}</p>
             <p style="font-weight: 300;">You are invited to our wedding day</p>
-            <h1>{name}</h1>
+            <h1>{name || 'Andi & Indah'}</h1>
             <button on:click="{(e) => openCover(e)}">Let's Begin</button>
-            <audio src="{backsong}" loop="true"></audio>
+            <audio src="{backsong || 'https://media.dinvite.online/audio/THE%20OVERTUNES%20-%20I%20STILL%20LOVE%20YOU%20ACCOUSTIC%20VERSION.mp3'}" loop="true"></audio>
         </div>
     </div>
 </section>
-
-<!-- <section class="{hide ? 'hide' : ''}">
-    <div class="container" style="background-image: url('https://cdn.imweb.me/upload/S201904265cc294845b98d/3aeac83be14ce.jpg');">
-        <div class="overlay"></div>
-        <div class="content" data-aos="zoom-in">
-            <p style="font-weight: 300;">Hai, {guest || ''}</p>
-            <p style="font-weight: 300;">You are invited to our wedding day</p>
-            <h1>{name}</h1>
-            <button on:click="{(e) => openCover(e)}">Let's Begin</button>
-            <audio src="https://drive.google.com/uc?export=view&id=1-oLHjArCAM4KVhWURk66QKPEbnrDbXMo" loop="true"></audio>
-        </div>
-    </div>
-</section> -->
 <div class="audio-controls" on:click="{playPause}">
     <div class="pause"><Fa icon={play ? faPause : faPlay}/></div>
 </div>
